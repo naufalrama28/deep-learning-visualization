@@ -1,66 +1,65 @@
-// Sumber kebenaran konten: judul, tujuan, istilah, dan bank kuis tiap modul.
-// Bahasa: Indonesia. Setiap istilah Inggris wajib ada terjemahannya.
+// Sumber kebenaran konten. Aturan: bahasa warung dulu, istilah teknis selalu ada terjemahannya.
 var MODULES = [
   { id:"beranda", title:"Beranda & Peta Belajar", time:"5 mnt" },
-  { id:"neuron", title:"Neuron & Perceptron", time:"12 mnt", goal:"Memahami w, b, dan garis keputusan.", terms:["bobot (weight)","bias","weighted sum","threshold (ambang)"] },
-  { id:"aktivasi", title:"Fungsi Aktivasi", time:"10 mnt", goal:"Kenapa butuh non-linearitas.", terms:["sigmoid","tanh","ReLU","softmax","gradien","saturasi"] },
-  { id:"mlp", title:"MLP & Forward Pass", time:"12 mnt", goal:"Melihat data mengalir lapis demi lapis.", terms:["layer (lapisan)","hidden layer","forward propagation"] },
-  { id:"loss", title:"Loss Function", time:"10 mnt", goal:"Mengukur seberapa meleset tebakan.", terms:["target","prediksi","MSE","cross-entropy"] },
-  { id:"gradient", title:"Gradient Descent", time:"12 mnt", goal:"Intuisi lr dan langkah ke lembah.", terms:["gradien","learning rate","epoch","overshoot","divergen"] },
-  { id:"backprop", title:"Backpropagation", time:"15 mnt", goal:"Alur error mundur + update bobot.", terms:["chain rule","backward pass","update"] },
-  { id:"overfit", title:"Overfitting", time:"12 mnt", goal:"Bedakan hafal vs paham.", terms:["overfitting","underfitting","generalisasi","train/test"] },
-  { id:"cnn", title:"CNN & Konvolusi", time:"15 mnt", goal:"Filter + pooling pada gambar.", terms:["konvolusi","kernel/filter","stride","pooling","feature map"] },
-  { id:"rnn", title:"RNN & Memori", time:"12 mnt", goal:"Hidden state untuk urutan.", terms:["sequence (urutan)","hidden state","memori"] },
-  { id:"attention", title:"Attention & Transformer", time:"15 mnt", goal:"Bobot perhatian antar kata.", terms:["query/key/value","attention weight","softmax"] },
-  { id:"playground", title:"Playground 2D", time:"20 mnt", goal:"Latih MLP sungguhan di browser.", terms:["dataset","hidden neuron","decision boundary","akurasi"] }
+  { id:"neuron", title:"Otak Mini (Neuron)", time:"10 mnt", goal:"Paham cara mesin menimbang petunjuk.", terms:["bobot = seberapa penting petunjuk","bias = standar kelulusan"] },
+  { id:"aktivasi", title:"Kapan Lampu Menyala", time:"8 mnt", goal:"Kenapa mesin butuh 'kepribadian'.", terms:["Si Lembut (sigmoid)","Si Cuek (ReLU)","Si Tegas (step)"] },
+  { id:"mlp", title:"Kerja Tim Berlapis", time:"10 mnt", goal:"Melihat tebakan mengalir lapis demi lapis.", terms:["tim depan/tengah/ketua (layer)","mengoper ringkasan"] },
+  { id:"loss", title:"Seberapa Meleset?", time:"8 mnt", goal:"Skor meleset makin kecil makin bagus.", terms:["skor meleset (loss)","jawaban benar (target)"] },
+  { id:"gradient", title:"Bola ke Lembah", time:"10 mnt", goal:"Langkah kecil vs nekat.", terms:["panjang langkah (learning rate)","kemiringan (gradien)"] },
+  { id:"backprop", title:"Evaluasi Tim", time:"12 mnt", goal:"Bagi salah ke belakang dengan adil.", terms:["bagi-bagi salah (backward)","koreksi (update)"] },
+  { id:"overfit", title:"Hafalan vs Paham", time:"10 mnt", goal:"Nilai ujian lebih penting dari latihan.", terms:["menghafal (overfitting)","paham (generalisasi)"] },
+  { id:"cnn", title:"Mata Komputer", time:"12 mnt", goal:"Meraba foto pakai pola kecil.", terms:["kacamata peraba (filter)","peta temuan (feature map)","remasan (pooling)"] },
+  { id:"rnn", title:"Daya Ingat", time:"10 mnt", goal:"Catatan kecil untuk urutan.", terms:["urutan (sequence)","catatan (hidden state)"] },
+  { id:"attention", title:"Rapat Kata", time:"12 mnt", goal:"Tiap kata memilih yang didengarkan.", terms:["perhatian (attention)","dibagi 100% (softmax)"] },
+  { id:"playground", title:"Latihan Nyata", time:"20 mnt", goal:"Latih AI sungguhan di browser.", terms:["bentuk soal (dataset)","tim tengah (hidden)","batas warna (boundary)"] }
 ];
 
-// Bank kuis: jawaban benar ditandai answer (index), plus feedback.
+// Bank kuis: bahasa cerita, tanpa jargon tanpa terjemahan.
 var QUIZZES = {
   neuron: [
-    { q:"Apa peran bobot (w)?", opts:["Menentukan pentingnya tiap input","Jumlah data latih","Kecepatan internet"], answer:0, fb:"Bobot besar = input itu sangat berpengaruh ke output." },
-    { q:"Apa yang terjadi jika bias (b) diperbesar?", opts:["Garis keputusan bergeser, neuron lebih mudah menyala","Bobot jadi nol","Input hilang"], answer:0, fb:"Bias = dorongan awal / standar kelulusan." },
-    { q:"Gerbang AND menyala jika...", opts:["Kedua input 1","Salah satu input 1","Semua input 0"], answer:0, fb:"AND butuh dua-duanya. OR cukup salah satu." }
+    { q:"Di pasar buah, ada petunjuk 'bunyi tok-tok' dan 'garis kulit'. Apa gunanya 'seberapa penting' (bobot)?", opts:["Menentukan petunjuk mana yang lebih didengar","Menghitung jumlah buah","Menyalakan lampu pasar"], answer:0, fb:"Makin penting = makin keras didengar mesin." },
+    { q:"'Standar kelulusan' diperketat. Apa yang terjadi?", opts:["Mesin jadi pelit bilang YA, garisnya bergeser","Mesin rusak","Buahnya hilang"], answer:0, fb:"Standar = ambang. Ketat = susah lolos." },
+    { q:"Aturan 'harus dua-duanya ada' itu contoh ...", opts:["Semangka matang = bunyi OKE dan garis OKE","Cukup salah satu","Tidak perlu petunjuk"], answer:0, fb:"Itulah logika AND dalam kehidupan." }
   ],
   aktivasi: [
-    { q:"Kenapa butuh aktivasi non-linear seperti ReLU?", opts:["Agar jaringan bisa belajar pola melengkung, bukan cuma garis lurus","Agar koding lebih pendek","Agar warna bagus"], answer:0, fb:"Tanpa non-linear, 100 layer = 1 layer linear." },
-    { q:"ReLU melakukan apa?", opts:["Negatif → 0, positif → terus","Semua jadi 1","Membalik tanda"], answer:0, fb:"max(0,x). Sederhana tapi powerful." }
+    { q:"Kenapa mesin butuh 'kepribadian' seperti Si Cuek/Si Lembut?", opts:["Biar bisa paham hal melengkung, bukan cuma garis lurus","Biar warnanya bagus","Biar koding pendek"], answer:0, fb:"Tanpa ini, 100 lapis pun cuma garis lurus." },
+    { q:"Si Cuek (ReLU) itu orang yang ...", opts:["Mendiamkan yang jelek, meneruskan yang bagus","Selalu bilang ya","Selalu tidur"], answer:0, fb:"Negatif → diam (0), positif → terus." }
   ],
   mlp: [
-    { q:"Forward pass itu...", opts:["Aliran data dari input → hidden → output","Aliran error mundur","Menghapus data"], answer:0, fb:"Forward = menebak. Backward = mengoreksi." },
-    { q:"Garis tebal antar neuron artinya...", opts:["Bobot besar (pengaruh kuat)","Kabel rusak","Neuron mati"], answer:0, fb:"Biru = positif, merah = negatif." }
+    { q:"Tim berlapis bekerja seperti ...", opts:["Estafet: tiap tim mengoper ringkasan ke tim berikut","Semua kerja sendiri-sendiri","Ketua kerja, sisanya nonton"], answer:0, fb:"Depan lihat ciri, tengah simpulkan, ketua putuskan." },
+    { q:"Garis tebal antar lingkaran artinya ...", opts:["Pengaruhnya kuat (sangat didengar)","Kabelnya rusak","Lingkarannya rusak"], answer:0, fb:"Biru = mendukung, merah = menolak." }
   ],
   loss: [
-    { q:"Loss kecil artinya...", opts:["Tebakan dekat target","Model rusak","Data habis"], answer:0, fb:"Tugas training = meminimalkan loss." },
-    { q:"Cross-entropy menghukum paling keras saat...", opts:["Salah tapi sangat pede (mis. target 1, tebak 0.01)","Salah dikit","Benar"], answer:0, fb:"Makanya cocok untuk klasifikasi." }
+    { q:"Skor meleset (loss) = 0 artinya ...", opts:["Tepat! Tebakan sama dengan jawaban","Mesin rusak","Soal hilang"], answer:0, fb:"Tugas mesin: bikin skor ini sekecil mungkin." },
+    { q:"Main tebak pilihan: kapan hukumannya paling berat?", opts:["Saat salah tapi pede banget","Saat salah dikit","Saat benar"], answer:0, fb:"Makanya mesin belajar tidak asal pede." }
   ],
   gradient: [
-    { q:"Rumus 1 langkah gradient descent?", opts:["w −= lr × gradien","w += data","w = 0"], answer:0, fb:"Melangkah berlawanan arah kemiringan." },
-    { q:"Learning rate terlalu besar berakibat...", opts:["Mental-mental / divergen (loss meledak)","Pasti lebih cepat konvergen","Tidak ada efek"], answer:0, fb:"Coba lr=0.95 di visual dan lihat bolanya!" },
-    { q:"Gradien = ...", opts:["Kemiringan kurva loss di titik itu","Jumlah layer","Ukuran gambar"], answer:0, fb:"Kemiringan + → melangkah kiri." }
+    { q:"Main ski dalam kabut: kamu ...", opts:["Rasakan miringnya tanah, melangkah ke arah turun","Tutup mata dan lompat jauh","Diam saja menunggu"], answer:0, fb:"Itulah belajar: intip kemiringan, langkah turun." },
+    { q:"Langkah super besar (nekat) akibatnya ...", opts:["Bola mental-mental, bisa kabur dari lembah","Pasti langsung sampai","Tidak ada efek"], answer:0, fb:"Coba di gambar: geser langkah ke besar lalu Jalankan!" },
+    { q:"Langkah super kecil akibatnya ...", opts:["Aman tapi lamaaa banget sampainya","Langsung sampai","Bola terbang"], answer:0, fb:"Hati-hati itu bagus, tapi jangan terlalu takut." }
   ],
   backprop: [
-    { q:"Backprop mengalirkan apa dan ke mana?", opts:["Error dari output mundur ke tiap bobot","Data dari input maju","Listrik ke GPU"], answer:0, fb:"Backward = bagi-bagi kesalahan." },
-    { q:"Bobot dengan input besar saat error...", opts:["Dapat koreksi besar (tanggung jawab besar)","Tidak dikoreksi","Dihapus"], answer:0, fb:"gradien = error × input." }
+    { q:"Tim kalah. Evaluasi yang adil itu ...", opts:["Kesalahan dibagi ke belakang sesuai andil masing-masing","Salahkan kiper saja","Bubarkan tim"], answer:0, fb:"Yang pegang bola lama tanggung jawab besar." },
+    { q:"Setelah tahu bagian salah masing-masing, lalu ...", opts:["Tiap anggota dikoreksi sedikit ke arah benar","Dibiarkan saja","Diacak total"], answer:0, fb:"Koreksi kecil tiap putaran = belajar." }
   ],
   overfit: [
-    { q:"Ciri overfitting?", opts:["Loss latih kecil, loss uji besar","Keduanya besar","Keduanya kecil"], answer:0, fb:"Hafal latihan, gagal di soal baru." },
-    { q:"Obat overfitting?", opts:["Data lebih banyak / model lebih sederhana","Model lebih rumit","Noise lebih banyak"], answer:0, fb:"Sederhana tapi paham > rumit tapi hafal." }
+    { q:"Si Penghafal vs Si Paham: siapa menang di ujian asli?", opts:["Si Paham (stabil di soal baru)","Si Penghafal (hafal 100 soal)","Seri"], answer:0, fb:"Latihan 100 tapi ujian jeblok = menghafal." },
+    { q:"Cara agar mesin tidak jadi penghafal?", opts:["Soal lebih banyak / cara lebih sederhana","Cara makin rumit","Soal makin berantakan"], answer:0, fb:"Sederhana tapi paham > rumit tapi hafal." }
   ],
   cnn: [
-    { q:"Filter/konvolusi bertugas...", opts:["Mendeteksi pola lokal (tepi, garis) di tiap posisi","Menghapus gambar","Menambah noise"], answer:0, fb:"Geser jendela 3×3 ke seluruh gambar." },
-    { q:"Max-pooling 2×2 melakukan...", opts:["Ambil nilai terbesar tiap kotak → gambar mengecil, inti tetap","Memperbesar gambar 2x","Mengacak piksel"], answer:0, fb:"Meremas tapi mempertahankan sinyal terkuat." }
+    { q:"Komputer 'melihat' foto dengan cara ...", opts:["Menggeser bingkai kecil ke tiap sudut, mencatat ada pola apa","Menelan fotonya langsung","Menebak acak"], answer:0, fb:"Geser → catat → rangkum. Ulangi berlapis." },
+    { q:"'Meremas' gambar (pooling) gunanya ...", opts:["Gambar mengecil tapi intinya tetap awet","Gambar jadi besar","Gambar diacak"], answer:0, fb:"Ambil yang terbesar tiap kotak kecil." }
   ],
   rnn: [
-    { q:"Hidden state (h) adalah...", opts:["Ingatan ringkas dari masa lalu urutan","Jumlah neuron","Ukuran font"], answer:0, fb:"Dibawa tiap langkah: h = tanh(W·h + U·x)." },
-    { q:"W (kekuatan ingatan) terlalu kecil → ...", opts:["Model pelupa (ingatan hilang tiap langkah)","Model meledak","Tidak ada efek"], answer:0, fb:"Geser W ke 0 dan lihat jejak memorinya datar." }
+    { q:"Catatan kecil untuk sinetron gunanya ...", opts:["Mengingat ringkasan episode lalu saat nonton episode baru","Mencatat harga tiket","Tidak ada guna"], answer:0, fb:"Tiap kejadian = ingatan lama + kejadian baru." },
+    { q:"Daya ingat = 0 artinya ...", opts:["Amnesia total, tiap kejadian langsung lupa","Ingatan super kuat","Catatan terbakar"], answer:0, fb:"Geser ke 0 dan mainkan: garisnya datar!" }
   ],
   attention: [
-    { q:"Attention weight besar artinya...", opts:["Kata itu sangat diperhatikan untuk memahami kata lain","Kata dihapus","Kata dicetak tebal"], answer:0, fb:"Pekat = penting. Total tiap baris = 100%." },
-    { q:"Rumus attention?", opts:["softmax(QKᵀ/√d)·V","w·x+b saja","acak"], answer:0, fb:"Kemiripan query-key diubah jadi peluang." }
+    { q:"'Kucing mengejar tikus karena IA lapar.' Kata 'ia' paling mendengarkan ...", opts:["Kucing","Tikus","Karena"], answer:0, fb:"Klik 'ia' di gambar dan lihat yang paling pekat!" },
+    { q:"Perhatian tiap baris totalnya ...", opts:["Selalu 100% (dibagi-bagi)","Bisa 500%","Nol"], answer:0, fb:"Perhatian itu terbatas, harus dibagi." }
   ],
   playground: [
-    { q:"Data lingkaran/spiral butuh apa agar selesai?", opts:["Hidden layer + aktivasi non-linear","Learning rate 0 saja","Tanpa hidden layer"], answer:0, fb:"Garis lurus tak bisa memisahkan lingkaran!" },
-    { q:"Hidden neuron 0 artinya model...", opts:["Cuma garis lurus (linear)","Sangat pintar","Rusak total"], answer:0, fb:"Coba h1=0 lalu latih — loss mentok." }
+    { q:"Soal lingkaran gagal terus dengan tim 0. Artinya ...", opts:["Garis lurus tak bisa memisahkan lingkaran, butuh tim tengah","Soalnya rusak","Tombol Latih rusak"], answer:0, fb:"Buktikan: naikkan tim jadi 4 lalu latih → berhasil!" },
+    { q:"Bos spiral akhirnya selesai kalau ...", opts:["Tim cukup banyak (8+4) + sabar melatih","Tim dikosongkan","Belajar 1 detik"], answer:0, fb:"Soal sulit butuh tim besar + latihan lama." }
   ]
 };

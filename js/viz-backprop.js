@@ -26,10 +26,10 @@ function initVizBackprop(){
     html+='<div class="bpbox">loss<br><b>'+s.loss.toFixed(4)+'</b>err='+s.err.toFixed(3)+'</div>';
     $("bp-viz").innerHTML=html;
     var txt="";
-    if(stepIdx===0)txt="1️⃣ FORWARD: z = "+w1.toFixed(2)+"×"+s.x1.toFixed(2)+" + "+w2.toFixed(2)+"×"+s.x2.toFixed(2)+" + "+b.toFixed(2)+" = "+s.z.toFixed(3)+"\nŷ = sigmoid(z) = "+s.y.toFixed(3)+" (target 1)";
-    else if(stepIdx===1)txt="2️⃣ LOSS: L = ½(ŷ−t)² = ½("+s.y.toFixed(3)+"−1)² = "+s.loss.toFixed(4)+"\nerror = ŷ−t = "+s.err.toFixed(3)+" (negatif = tebakan kurang besar)";
-    else if(stepIdx===2)txt="3️⃣ BACKWARD (bagi salah):\ngrad w1 = err×ŷ(1−ŷ)×x1 = "+s.dw1.toFixed(4)+"\ngrad w2 = "+s.dw2.toFixed(4)+", grad b = "+s.db.toFixed(4)+"\n→ w1 paling bersalah karena x1 besar!";
-    else txt="4️⃣ UPDATE (lr="+lr.toFixed(2)+"):\nw1: "+w1.toFixed(3)+" − "+lr.toFixed(2)+"×("+s.dw1.toFixed(3)+") = "+(w1-lr*s.dw1).toFixed(3)+"\nw2: "+w2.toFixed(3)+" → "+(w2-lr*s.dw2).toFixed(3)+", b: "+b.toFixed(3)+" → "+(b-lr*s.db).toFixed(3)+"\nKlik Langkah → lagi untuk iterasi berikutnya!";
+    if(stepIdx===0)txt="1️⃣ MENEBASK: dengan cara main sekarang, tim menebak "+s.y.toFixed(3)+" (maunya 1).\n(Rincian boleh diskip: "+w1.toFixed(2)+"×"+s.x1.toFixed(2)+" + "+w2.toFixed(2)+"×"+s.x2.toFixed(2)+" + "+b.toFixed(2)+" = "+s.z.toFixed(3)+")";
+    else if(stepIdx===1)txt="2️⃣ SADAR SALAH: tebakan "+s.y.toFixed(3)+" vs jawaban 1 → meleset "+s.loss.toFixed(4)+".\nSelisihnya "+s.err.toFixed(3)+" (minus = tebakan kurang besar, harus naik).";
+    else if(stepIdx===2)txt="3️⃣ BAGI-BAGI SALAH:\n• Petunjuk 1 menanggung "+s.dw1.toFixed(3)+" (paling besar — dia pegang bola lama!)\n• Petunjuk 2 menanggung "+s.dw2.toFixed(3)+"\n• Standar menanggung "+s.db.toFixed(3);
+    else txt="4️⃣ KOREKSI (kegalakan "+lr.toFixed(2)+"):\n• Cara petunjuk 1: "+w1.toFixed(3)+" → "+(w1-lr*s.dw1).toFixed(3)+"\n• Cara petunjuk 2: "+w2.toFixed(3)+" → "+(w2-lr*s.dw2).toFixed(3)+"\nKlik Langkah → lagi: tebakan berikutnya pasti lebih dekat ke 1!";
     $("bp-calc").textContent=txt;
   }
   $("bp-next").onclick=function(){

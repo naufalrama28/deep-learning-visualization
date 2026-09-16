@@ -36,8 +36,8 @@ function initVizLoss(){
     // titik tebakan
     ctx.fillStyle="#dc2626";ctx.beginPath();ctx.arc(X(p),Y(L),8,0,7);ctx.fill();
     ctx.fillStyle="#fff";ctx.font="bold 9px sans-serif";ctx.fillText("mu",X(p)-7,Y(L)+3);
-    $("loss-calc").innerHTML=(fn==="mse"?"MSE = (y−ŷ)² = ("+t.toFixed(2)+"−"+p.toFixed(2)+")²":"CE = −[y·log ŷ+(1−y)·log(1−ŷ)]")+
-      "\nLoss = <b>"+L.toFixed(3)+"</b> "+(L<0.1?"✅ bagus, dekat target!":L<1?"😐 lumayan":"❌ masih jauh, geser ŷ ke "+t.toFixed(2));
+    $("loss-calc").innerHTML=(L<0.1?"🎉 <b>Hampir tepat!</b> Tebakan "+p.toFixed(2)+" dekat dengan jawaban "+t.toFixed(2)+".":L<1?"😐 <b>Lumayan.</b> Tebakan "+p.toFixed(2)+", jawaban "+t.toFixed(2)+" — geser lebih dekat!":"❌ <b>Masih jauh.</b> Tebakan "+p.toFixed(2)+" vs jawaban "+t.toFixed(2)+" — geser ke "+t.toFixed(2)+"!")+
+      "\nSkor meleset = <b>"+L.toFixed(3)+"</b> (0 = sempurna)";
   }
   $("loss-fn").addEventListener("change",draw);
   ["loss-target","loss-pred"].forEach(function(id){$(id).addEventListener("input",draw)});

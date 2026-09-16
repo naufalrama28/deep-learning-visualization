@@ -39,9 +39,9 @@ function initVizNeuron(){
     ctx.fillStyle=y?"#16a34a":"#dc2626";
     ctx.beginPath();ctx.arc(IX,IY,9,0,7);ctx.fill();
     ctx.fillStyle="#fff";ctx.font="bold 10px sans-serif";ctx.fillText("IN",IX-7,IY+3);
-    // teks
-    $("neuron-calc").innerHTML="z = "+w1.toFixed(1)+"×"+x1.toFixed(2)+" + "+w2.toFixed(1)+"×"+x2.toFixed(2)+" + ("+b.toFixed(1)+") = <b>"+z.toFixed(2)+"</b>\n"+
-      "y = "+(y?"<b>1 (MENYALA 💡)</b>":"<b>0 (MATI)</b>")+" karena z "+(z>0?"> 0":"≤ 0");
+    // teks: kalimat biasa dulu, angka belakangan
+    $("neuron-calc").innerHTML=(y?"💡 <b>Keputusan: YA, matang!</b> Total keyakinan "+z.toFixed(2)+" lewat standar (di atas 0).":"⚫ <b>Keputusan: BELUM, mentah.</b> Total keyakinan "+z.toFixed(2)+" belum lewat standar.")+
+      "\nRinciannya (boleh diskip): "+w1.toFixed(1)+"×"+x1.toFixed(2)+" + "+w2.toFixed(1)+"×"+x2.toFixed(2)+" + ("+b.toFixed(1)+") = "+z.toFixed(2);
     var lamp=$("neuron-lamp");
     lamp.textContent=y?"💡 MENYALA (output=1)":"⚫ MATI (output=0)";
     lamp.classList.toggle("on",!!y);

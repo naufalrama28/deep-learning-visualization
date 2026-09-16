@@ -1,18 +1,18 @@
 // Router hash, tema, progress, kuis, kartu beranda. Komentar: Bahasa Indonesia.
 (function(){
   var TITLES = {
-    beranda:["Beranda","Pilih modul di kiri, geser semua slider, jangan takut salah."],
-    neuron:["1️⃣ Neuron & Perceptron","Keran + timbangan: atur bobot & bias, lihat garis keputusan."],
-    aktivasi:["2️⃣ Fungsi Aktivasi","Kapan lampu menyala? Bandingkan sigmoid, tanh, ReLU."],
-    mlp:["3️⃣ Jaringan & Forward Pass","Lihat angka mengalir lapis demi lapis."],
-    loss:["4️⃣ Loss Function","Seberapa meleset tebakanmu? Geser dan lihat."],
-    gradient:["5️⃣ Gradient Descent","Jadi bola ski: pilih langkah, meluncur ke lembah."],
-    backprop:["6️⃣ Backpropagation","Bagi-bagi kesalahan ke belakang, 4 langkah."],
-    overfit:["7️⃣ Overfitting","Hafalan vs paham: atur kerumitan model."],
-    cnn:["8️⃣ CNN & Konvolusi","Geser filter di atas gambar, lihat feature map."],
-    rnn:["9️⃣ RNN & Memori","Bawa papan tulis ingatan menyusuri urutan."],
-    attention:["🔟 Attention & Transformer","Klik kata, lihat siapa diperhatikan siapa."],
-    playground:["🎮 Playground 2D","Latih jaringan sungguhan di browser. Buktikan sendiri!"]
+    beranda:["Beranda","Tanpa matematika dulu. Tanpa coding. Cukup menggeser."],
+    neuron:["1️⃣ Otak Mini (Neuron)","Cara mesin menimbang petunjuk lalu bilang YA/TIDAK."],
+    aktivasi:["2️⃣ Kapan Lampu Menyala","4 kepribadian mesin: tegas, lembut, cuek, seimbang."],
+    mlp:["3️⃣ Kerja Tim Berlapis","Tebakan mengalir dari tim depan ke ketua."],
+    loss:["4️⃣ Seberapa Meleset?","Skor meleset 0 = tepat! Geser tebakanmu."],
+    gradient:["5️⃣ Bola ke Lembah","Ski dalam kabut: intip miringnya, melangkah turun."],
+    backprop:["6️⃣ Evaluasi Tim","Kalah? Bagi salah ke belakang dengan adil. 4 langkah."],
+    overfit:["7️⃣ Hafalan vs Paham","Penghafal jeblok di ujian. Lihat sendiri."],
+    cnn:["8️⃣ Mata Komputer","Raba foto pakai bingkai kecil, rangkum berlapis."],
+    rnn:["9️⃣ Daya Ingat","Catatan kecil untuk lagu, chat, dan urutan."],
+    attention:["🔟 Rapat Kata","Tiap kata memilih siapa yang didengarkan."],
+    playground:["🎮 Latihan Nyata","Latih AI sungguhan: lingkaran, silang, spiral!"]
   };
   // Fungsi init tiap visual didaftarkan di sini (didefinisikan di viz-*.js)
   var VIZ_INIT = {

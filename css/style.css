@@ -43,6 +43,19 @@ code{background:var(--bg);border:1px solid var(--line);border-radius:6px;padding
 .map{margin:8px 0;padding-left:20px;font-size:14px}
 .map a{color:var(--text)}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;margin-bottom:16px;box-shadow:var(--shadow)}
+.story{border-left:6px solid #22c55e;font-size:16px;line-height:1.7}
+.guide{border:2px solid var(--accent2);font-size:15px}
+.guide ol{margin:8px 0 2px;padding-left:22px}
+.guide li{margin:7px 0}
+.kesimpulan{border-left:6px solid #f59e0b;font-size:15px;background:linear-gradient(0deg,rgba(245,158,11,.07),rgba(245,158,11,.07)),var(--card)}
+.hitung{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 18px;margin-bottom:16px;font-size:14px}
+.hitung summary{cursor:pointer;font-weight:700;font-size:15px}
+.hitung code{background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:1px 6px}
+.kamus{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
+.kamus th,.kamus td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.kamus th{background:var(--bg)}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.badge{background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.4);border-radius:99px;padding:5px 12px;font-size:13px;font-weight:600}
 .analogi{border-left:6px solid var(--accent2);font-size:15px}
 .rumus{border-left:6px solid var(--accent);font-size:14px}
 .rumus code,.calc code{font-size:13px}

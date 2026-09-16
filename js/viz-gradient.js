@@ -23,7 +23,7 @@ function initVizGradient(){
     ctx.fillStyle="#fff";ctx.font="bold 10px sans-serif";ctx.fillText("●",X(w)-4,Y(f(w))+3);
     var lr=+$("grad-lr").value;
     $("grad-lr-v").textContent=lr.toFixed(2);
-    $("grad-calc").innerHTML="posisi w = <b>"+w.toFixed(3)+"</b>\nloss f(w) = <b>"+f(w).toFixed(3)+"</b>\ngradien f′(w) = <b>"+g(w).toFixed(3)+"</b>\nlangkah = −"+lr.toFixed(2)+" × "+g(w).toFixed(3)+" = <b>"+(-lr*g(w)).toFixed(3)+"</b>";
+    $("grad-calc").innerHTML="⛷️ Bola di posisi <b>"+w.toFixed(2)+"</b>, ketinggian (melesetnya) <b>"+f(w).toFixed(2)+"</b>.\nTanah di kaki miring "+(g(w)>0.15?"ke kanan ↗ → melangkah <b>kiri</b>":g(w)<-0.15?"ke kiri ↖ → melangkah <b>kanan</b>":"hampir datar 😌 (hampir sampai!)")+", sejauh <b>"+Math.abs(lr*g(w)).toFixed(3)+"</b>.\nDetail angka (boleh diskip): kemiringan = "+g(w).toFixed(3)+", langkah = −"+lr.toFixed(2)+" × "+g(w).toFixed(3);
   }
   function step(){
     var lr=+$("grad-lr").value;
