@@ -136,6 +136,18 @@
         p[m]=!p[m]; saveProgress(p);
       };
     });
+    // Tombol "← Sebelumnya" otomatis sesuai urutan belajar (tanpa edit HTML per modul)
+    var ORDER = ["beranda"].concat(MODS);
+    document.querySelectorAll(".nav-foot").forEach(function(f){
+      var sec = f.closest ? f.closest(".page") : null;
+      if(!sec) return;
+      var i = ORDER.indexOf(sec.id.replace("sec-",""));
+      if(i > 0){
+        var a = document.createElement("a");
+        a.className = "btn ghost"; a.href = "#" + ORDER[i-1]; a.textContent = "← Sebelumnya";
+        f.insertBefore(a, f.firstChild);
+      }
+    });
     document.getElementById("menu-btn").onclick = function(){
       document.getElementById("sidebar").classList.toggle("open");
     };

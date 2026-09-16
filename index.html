@@ -24,16 +24,20 @@
     </div>
     <nav id="nav">
       <a href="#beranda" data-route="beranda">🏠 Beranda & Peta</a>
+      <div class="nav-group">🧱 Dasar — cara mesin berpikir</div>
       <a href="#neuron" data-route="neuron">1️⃣ Otak Mini (Neuron)</a>
       <a href="#aktivasi" data-route="aktivasi">2️⃣ Kapan Lampu Menyala</a>
       <a href="#mlp" data-route="mlp">3️⃣ Kerja Tim Berlapis</a>
+      <div class="nav-group">🔁 Cara mesin belajar</div>
       <a href="#loss" data-route="loss">4️⃣ Seberapa Meleset?</a>
       <a href="#gradient" data-route="gradient">5️⃣ Bola ke Lembah</a>
       <a href="#backprop" data-route="backprop">6️⃣ Evaluasi Tim</a>
       <a href="#overfit" data-route="overfit">7️⃣ Hafalan vs Paham</a>
+      <div class="nav-group">👁️ Indra mesin</div>
       <a href="#cnn" data-route="cnn">8️⃣ Mata Komputer</a>
       <a href="#rnn" data-route="rnn">9️⃣ Daya Ingat</a>
       <a href="#attention" data-route="attention">🔟 Rapat Kata</a>
+      <div class="nav-group">🎮 Praktik</div>
       <a href="#playground" data-route="playground">🎮 Latihan Nyata</a>
     </nav>
     <div class="side-footer">
@@ -201,7 +205,7 @@
       </details>
       <div class="card kesimpulan">💎 <b>Ingat 1 kalimat:</b> Tanpa aturan “kapan bereaksi”, mesin cuma bisa garis lurus — makanya butuh aktivasi.</div>
       <div class="card istilah">🏷️ <b>Nama resminya</b> <span class="tiny">(hafalkan yang kiri, kenali yang kanan)</span>
-        <div class="tags"><span class="tag">Si Tegas = <b><i>step / threshold</i></b></span><span class="tag">Si Lembut = <b><i>sigmoid</i></b></span><span class="tag">Si Seimbang = <b><i>tanh</i></b></span><span class="tag">Si Cuek = <b><i>ReLU</i></b></span><span class="tag">kemiringan garis = <b><i>gradien</i></b></span><span class="tag">macet di ujung = <b><i>saturasi</i></b></span></div>
+        <div class="tags"><span class="tag">aturan menyala = <b>fungsi aktivasi</b></span><span class="tag">Si Tegas = <b><i>step / threshold</i></b></span><span class="tag">Si Lembut = <b><i>sigmoid</i></b></span><span class="tag">Si Seimbang = <b><i>tanh</i></b></span><span class="tag">Si Cuek = <b><i>ReLU</i></b></span><span class="tag">kemiringan garis = <b><i>gradien</i></b></span><span class="tag">macet di ujung = <b><i>saturasi</i></b></span></div>
       </div>
       <div class="quiz" data-quiz="aktivasi"></div>
       <div class="nav-foot"><button class="btn ghost done-btn" data-mod="aktivasi">✓ Tandai selesai</button><a class="btn primary" href="#mlp">Lanjut: kerja tim →</a></div>
@@ -239,7 +243,7 @@
       </details>
       <div class="card kesimpulan">💎 <b>Ingat 1 kalimat:</b> Jaringan = tim estafet peringkas, makin banyak lapis makin abstrak ringkasannya.</div>
       <div class="card istilah">🏷️ <b>Nama resminya</b> <span class="tiny">(hafalkan yang kiri, kenali yang kanan)</span>
-        <div class="tags"><span class="tag">tim = <b><i>layer</i> (lapisan)</b></span><span class="tag">tim tengah = <b><i>hidden layer</i></b></span><span class="tag">mengoper tebakan = <b><i>forward pass</i></b></span><span class="tag">keputusan akhir = <b><i>output</i></b></span></div>
+        <div class="tags"><span class="tag">jaringan ini = <b>MLP</b></span><span class="tag">tim = <b><i>layer</i> (lapisan)</b></span><span class="tag">tim tengah = <b><i>hidden layer</i></b></span><span class="tag">mengoper tebakan = <b><i>forward pass</i></b></span><span class="tag">keputusan akhir = <b><i>output</i></b></span></div>
       </div>
       <div class="quiz" data-quiz="mlp"></div>
       <div class="nav-foot"><button class="btn ghost done-btn" data-mod="mlp">✓ Tandai selesai</button><a class="btn primary" href="#loss">Lanjut: seberapa meleset →</a></div>
@@ -310,7 +314,7 @@
       </details>
       <div class="card kesimpulan">💎 <b>Ingat 1 kalimat:</b> Belajar = mengintip kemiringan tanah, melangkah turun sedikit demi sedikit.</div>
       <div class="card istilah">🏷️ <b>Nama resminya</b> <span class="tiny">(hafalkan yang kiri, kenali yang kanan)</span>
-        <div class="tags"><span class="tag">panjang langkah = <b><i>learning rate</i></b></span><span class="tag">kemiringan tanah = <b><i>gradien</i></b></span><span class="tag">lembah = <b><i>minimum</i></b></span><span class="tag">bola kabur = <b><i>divergen</i></b></span></div>
+        <div class="tags"><span class="tag">cara ski ini = <b><i>gradient descent</i></b></span><span class="tag">panjang langkah = <b><i>learning rate</i></b></span><span class="tag">kemiringan tanah = <b><i>gradien</i></b></span><span class="tag">lembah = <b><i>minimum</i></b></span><span class="tag">bola kabur = <b><i>divergen</i></b></span></div>
       </div>
       <div class="quiz" data-quiz="gradient"></div>
       <div class="nav-foot"><button class="btn ghost done-btn" data-mod="gradient">✓ Tandai selesai</button><a class="btn primary" href="#backprop">Lanjut: evaluasi tim →</a></div>
