@@ -20,7 +20,7 @@ Cukup 4 modul ini = 80% intuisi deep learning:
 - **Cerita:** timbang semangka matang dari 2 petunjuk (bunyi + garis kulit).
 - **Mainkan:** geser "seberapa penting" → garis berputar. Geser "standar kelulusan" → garis bergeser. Klik contoh "harus dua-duanya".
 - **Ingat 1 kalimat:** neuron itu timbangan petunjuk — totalnya menentukan YA atau BELUM.
-- **Istilah baru:** seberapa penting (bobot), standar kelulusan (bias).
+- **Istilah baru:** otak mini (neuron), yang dimainkan ini (perceptron), seberapa penting (bobot/weight), standar kelulusan (bias), garis pemisah (decision boundary), gerbang AND/OR.
 
 ## Modul 3 — Kapan Lampu Menyala (8 mnt)
 - **Cerita:** 4 kepribadian: Si Tegas, Si Lembut, Si Cuek, Si Seimbang.

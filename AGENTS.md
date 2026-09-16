@@ -76,7 +76,10 @@ Setiap modul WAJIB punya pola berurutan:
 
 Aturan bahasa (dilarang dilanggar):
 - Teks utama (cerita/panduan/label/hasil/kuis): **dilarang ada istilah Inggris tanpa terjemahan.** Pengecualian: nama tombol teknis boleh jika label Indonesianya duluan.
-- Istilah resmi diperkenalkan HANYA lewat 2 cara: di kurung saat pertama muncul ("standar kelulusan (bias)"), atau di kotak hitungan lipat.
+- Istilah resmi diperkenalkan HANYA lewat 3 cara (tidak boleh di tempat lain):
+  1. di kurung saat pertama muncul ("standar kelulusan (bias)"),
+  2. di kotak hitungan lipat (`<details class="hitung">`),
+  3. di kotak istilah terlihat (`.card.istilah` — WAJIB ada 1 per modul, pola: "Indonesia = **Inggris**" per chip).
 - Pakai kamus baku ini secara konsisten (jangan bikin padanan baru sendiri):
 
 | Tulis ini | Jangan tulis ini |
@@ -104,4 +107,4 @@ Aturan bahasa (dilarang dilanggar):
 - [ ] Dark/light mode tidak merusak keterbacaan canvas (gambar ulang jika perlu)
 - [ ] Kuis bisa dijawab dan memberi feedback
 - [ ] Progress tersimpan (refresh tidak hilang centang)
-- [ ] Audit bahasa: tidak ada istilah Inggris tanpa terjemahan di luar `<details class="hitung">` (cari: epoch, loss, dataset, query, hidden, filter, pooling, gradien, underfit, overfit, threshold)
+- [ ] Audit bahasa: jalankan `python tools/audit-bahasa.py` (harus LOLOS). Pengecualian sah: kamus, `.card.istilah`, `<details class="hitung">`, dan pola "Indonesia (Inggris)"
