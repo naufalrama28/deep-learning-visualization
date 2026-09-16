@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deep Learning Visualization — Belajar Sambil Mengutak-atik</title>
+<meta name="description" content="Website interaktif Bahasa Indonesia untuk memahami deep learning secara visual, intuitif, dan bisa diubah-ubah. Cocok untuk pemula.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<button id="menu-btn" aria-label="Buka menu">☰</button>
+<div class="layout">
+  <aside id="sidebar">
+    <div class="brand">
+      <div class="brand-logo">🧠</div>
+      <div>
+        <div class="brand-title">DL-Viz</div>
+        <div class="brand-sub">Visual + Intuitif + Interaktif</div>
+      </div>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-top"><span>Progress belajar</span><span id="progress-text">0%</span></div>
+      <div class="progress-bar"><div id="progress-fill"></div></div>
+    </div>
+    <nav id="nav">
+      <a href="#beranda" data-route="beranda">🏠 Beranda & Peta</a>
+      <a href="#neuron" data-route="neuron">1️⃣ Neuron & Perceptron</a>
+      <a href="#aktivasi" data-route="aktivasi">2️⃣ Fungsi Aktivasi</a>
+      <a href="#mlp" data-route="mlp">3️⃣ Jaringan & Forward Pass</a>
+      <a href="#loss" data-route="loss">4️⃣ Loss Function</a>
+      <a href="#gradient" data-route="gradient">5️⃣ Gradient Descent</a>
+      <a href="#backprop" data-route="backprop">6️⃣ Backpropagation</a>
+      <a href="#overfit" data-route="overfit">7️⃣ Overfitting</a>
+      <a href="#cnn" data-route="cnn">8️⃣ CNN & Konvolusi</a>
+      <a href="#rnn" data-route="rnn">9️⃣ RNN & Memori</a>
+      <a href="#attention" data-route="attention">🔟 Attention & Transformer</a>
+      <a href="#playground" data-route="playground">🎮 Playground 2D</a>
+    </nav>
+    <div class="side-footer">
+      <button id="theme-btn" class="btn small">🌙 Mode Gelap</button>
+      <button id="reset-progress" class="btn small ghost">↺ Reset progress</button>
+      <p class="tiny">100% offline • Tanpa install • Bahasa Indonesia<br>Buka via <code>index.html</code> atau <code>localhost:8000</code></p>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header class="topbar">
+      <div>
+        <h1 id="page-title">Beranda</h1>
+        <p id="page-sub" class="muted">Pilih modul di kiri, geser semua slider, jangan takut salah.</p>
+      </div>
+      <div class="top-actions">
+        <label class="tiny">Kecepatan animasi <input type="range" id="global-speed" min="0.5" max="2" step="0.5" value="1"></label>
+      </div>
+    </header>
+
+    <!-- ============ BERANDA ============ -->
+    <section id="sec-beranda" class="page">
+      <div class="hero">
+        <div>
+          <h2>Lihat cara kerja <span class="hl">Deep Learning</span> — bukan cuma rumusnya. 👀</h2>
+          <p>Website ini menerjemahkan matematika menakutkan menjadi <b>gambar yang bisa kamu geser dan ubah</b>. Setiap konsep ada analogi sehari-hari, slider interaktif, contoh 1-klik, dan kuis mini.</p>
+          <div class="hero-btns">
+            <a class="btn primary" href="#neuron">▶ Mulai dari Nol: Neuron</a>
+            <a class="btn" href="#playground">🎮 Langsung Main: Playground</a>
+          </div>
+          <div class="tips">💡 Cara pakai: 1) Baca analogi → 2) Geser slider → 3) Klik preset contoh → 4) Jawab kuis → 5) Centang selesai.</div>
+        </div>
+        <div class="hero-card">
+          <h3>🗺️ Peta belajar (12 langkah)</h3>
+          <ol class="map">
+            <li><a href="#neuron">Neuron: timbangan + keran air</a></li>
+            <li><a href="#aktivasi">Aktivasi: kapan lampu menyala</a></li>
+            <li><a href="#mlp">MLP: estafet ringkasan</a></li>
+            <li><a href="#loss">Loss: jarak dari bullseye</a></li>
+            <li><a href="#gradient">Gradient: bola ke lembah</a></li>
+            <li><a href="#backprop">Backprop: evaluasi tim</a></li>
+            <li><a href="#overfit">Overfit: hafalan vs paham</a></li>
+            <li><a href="#cnn">CNN: senter + stensil</a></li>
+            <li><a href="#rnn">RNN: papan tulis ingatan</a></li>
+            <li><a href="#attention">Attention: rapat kata</a></li>
+            <li><a href="#playground">Playground: latih jaringan beneran</a></li>
+          </ol>
+        </div>
+      </div>
+      <div class="grid3" id="home-cards"></div>
+      <div class="card">
+        <h3>⚙️ Atur sesukamu — semua modul bisa dikonfigurasi</h3>
+        <p>Bobot, bias, learning rate, filter gambar, kalimat, dataset, jumlah neuron — semuanya ada slider-nya. Ada tombol <b>Reset</b> di tiap modul jadi aman untuk eksperimen liar.</p>
+      </div>
+    </section>
+
+    <!-- ============ NEURON ============ -->
+    <section id="sec-neuron" class="page hidden">
+      <div class="card analogi">🚰 <b>Analogi:</b> Neuron itu seperti <b>keran + timbangan</b>. Input (x) = air masuk, bobot (w) = seberapa besar keran dibuka, bias (b) = dorongan awal, output = apakah air cukup deras untuk menyalakan lampu.</div>
+      <div class="cols">
+        <div class="card controls">
+          <h3>🎛️ Coba ubah</h3>
+          <label for="neuron-x1">Input x₁ (mis. “ada telinga kucing?” 0–1)</label>
+          <input type="range" id="neuron-x1" min="0" max="1" step="0.01" value="0.7">
+          <label for="neuron-x2">Input x₂ (mis. “ada kumis?” 0–1)</label>
+          <input type="range" id="neuron-x2" min="0" max="1" step="0.01" value="0.6">
+          <label for="neuron-w1">Bobot w₁ <span class="val" id="neuron-w1-v">1.0</span></label>
+          <input type="range" id="neuron-w1" min="-3" max="3" step="0.1" value="1">
+          <label for="neuron-w2">Bobot w₂ <span class="val" id="neuron-w2-v">1.0</span></label>
+          <input type="range" id="neuron-w2" min="-3" max="3" step="0.1" value="1">
+          <label for="neuron-b">Bias b <span class="val" id="neuron-b-v">-1.2</span></label>
+          <input type="range" id="neuron-b" min="-3" max="3" step="0.1" value="-1.2">
+          <div class="row">
+            <button class="btn small" id="neuron-and">Preset: AND</button>
+            <button class="btn small" id="neuron-or">Preset: OR</button>
+            <button class="btn small ghost" id="neuron-reset">↺ Reset</button>
+          </div>
+          <div class="calc" id="neuron-calc"></div>
+        </div>
+        <div class="card">
+          <h3>👁️ Amati: garis keputusan + lampu output</h3>
+          <canvas id="neuron-canvas" width="420" height="320"></canvas>
+          <div id="neuron-lamp" class="lamp">💡 MATI</div>
+          <p class="tiny">Titik hijau = input kamu. Latar biru/kuning = daerah keputusan neuron. Geser w₁/w₂ → garis berputar. Geser b → garis bergeser.</p>
+        </div>
+      </div>
+      <div class="card rumus">📐 <b>Intuisi rumus:</b> <code>z = w₁·x₁ + w₂·x₂ + b</code> → jumlahkan semua (bobot × input) lalu tambah bias. <code>y = 1 jika z &gt; 0</code> → lampu menyala kalau totalnya positif. Bobot = pentingnya input. Bias = standar kelulusan.</div>
+      <div class="quiz" data-quiz="neuron"></div>
+      <div class="nav-foot"><button class="btn ghost done-btn" data-mod="neuron">✓ Tandai selesai</button><a class="btn primary" href="#aktivasi">Lanjut: Aktivasi →</a></div>
+    </section>
+
+    <!-- ============ AKTIVASI ============ -->
+    <section id="sec-aktivasi" class="page hidden">
+      <div class="card analogi">💡 <b>Analogi:</b> Fungsi aktivasi = aturan “kapan lampu menyala”. Step = saklar tegas. Sigmoid = dimmer lembut. ReLU = “negatif cuekin, positif terusin”.</div>
+      <div class="cols">
+        <div class="card controls">
+          <h3>🎛️ Coba ubah</h3>
+          <label for="act-fn">Pilih fungsi</label>
+          <select id="act-fn">
+            <option value="sigmoid">Sigmoid (0–1, lembut)</option>
+            <option value="tanh">Tanh (−1–1)</option>
+            <option value="relu" selected>ReLU (populer!)</option>
+            <option value="step">Step / Threshold</option>
+          </select>
+          <label for="act-x">Input x <span class="val" id="act-x-v">0.5</span></label>
+          <input type="range" id="act-x" min="-5" max="5" step="0.1" value="0.5">
+          <div class="calc" id="act-calc"></div>
+          <p class="tiny">Tanpa aktivasi non-linear, 100 layer pun cuma bisa bikin garis lurus! Makanya ReLU/sigmoid wajib ada.</p>
+        </div>
+        <div class="card"><h3>👁️ Grafik + kemiringan (gradien)</h3><canvas id="act-canvas" width="420" height="320"></canvas></div>
+      </div>
+      <div class="card rumus">📐 <b>Intuisi:</b> Sigmoid <code>1/(1+e⁻ˣ)</code> = peluang. Tanh = versi −1..1. ReLU <code>max(0,x)</code> = buang negatif. Kemiringan grafik = seberapa cepat neuron belajar (gradien).</div>
+      <div class="quiz" data-quiz="aktivasi"></div>
+      <div class="nav-foot"><button class="btn ghost done-btn" data-mod="aktivasi">✓ Tandai selesai</button><a class="btn primary" href="#mlp">Lanjut: Jaringan →</a></div>
+    </section>
+
+    <!-- ============ MLP ============ -->
+    <section id="sec-mlp" class="page hidden">
+      <div class="card analogi">🏃 <b>Analogi:</b> MLP = estafet. Lapisan 1 meringkas “ada garis?”, lapisan 2 meringkas “ada bentuk?”, lapisan akhir memutuskan “ini kucing!”.</div>
+      <div class="cols">
+        <div class="card controls">
+          <h3>🎛️ Coba ubah</h3>
+          <label for="mlp-i1">Input 1 <span class="val" id="mlp-i1-v">0.8</span></label>
+          <input type="range" id="mlp-i1" min="0" max="1" step="0.05" value="0.8">
+          <label for="mlp-i2">Input 2 <span class="val" id="mlp-i2-v">0.3</span></label>
+          <input type="range" id="mlp-i2" min="0" max="1" step="0.05" value="0.3">
+          <label for="mlp-act">Aktivasi hidden</label>
+          <select id="mlp-act"><option value="relu" selected>ReLU</option><option value="sigmoid">Sigmoid</option><option value="tanh">Tanh</option></select>
+          <label class="check"><input type="checkbox" id="mlp-anim" checked> Animasi aliran data</label>
+          <div class="row"><button class="btn small" id="mlp-random">🎲 Acak bobot</button><button class="btn small ghost" id="mlp-reset">↺ Reset</button></div>
+          <div class="calc" id="mlp-calc"></div>
+        </div>
+        <div class="card"><h3>👁️ Aliran forward pass (2 → 3 → 2 → 1)</h3><svg id="mlp-svg" viewBox="0 0 460 340" width="100%" height="340"></svg>
+        <p class="tiny">Angka mengalir kiri → kanan. Ketebalan garis = besar bobot (biru positif, merah negatif).</p></div>
+      </div>
+      <div class="card rumus">📐 <b>Intuisi:</b> Tiap panah = kali + jumlah + aktivasi. Jaringan dalam = menumpuk banyak neuron sederhana hingga bisa mengenali pola rumit.</div>
+      <div class="quiz" data-quiz="mlp"></div>
+      <div class="nav-foot"><button class="btn ghost done-btn" data-mod="mlp">✓ Tandai selesai</button><a class="btn primary" href="#loss">Lanjut: Loss →</a></div>
+    </section>
+
+    <!-- ============ LOSS ============ -->
+    <section id="sec-loss" class="page hidden">
+      <div class="card analogi">🎯 <b>Analogi:</b> Loss = jarak lemparan dart dari bullseye. Makin jauh meleset, makin besar loss. Tugas model = memperkecil jarak ini.</div>
+      <div class="cols">
+        <div class="card controls">
+          <h3>🎛️ Coba ubah</h3>
+          <label for="loss-fn">Jenis loss</label>
+          <select id="loss-fn"><option value="mse">MSE (untuk angka)</option><option value="ce">Cross-Entropy (untuk peluang/kelas)</option></select>
+          <label for="loss-target">Target y (benar)</label>
+          <input type="range" id="loss-target" min="0" max="1" step="0.05" value="1">
+          <label for="loss-pred">Tebakan model ŷ <span class="val" id="loss-pred-v">0.3</span></label>
+          <input type="range" id="loss-pred" min="0.01" max="0.99" step="0.01" value="0.3">
+          <div class="calc" id="loss-calc"></div>
+        </div>
+        <div class="card"><h3>👁️ Kurva loss</h3><canvas id="loss-canvas" width="420" height="320"></canvas><p class="tiny">Geser tebakan ke arah target → loss turun ke lembah. Cross-entropy menghukum “salah tapi pede” jauh lebih keras!</p></div>
+      </div>
+      <div class="card rumus">📐 <b>Intuisi:</b> MSE <code>(y−ŷ)²</code> = kuadrat selisih. Cross-Entropy <code>−[y·log ŷ + (1−y)·log(1−ŷ)]</code> = “kaget”-nya model saat salah.</div>
+      <div class="quiz" data-quiz="loss"></div>
+      <div class="nav-foot"><button class="btn ghost done-btn" data-mod="loss">✓ Tandai selesai</button><a class="btn primary" href="#gradient">Lanjut: Gradient →</a></div>
+    </section>
+
+    <!-- ============ GRADIENT ============ -->
+    <section id="sec-gradient" class="page hidden">
+      <div class="card analogi">⛷️ <b>Analogi:</b> Gradient descent = bola ski dalam kabut. Tidak lihat lembah, hanya rasakan “miring ke mana kaki saya?” lalu melangkah ke bawah.</div>
+      <div class="cols">
+        <div class="card controls">
+          <h3>🎛️ Coba ubah</h3>
+          <label for="grad-lr">Learning rate <span class="val" id="grad-lr-v">0.2</span></label>
+          <input type="range" id="grad-lr" min="0.01" max="1" step="0.01" value="0.2">
+          <label for="grad-start">Posisi awal bola</label>
+          <input type="range" id="grad-start" min="-4" max="4" step="0.1" value="3.2">
+          <div class="row">
+            <button class="btn small primary" id="grad-run">▶ Jalankan</button>
+            <button class="btn small" id="grad-step">👣 1 langkah</button>
+            <button class="btn small ghost" id="grad-reset">↺ Reset</button>
+          </div>
+          <div class="calc" id="grad-calc"></div>
+          <p class="tiny">Coba lr=0.02 (pelan tapi pasti), lr=0.2 (pas), lr=0.95 (mental-mental/divergen!).</p>
+        </div>
+        <div class="card"><h3>👁️ Lembah loss (fungsi x² + sedikit gelombang)</h3><canvas id="grad-canvas" width="420" height="320"></canvas></div>
+      </div>
+      <div class="card rumus">📐 <b>Intuisi:</b> <code>w_baru = w_lama − lr × kemiringan</code>. lr = panjang langkah. Kemiringan + → melangkah kiri, kemiringan − → melangkah kanan.</div>
+      <div class="quiz" data-quiz="gradient"></div>
+      <div class="nav-foot"><button class="btn ghost done-btn" data-mod="gradient">✓ Tandai selesai</button><a class="btn primary" href="#backprop">Lanjut: Backprop →</a></div>
+    </section>
+
+    <!-- ============ BACKPROP ============ -->
+    <section id="sec-backprop" class="page hidden">
+      <div class="card analogi">⚽ <b>Analogi:</b> Backprop = evaluasi tim kalah. Bukan cuma kiper yang salah — kesalahan dibagi ke belakang: siapa passing buruk? Siapa salah posisi?</div>
+      <div class="cols">
+        <div class="card controls">
+          <h3>🎛️ Langkah demi langkah</h3>
+          <p class="tiny">Jaringan mini: 2 input → 1 neuron → output. Target = 1.</p>
+          <label for="bp-x1">x₁ <span class="val" id="bp-x1-v">0.8</span></label><input type="range" id="bp-x1" min="0" max="1" step="0.05" value="0.8">
+          <label for="bp-x2">x₂ <span class="val" id="bp-x2-v">0.4</span></label><input type="range" id="bp-x2" min="0" max="1" step="0.05" value="0.4">
+          <label for="bp-lr">Learning rate <span class="val" id="bp-lr-v">0.5</span></label><input type="range" id="bp-lr" min="0.05" max="1.5" step="0.05" value="0.5">
+          <div class="row">
+            <button class="btn small" id="bp-prev">←</button>
+            <button class="btn small primary" id="bp-next">Langkah →</button>
+            <button class="btn small ghost" id="bp-reset">↺ Ulangi</button>
+          </div>
+          <div class="calc" id="bp-calc"></div>
+        </div>
+        <div class="card"><h3>👁️ Alur mundur (4 langkah)</h3>
+          <ol id="bp-steps" class="steps">
+            <li data-s="0"><b>1. Forward:</b> hitung tebakan ŷ dari input & bobot.</li>
+            <li data-s="1"><b>2. Loss:</b> hitung error = ŷ − target.</li>
+            <li data-s="2"><b>3. Backward:</b> bagi error ke tiap bobot (gradien = error × input).</li>
+            <li data-s="3"><b>4. Update:</b> koreksi bobot: w −= lr × gradien.</li>
+          </ol>
+          <div id="bp-viz" class="bpviz"></div>
+        </div>
+      </div>
+      <div class="card rumus">📐 <b>Intuisi chain rule:</b> “Seberapa salah output jika bobot digeser dikit?” = (salahnya output) × (pengaruh bobot ke output). Bobot dengan input besar → tanggung jawab besar.</div>
+      <div class="quiz" data-quiz="backprop"></div>
+      <div class="nav-foot"><button class="btn ghost done-btn" data-mod="backprop">✓ Tandai selesai</button><a class="btn primary" href="#overfit">Lanjut: Overfitting →</a></div>
+    </section>
+
+    <!-- ============ OVERFIT ============ -->
+    <section id="sec-overfit" class="page hidden">
+      <div class="card analogi">📚 <b>Analogi:</b> Overfitting = siswa menghafal kunci jawaban. Nilai latihan 100, tapi ujian (soal baru) anjlok. Model terlalu “pintar menghafal noise”.</div>
+      <div class="cols">
+        <div class="card controls">
+          <h3>🎛️ Coba ubah</h3>
+          <label for="over-degree">Kerumitan model (derajat polinomial) <span class="val" id="over-degree-v">3</span></label>
+          <input type="range" id="over-degree" min="1" max="9" step="1" value="3">
+          <label for="over-noise">Noise data <span class="val" id="over-noise-v">0.3</span></label>
+          <input type="range" id="over-noise" min="0" max="1" step="0.05" value="0.3">
+          <label for="over-n">Jumlah data latih <span class="val" id="over-n-v">18</span></label>
+          <input type="range" id="over-n" min="8" max="40" step="1" value="18">
+          <div class="row"><button class="btn small" id="over-new">🎲 Data baru</button><button class="btn small ghost" id="over-reset">↺ Reset</button></div>
+          <div class="calc" id="over-calc"></div>
+        </div>
+        <div class="card"><h3>👁️ Kurva fit vs data (titik = data, garis = model)</h3><canvas id="over-canvas" width="420" height="320"></canvas><p class="tiny">Derajat 1 = underfit (terlalu lurus). 3–4 = pas. 9 = overfit (meliuk menghafal noise, error uji meledak).</p></div>
+      </div>
+      <div class="card rumus">📐 <b>Intuisi:</b> Model sederhana = penggaris. Model kompleks = tali lentur. Tali bisa menempel ke semua titik (termasuk salah) tapi jelek untuk titik baru. Obat: data lebih banyak, model lebih sederhana, early stopping.</div>
+      <div class="quiz" data-quiz="overfit"></div>
+      <div class="nav-foot"><button class="btn ghost done-btn" data-mod="overfit">✓ Tandai selesai</button><a class="btn primary" href="#cnn">Lanjut: CNN →</a></div>
+    </section>
+
+    <!-- ============ CNN ============ -->
+    <section id="sec-cnn" class="page hidden">
+      <div class="card analogi">🔦 <b>Analogi:</b> Konvolusi = menggeser stensil di atas gambar dan bertanya tiap posisi: “ada garis vertikal di sini? ada tepi?”. Pooling = meremas gambar agar lebih kecil tapi intinya tetap.</div>
+      <div class="cols">
+        <div class="card controls">
+          <h3>🎛️ Coba ubah</h3>
+          <label for="cnn-pattern">Gambar input 5×5</label>
+          <select id="cnn-pattern"><option value="x">Huruf X</option><option value="o">Kotak O</option><option value="line">Garis vertikal</option><option value="random">Acak</option></select>
+          <label for="cnn-filter">Filter 3×3</label>
+          <select id="cnn-filter"><option value="edge">Deteksi tepi</option><option value="blur">Blur (rata-rata)</option><option value="sharpen">Sharpen</option><option value="vert">Garis vertikal</option></select>
+          <p class="tiny">Klik kotak gambar untuk menyalakan/mematikan piksel. Lalu lihat feature map berubah + hasil max-pooling 2×2.</p>
+          <div class="row"><button class="btn small ghost" id="cnn-reset">↺ Reset</button></div>
+          <div class="calc" id="cnn-calc"></div>
+        </div>
+        <div class="card"><h3>👁️ Input → Feature map → Pooling</h3>
+          <div class="cnn-grids">
+            <div><b>Input</b><div id="cnn-in" class="grid5"></div></div>
+            <div><b>Feature map (ReLU)</b><div id="cnn-out" class="grid3cnn"></div></div>
+            <div><b>MaxPool 2×2</b><div id="cnn-pool" class="grid2"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="card rumus">📐 <b>Intuisi:</b> Tiap sel output = jumlah (piksel × filter) di jendela 3×3. Filter tepi memberi nilai besar saat ada perubahan gelap→terang. CNN menumpuk banyak filter agar belajar garis → bentuk → objek.</div>
+      <div class="quiz" data-quiz="cnn"></div>
+      <div class="nav-foot"><button class="btn ghost done-btn" data-mod="cnn">✓ Tandai selesai</button><a class="btn primary" href="#rnn">Lanjut: RNN →</a></div>
+    </section>
+
+    <!-- ============ RNN ============ -->
+    <section id="sec-rnn" class="page hidden">
+      <div class="card analogi">📝 <b>Analogi:</b> RNN = membawa papan tulis kecil. Tiap baca kata baru, tulis ringkasan + ingatan lama. LSTM = papan tulis dengan penghapus selektif (lupa yang tak penting).</div>
+      <div class="cols">
+        <div class="card controls">
+          <h3>🎛️ Coba ubah</h3>
+          <label for="rnn-seq">Urutan input (angka 0–9, pisahkan koma)</label>
+          <input type="text" id="rnn-seq" value="2, 4, 6, 8">
+          <label for="rnn-w">Kekuatan ingatan W <span class="val" id="rnn-w-v">0.8</span></label>
+          <input type="range" id="rnn-w" min="0" max="1.2" step="0.05" value="0.8">
+          <div class="row">
+            <button class="btn small primary" id="rnn-play">▶ Mainkan urutan</button>
+            <button class="btn small" id="rnn-step">👣 1 langkah</button>
+            <button class="btn small ghost" id="rnn-reset">↺ Reset</button>
+          </div>
+          <div class="calc" id="rnn-calc"></div>
+          <p class="tiny">Rumus tiap langkah: <code>h = tanh(W·h_lama + U·x)</code>. W kecil → pelupa. W besar → ingatan kuat (bisa meledak!).</p>
+        </div>
+        <div class="card"><h3>👁️ Jejak memori</h3><div id="rnn-track" class="track"></div><canvas id="rnn-canvas" width="420" height="180"></canvas></div>
+      </div>
+      <div class="card rumus">📐 <b>Intuisi:</b> Hidden state (h) = ingatan ringkas. Tiap langkah: campur ingatan lama + input baru, lalu remas dengan tanh agar tetap −1..1.</div>
+      <div class="quiz" data-quiz="rnn"></div>
+      <div class="nav-foot"><button class="btn ghost done-btn" data-mod="rnn">✓ Tandai selesai</button><a class="btn primary" href="#attention">Lanjut: Attention →</a></div>
+    </section>
+
+    <!-- ============ ATTENTION ============ -->
+    <section id="sec-attention" class="page hidden">
+      <div class="card analogi">🗣️ <b>Analogi:</b> Attention = rapat. Tiap kata bertanya: “untuk memahami saya, siapa yang harus saya dengarkan?”. Kata “nya” pada “kucing mengejar tikus karena ia lapar” harus dengarkan “kucing”.</div>
+      <div class="cols">
+        <div class="card controls">
+          <h3>🎛️ Coba ubah</h3>
+          <label for="att-sent">Pilih kalimat</label>
+          <select id="att-sent">
+            <option value="0">Kucing mengejar tikus karena ia lapar</option>
+            <option value="1">Saya menabung di bank sungai</option>
+            <option value="2">Dia memberi buku itu kepadanya</option>
+          </select>
+          <p class="tiny">Klik kata di bawah (sebagai Query), lihat bar perhatian ke semua kata lain (Key). Warna pekat = perhatian besar.</p>
+          <div id="att-words" class="words"></div>
+          <div class="calc" id="att-calc"></div>
+        </div>
+        <div class="card"><h3>👁️ Matriks perhatian</h3><div id="att-matrix"></div><p class="tiny">Rumus: <code>softmax(QKᵀ/√d)</code> = ubah kemiripan kata jadi peluang (total 100%). Transformer = banyak attention + paralel.</p></div>
+      </div>
+      <div class="quiz" data-quiz="attention"></div>
+      <div class="nav-foot"><button class="btn ghost done-btn" data-mod="attention">✓ Tandai selesai</button><a class="btn primary" href="#playground">Lanjut: Playground →</a></div>
+    </section>
+
+    <!-- ============ PLAYGROUND ============ -->
+    <section id="sec-playground" class="page hidden">
+      <div class="card analogi">🎮 <b>Misi:</b> latih jaringan <b>sungguhan di browser</b>. Buktikan: data melengkung (lingkaran/spiral) TIDAK bisa diselesaikan garis lurus — butuh hidden layer + aktivasi non-linear!</div>
+      <div class="cols wide">
+        <div class="card controls">
+          <h3>🎛️ Konfigurasi bebas</h3>
+          <div class="pg-grid">
+            <div><label for="pg-data">Dataset</label><select id="pg-data"><option value="circle">⭕ Lingkaran</option><option value="xor">✖ XOR</option><option value="spiral">🌀 Spiral (sulit!)</option><option value="gauss">🔵 Dua gugus</option></select></div>
+            <div><label for="pg-h1">Hidden layer 1 <span class="val" id="pg-h1-v">4</span></label><input type="range" id="pg-h1" min="0" max="8" step="1" value="4"></div>
+            <div><label for="pg-h2">Hidden layer 2 <span class="val" id="pg-h2-v">0</span></label><input type="range" id="pg-h2" min="0" max="8" step="1" value="0"></div>
+            <div><label for="pg-act">Aktivasi</label><select id="pg-act"><option value="tanh" selected>Tanh</option><option value="relu">ReLU</option><option value="sigmoid">Sigmoid</option></select></div>
+            <div><label for="pg-lr">Learning rate <span class="val" id="pg-lr-v">0.1</span></label><input type="range" id="pg-lr" min="0.01" max="1" step="0.01" value="0.1"></div>
+            <div><label for="pg-noise">Noise <span class="val" id="pg-noise-v">0.1</span></label><input type="range" id="pg-noise" min="0" max="0.5" step="0.05" value="0.1"></div>
+          </div>
+          <div class="row">
+            <button class="btn primary" id="pg-train">▶ Latih</button>
+            <button class="btn" id="pg-stop">⏸ Stop</button>
+            <button class="btn" id="pg-step">👣 +50 epoch</button>
+            <button class="btn ghost" id="pg-reset">↺ Reset bobot</button>
+            <button class="btn ghost" id="pg-newdata">🎲 Data baru</button>
+          </div>
+          <div class="calc" id="pg-calc">Epoch: 0 • Loss: - • Akurasi: -</div>
+          <p class="tiny">🏆 Tantangan: (1) XOR dengan 4 neuron (2) Lingkaran dengan 4 neuron (3) Spiral dengan 8+4 neuron + tanh + lr 0.1</p>
+        </div>
+        <div class="card"><h3>👁️ Decision boundary live</h3>
+          <canvas id="pg-canvas" width="420" height="420"></canvas>
+          <canvas id="pg-loss" width="420" height="120"></canvas>
+        </div>
+      </div>
+      <div class="quiz" data-quiz="playground"></div>
+      <div class="nav-foot"><button class="btn ghost done-btn" data-mod="playground">✓ Tandai selesai</button><a class="btn primary" href="#beranda">← Kembali ke peta</a></div>
+    </section>
+
+    <footer class="footer">Dibuat untuk pembelajar Indonesia • 100% statis & offline • Semua visual bisa diubah • <a href="#beranda">Kembali ke atas</a></footer>
+  </main>
+</div>
+
+<script src="js/lessons.js"></script>
+<script src="js/app.js"></script>
+<script src="js/viz-neuron.js"></script>
+<script src="js/viz-activation.js"></script>
+<script src="js/viz-mlp.js"></script>
+<script src="js/viz-loss.js"></script>
+<script src="js/viz-gradient.js"></script>
+<script src="js/viz-backprop.js"></script>
+<script src="js/viz-overfit.js"></script>
+<script src="js/viz-cnn.js"></script>
+<script src="js/viz-rnn.js"></script>
+<script src="js/viz-attention.js"></script>
+<script src="js/viz-playground.js"></script>
+</body>
+</html>

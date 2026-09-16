@@ -1,0 +1,60 @@
+// RNN: h_t = tanh(W*h + U*x), mainkan urutan langkah demi langkah
+function initVizRnn(){
+  var $=function(id){return document.getElementById(id)};
+  var c=$("rnn-canvas"),ctx=c.getContext("2d");
+  var idx=0,hist=[],U=0.9;
+  function parseSeq(){
+    return $("rnn-seq").value.split(",").map(function(s){return parseFloat(s.trim())}).filter(function(v){return !isNaN(v)});
+  }
+  function drawTrack(){
+    var seq=parseSeq(),W=+$("rnn-w").value;
+    $("rnn-w-v").textContent=W.toFixed(2);
+    var box=$("rnn-track");box.innerHTML="";
+    seq.forEach(function(v,i){
+      var d=document.createElement("div");d.className="step-chip"+(i<idx?" active":"");
+      d.textContent="t"+(i+1)+": x="+v+(i<hist.length?" h="+hist[i].toFixed(2):"");
+      box.appendChild(d);
+    });
+    // grafik h
+    var Wd=c.width,H=c.height,pad=24;
+    ctx.clearRect(0,0,Wd,H);
+    ctx.strokeStyle="#94a3b8";ctx.beginPath();ctx.moveTo(pad,10);ctx.lineTo(pad,H-pad);ctx.lineTo(Wd-8,H-pad);ctx.stroke();
+    ctx.strokeStyle="#e5e7eb";ctx.beginPath();var mid=10+(1-(0+1)/2)*(H-pad-10);ctx.moveTo(pad,mid);ctx.lineTo(Wd-8,mid);ctx.stroke();
+    if(hist.length){
+      ctx.strokeStyle="#4f46e5";ctx.lineWidth=3;ctx.beginPath();
+      hist.forEach(function(h,i){
+        var X=pad+(seq.length<=1?0.5:i/(seq.length-1))*(Wd-pad-8);
+        var Y=10+(1-(h+1)/2)*(H-pad-10);
+        if(i===0)ctx.moveTo(X,Y);else ctx.lineTo(X,Y);
+      });
+      ctx.stroke();ctx.lineWidth=1;
+      hist.forEach(function(h,i){
+        var X=pad+(seq.length<=1?0.5:i/(seq.length-1))*(Wd-pad-8);
+        var Y=10+(1-(h+1)/2)*(H-pad-10);
+        ctx.fillStyle="#06b6d4";ctx.beginPath();ctx.arc(X,Y,6,0,7);ctx.fill();
+      });
+    }
+    var last=hist.length?hist[hist.length-1]:0;
+    $("rnn-calc").innerHTML="Langkah "+idx+"/"+seq.length+" • h_terakhir = <b>"+last.toFixed(3)+"</b>\nRumus: h = tanh("+W.toFixed(2)+"×h_lama + "+U+"×(x/10)).\nW="+W.toFixed(2)+" → "+(W<0.4?"pelupa (ingatan cepat hilang)":W<0.95?"seimbang":"kuat (ingat lama, awas meledak)");
+  }
+  function stepOnce(){
+    var seq=parseSeq(),W=+$("rnn-w").value;
+    if(idx>=seq.length)return false;
+    var hprev=hist.length?hist[hist.length-1]:0;
+    var h=Math.tanh(W*hprev+U*(seq[idx]/10));
+    hist.push(h);idx++;drawTrack();return true;
+  }
+  var timer=null;
+  $("rnn-step").onclick=function(){if(timer){clearInterval(timer);timer=null;$("rnn-play").textContent="▶ Mainkan urutan"}stepOnce()};
+  $("rnn-play").onclick=function(){
+    if(timer){clearInterval(timer);timer=null;this.textContent="▶ Mainkan urutan";return}
+    this.textContent="⏸ Pause";
+    var self=this;
+    timer=setInterval(function(){var s=window.GLOBAL_SPEED||1;if(!stepOnce()){clearInterval(timer);timer=null;self.textContent="▶ Mainkan urutan"}},600/s);
+  };
+  $("rnn-reset").onclick=function(){idx=0;hist=[];if(timer){clearInterval(timer);timer=null;$("rnn-play").textContent="▶ Mainkan urutan"}drawTrack()};
+  $("rnn-seq").addEventListener("change",function(){idx=0;hist=[];drawTrack()});
+  $("rnn-w").addEventListener("input",function(){idx=0;hist=[];drawTrack()});
+  document.addEventListener("themechange",drawTrack);
+  drawTrack();
+}
