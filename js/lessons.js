@@ -8,7 +8,7 @@ var MODULES = [
   { id:"gradient", title:"Bola ke Lembah", time:"10 mnt", goal:"Langkah kecil vs nekat.", terms:["panjang langkah (learning rate)","kemiringan (gradien)"] },
   { id:"backprop", title:"Evaluasi Tim", time:"12 mnt", goal:"Bagi salah ke belakang dengan adil.", terms:["bagi-bagi salah (backward)","koreksi (update)"] },
   { id:"overfit", title:"Hafalan vs Paham", time:"10 mnt", goal:"Nilai ujian lebih penting dari latihan.", terms:["menghafal (overfitting)","paham (generalisasi)"] },
-  { id:"cnn", title:"Mata Komputer", time:"12 mnt", goal:"Meraba foto pakai pola kecil.", terms:["kacamata peraba (filter)","peta temuan (feature map)","remasan (pooling)"] },
+  { id:"cnn", title:"Mata Komputer", time:"12 mnt", goal:"Meraba foto pakai pola kecil.", terms:["bingkai peraba (filter)","peta temuan (feature map)","peta ringkas (pooling)"] },
   { id:"rnn", title:"Daya Ingat", time:"10 mnt", goal:"Catatan kecil untuk urutan.", terms:["urutan (sequence)","catatan (hidden state)"] },
   { id:"attention", title:"Rapat Kata", time:"12 mnt", goal:"Tiap kata memilih yang didengarkan.", terms:["perhatian (attention)","dibagi 100% (softmax)"] },
   { id:"playground", title:"Latihan Nyata", time:"20 mnt", goal:"Latih AI sungguhan di browser.", terms:["bentuk soal (dataset)","tim tengah (hidden)","batas warna (boundary)"] }

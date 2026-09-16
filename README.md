@@ -10,7 +10,7 @@ Setiap konsep deep learning diajarkan dengan pola: **cerita sehari-hari dulu →
 ## ✨ Fitur
 - **11 modul visual + 1 latihan nyata**: Otak Mini, Lampu Menyala, Kerja Tim Berlapis, Skor Meleset, Bola ke Lembah, Evaluasi Tim, Hafalan vs Paham, Mata Komputer, Daya Ingat, Rapat Kata, + **Latihan Nyata (latih AI sungguhan di browser)**
 - **Cerita dulu, rumus belakangan**: tiap modul dibuka cerita 30 detik (pasar buah, ski, sinetron…), ditutup 1 kalimat kesimpulan. Hitungan disembunyikan di kotak lipat.
-- **Semua bisa diutak-atik**: 60+ tombol geser/klik — seberapa penting petunjuk, standar kelulusan, panjang langkah, kacamata peraba, bentuk soal, susunan tim. Ada tombol Reset di tiap halaman.
+- **Semua bisa diutak-atik**: 60+ tombol geser/klik — seberapa penting petunjuk, standar kelulusan, panjang langkah, bingkai peraba, bentuk soal, susunan tim. Ada tombol Reset di tiap halaman.
 - **Panduan 3 langkah** di tiap modul — pengunjung tidak pernah bingung "harus apa".
 - **Kuis cerita** tiap modul + progress tersimpan otomatis + mode gelap/terang + responsif HP & laptop + 100% offline.
 

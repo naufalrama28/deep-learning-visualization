@@ -1,7 +1,8 @@
 # LEARNING_PATH.md — Jalur Belajar (untuk orang non-komputer juga bisa!)
 
 > Cara pakai: ikuti urutan 1→12. Tiap modul 8–15 menit dengan pola yang sama:
-> **cerita 30 detik → mainkan gambar (3 langkah) → baca 1 kalimat kesimpulan → kuis cerita → centang selesai.**
+> **cerita 30 detik → mainkan gambar (3 langkah) → tantangan 30 detik 🎯 → baca 1 kalimat kesimpulan → kuis cerita → centang selesai.**
+> Mulai dari peta **🔁 Siklus belajar mesin** di beranda (tebak → nilai → langkah → koreksi, ulangi) — semua modul menempel di lingkaran itu.
 > Rumus selalu tersembunyi di kotak lipat — boleh diskip, tidak mengurangi pemahaman.
 
 ## 🚀 Jalur super awam (kalau waktumu sedikit)
@@ -60,9 +61,9 @@ Cukup 4 modul ini = 80% intuisi deep learning:
 
 ## Modul 9 — Mata Komputer (12 mnt)
 - **Cerita:** meraba foto dalam gelap pakai bingkai kecil, mencatat pola tiap sudut.
-- **Mainkan:** gambar X + kacamata tepi → peta menyala. Klik kotak untuk menggambar sendiri!
+- **Mainkan:** gambar X + bingkai tepi → peta menyala. Klik kotak untuk menggambar sendiri!
 - **Ingat 1 kalimat:** komputer melihat dengan meraba tiap sudut, merangkum berlapis-lapis.
-- **Istilah baru:** kacamata peraba (filter), peta temuan (feature map), hasil remasan (pooling).
+- **Istilah baru:** bingkai peraba (filter), peta temuan (feature map), peta ringkas (pooling).
 
 ## Modul 10 — Daya Ingat (10 mnt)
 - **Cerita:** nonton sinetron sambil bawa catatan kecil yang diupdate tiap episode.

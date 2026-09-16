@@ -88,9 +88,9 @@ Aturan bahasa (dilarang dilanggar):
 | putaran latihan (epoch) | epoch saja |
 | ketepatan (akurasi) | accuracy |
 | tim depan/tengah (lapisan) | layer / hidden layer saja |
-| kacamata peraba (filter) | filter / kernel / konvolusi di teks utama |
+| bingkai peraba (filter) | filter / kernel / konvolusi di teks utama |
 | peta temuan (feature map) | feature map saja |
-| hasil remasan (pooling) | pooling / max-pooling saja |
+| peta ringkas (pooling) | pooling / max-pooling saja |
 | catatan (hidden state) | hidden state saja |
 | perhatian (attention) | attention / query / key saja |
 | soal latihan / soal ujian | train / test / dataset di teks utama |

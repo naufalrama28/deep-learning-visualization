@@ -25,7 +25,7 @@ Membuat website edukasi interaktif yang:
 
 Standar bahasa (wajib): Indonesia dulu, istilah Inggris di kurung saat pertama muncul
 (bobot, standar kelulusan, skor meleset, panjang langkah, putaran latihan, ketepatan,
-menghafal/kurang belajar, kacamata peraba, peta temuan, catatan, perhatian).
+menghafal/kurang belajar, bingkai peraba, peta temuan, peta ringkas, catatan, perhatian).
 Detail di `AGENTS.md` §5 + kamus di `README.md`.
 
 ## 3. Pengguna
@@ -73,7 +73,7 @@ Prinsip: **tidak perlu install, tidak perlu coding untuk mulai.** Cukup buka `in
 6. Bola ke Lembah — langkah belajar (panjang langkah kecil vs nekat)
 7. Evaluasi Tim — backprop (bagi salah ke belakang, 4 langkah)
 8. Hafalan vs Paham — overfitting (soal latihan vs soal ujian)
-9. Mata Komputer — CNN (kacamata peraba, peta temuan, hasil remasan)
+9. Mata Komputer — CNN (bingkai peraba, peta temuan, peta ringkas)
 10. Daya Ingat — RNN (catatan untuk urutan; LSTM = penghapus selektif)
 11. Rapat Kata — attention/Transformer (tiap kata memilih yang didengarkan)
 12. Latihan Nyata — latih jaringan sungguhan (lingkaran, silang, spiral)

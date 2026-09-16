@@ -32,7 +32,7 @@ Kode boleh pakai singkatan (`w`, `lr`, `h`), tapi **teks yang tampil ke user waj
 | viz-gradient.js | langkah belajar di lembah | Canvas lembah + bola + jejak |
 | viz-backprop.js | evaluasi mundur 4 langkah | Kotak angka + langkah 1→4 |
 | viz-overfit.js | kurang belajar vs pas vs menghafal | Canvas titik soal + garis cara belajar |
-| viz-cnn.js | raba gambar 5×5 pakai kacamata 3×3 | Grid DOM klik + heatmap warna |
+| viz-cnn.js | raba gambar 5×5 pakai bingkai 3×3 | Grid DOM klik + heatmap warna |
 | viz-rnn.js | catatan untuk urutan kejadian | Chip langkah + grafik catatan |
 | viz-attention.js | siapa mendengarkan siapa (per kata) | Heatmap persen + kalimat klik |
 | viz-playground.js | latih jaringan sungguhan 2D | Canvas batas warna (grid 44×44) + titik soal |
@@ -42,7 +42,7 @@ Kode boleh pakai singkatan (`w`, `lr`, `h`), tapi **teks yang tampil ke user waj
 - Model: jaringan `2 → tim1 → tim2 → 1` (tim 0–8 orang per lapis), gaya tim tanh/ReLU/sigmoid, keputusan akhir sigmoid.
 - Training: SGD manual full-batch (seluruh soal tiap putaran; sederhana & cepat untuk <400 titik), forward + backward ditulis eksplisit di JS.
 - Render batas warna: evaluasi grid 44×44 tiap selesai N putaran; grafik skor meleset max 200 titik terakhir.
-- Kontrol: bentuk soal, tim lapis 1–2, gaya tim, keberanian belajar (0.01–1), soal berantakan (noise), tombol Latih/Stop/+50/Acak/Soal baru.
+- Kontrol: bentuk soal, tim lapis 1–2, gaya tim, panjang langkah (0,01–1), soal berantakan (noise), tombol Latih/Stop/+50/Acak/Soal baru.
 
 ## 5. Tema & Gaya
 CSS variables:
