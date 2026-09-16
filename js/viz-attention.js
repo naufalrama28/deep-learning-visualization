@@ -43,8 +43,8 @@ function initVizAttention(){
     var m=$("att-matrix");m.innerHTML="";
     var n=words.length;
     m.style.gridTemplateColumns="90px repeat("+n+",1fr)";
-    // header
-    var corner=document.createElement("div");corner.className="att-cell";corner.textContent="Q ↓ K →";m.appendChild(corner);
+    // header sudut: dijelaskan dengan kata biasa, bukan singkatan
+    var corner=document.createElement("div");corner.className="att-cell";corner.innerHTML="yang bertanya ↓<br>yang didengar →";m.appendChild(corner);
     words.forEach(function(w){var d=document.createElement("div");d.className="att-cell";d.style.fontWeight="700";d.textContent=w;m.appendChild(d)});
     W.forEach(function(row,i){
       var lab=document.createElement("div");lab.className="att-cell";lab.style.fontWeight=i===q?"800":"400";
@@ -62,8 +62,8 @@ function initVizAttention(){
     m.querySelectorAll(".att-cell").forEach(function(){});
     m.style.display="grid";
     var top=words.map(function(w,j){return {w:w,p:W[q][j]}}).sort(function(a,b){return b.p-a.p}).slice(0,3);
-    $("att-calc").innerHTML="Query = <b>“"+words[q]+"”</b> paling memperhatikan:\n"+top.map(function(t,i){return (i+1)+". "+t.w+" ("+(t.p*100).toFixed(1)+"%)"}).join("\n")+
-      "\nTotal satu baris selalu 100% (softmax).";
+    $("att-calc").innerHTML="Kata yang bertanya = <b>“"+words[q]+"”</b>. Paling didengarkan:\n"+top.map(function(t,i){return (i+1)+". "+t.w+" ("+(t.p*100).toFixed(1)+"%)"}).join("\n")+
+      "\nIngat: perhatian tiap kata selalu dibagi habis 100%.";
   }
   $("att-sent").addEventListener("change",function(){var len=SENT[+$("att-sent").value].length;q=Math.min(4,len-1);draw()});
   draw();

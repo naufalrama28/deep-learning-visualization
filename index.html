@@ -89,12 +89,12 @@
           <tr><th>Istilah</th><th>Artinya gampangnya</th></tr>
           <tr><td>Neuron</td><td>Otak mini: menimbang petunjuk, lalu memutuskan ya/tidak</td></tr>
           <tr><td>Bobot</td><td>Seberapa penting sebuah petunjuk (makin besar = makin didengar)</td></tr>
-          <tr><td>Bias</td><td>Standar kelulusan (digeser = dilonggarkan/diketatkan)</td></tr>
-          <tr><td>Aktivasi</td><td>Aturan kapan lampu menyala</td></tr>
-          <tr><td>Loss</td><td>Skor kemelesetan (0 = tepat!) — makin kecil makin bagus</td></tr>
-          <tr><td>Learning rate</td><td>Panjang langkah belajar (kecil = hati-hati, besar = nekat)</td></tr>
-          <tr><td>Epoch</td><td>Satu putaran latihan melihat semua contoh</td></tr>
-          <tr><td>Overfitting</td><td>Menghafal jawaban, bukan memahami — ujian jeblok</td></tr>
+          <tr><td>Bias = standar kelulusan</td><td>Ambang keputusan YA/BELUM (digeser = dilonggarkan/diketatkan)</td></tr>
+          <tr><td>Aktivasi = aturan menyala</td><td>Aturan kapan lampu menyala</td></tr>
+          <tr><td>Skor meleset (loss)</td><td>Seberapa jauh tebakan dari jawaban (0 = tepat!) — makin kecil makin bagus</td></tr>
+          <tr><td>Panjang langkah (learning rate)</td><td>Seberapa besar tiap langkah belajar (kecil = hati-hati, besar = nekat)</td></tr>
+          <tr><td>Putaran latihan (epoch)</td><td>Satu putaran melihat semua contoh</td></tr>
+          <tr><td>Menghafal (overfitting)</td><td>Nilai latihan bagus tapi soal baru jeblok</td></tr>
         </table>
       </div>
       <div class="grid3" id="home-cards"></div>
@@ -208,7 +208,7 @@
           <div class="calc" id="mlp-calc"></div>
         </div>
         <div class="card"><h3>👁️ Lihat tebakan mengalir (kiri → kanan)</h3><svg id="mlp-svg" viewBox="0 0 460 340" width="100%" height="340"></svg>
-        <p class="tiny">Angka mengalir kiri → kanan. Garis tebal = pengaruh kuat. Biru = mendukung jawaban, merah = menolak.</p></div>
+        <p class="tiny">Angka mengalir kiri → kanan. Garis tebal = pengaruh kuat. Biru = mendukung jawaban, merah = menolak. (C1–C2 = ciri yang masuk, A–E = anggota tim, ★ = keputusan akhir.)</p></div>
       </div>
       <details class="hitung"><summary>📐 Penasaran hitungannya? Klik di sini (boleh diskip!)</summary>
         <p>Tiap panah = kalikan lalu jumlahkan, terus lewat “kepribadian” (aktivasi). Ditumpuk berlapis-lapis, tumpukan hal sederhana ini bisa mengenali hal rumit seperti wajah kucing.</p>
@@ -220,7 +220,7 @@
 
     <!-- ============ LOSS ============ -->
     <section id="sec-loss" class="page hidden">
-      <div class="card story">🎯 <b>Cerita 30 detik:</b> Main lempar dart. Bullseye = jawaban benar. Lemparanmu = tebakan mesin. <b>Jaraknya</b> itulah “skor kemelesetan” (loss). Tugas mesin seumur hidupnya: bikin lemparan makin dekat ke tengah.</div>
+      <div class="card story">🎯 <b>Cerita 30 detik:</b> Main lempar dart. Bullseye = jawaban benar. Lemparanmu = tebakan mesin. <b>Jaraknya</b> itulah skor meleset. Tugas mesin seumur hidupnya: bikin lemparan makin dekat ke tengah.</div>
       <div class="card guide">🖐️ <b>Mainkan gambarnya dulu (2 langkah):</b>
         <ol>
           <li>Geser <b>tebakan mesin</b> mendekati garis hijau (jawaban benar) → lihat skor meleset turun ke lembah.</li>
@@ -243,7 +243,7 @@
       <details class="hitung"><summary>📐 Penasaran hitungannya? Klik di sini (boleh diskip!)</summary>
         <p>Tebak angka: <code>(benar − tebakan)²</code> (kuadrat selisih). Tebak pilihan: <code>−[y·log ŷ + (1−y)·log(1−ŷ)]</code> (“betapa kagetnya” mesin saat salah).</p>
       </details>
-      <div class="card kesimpulan">💎 <b>Ingat 1 kalimat:</b> Loss = skor meleset; belajar = mengecilkan skor ini terus-menerus.</div>
+      <div class="card kesimpulan">💎 <b>Ingat 1 kalimat:</b> Skor meleset = jarak dari benar; belajar = mengecilkan jarak ini terus-menerus.</div>
       <div class="quiz" data-quiz="loss"></div>
       <div class="nav-foot"><button class="btn ghost done-btn" data-mod="loss">✓ Tandai selesai</button><a class="btn primary" href="#gradient">Lanjut: bola ke lembah →</a></div>
     </section>
@@ -321,7 +321,7 @@
 
     <!-- ============ OVERFIT ============ -->
     <section id="sec-overfit" class="page hidden">
-      <div class="card story">📚 <b>Cerita 30 detik:</b> Dua siswa les. Si Penghafal: 100 soal latihan dihafal mati, nilai try-out 100! Tapi ujian asli soalnya beda dikit → jeblok. Si Paham Konsep: latihan 85, ujian 87 — stabil. Mesin pun bisa jadi “si penghafal” kalau dibiarkan terlalu rumit. Itu overfitting.</div>
+      <div class="card story">📚 <b>Cerita 30 detik:</b> Dua siswa les. Si Penghafal: 100 soal latihan dihafal mati, nilai try-out 100! Tapi ujian asli soalnya beda dikit → jeblok. Si Paham Konsep: latihan 85, ujian 87 — stabil. Mesin pun bisa jadi “si penghafal” kalau dibiarkan terlalu rumit. Itulah yang disebut menghafal (nama kerennya <i>overfitting</i>).</div>
       <div class="card guide">🖐️ <b>Mainkan gambarnya dulu (3 langkah):</b>
         <ol>
           <li>Geser <b>kerumitan</b> ke 1 → garis lurus kaku, tidak nempel (kurang belajar).</li>
@@ -410,7 +410,7 @@
         <div class="card"><h3>👁️ Lihat isi catatan berubah</h3><div id="rnn-track" class="track"></div><canvas id="rnn-canvas" width="420" height="180"></canvas></div>
       </div>
       <details class="hitung"><summary>📐 Penasaran hitungannya? Klik di sini (boleh diskip!)</summary>
-        <p>Tiap kejadian: <code>catatan = tanh(daya_ingat × catatan_lama + kejadian_baru)</code>. Hasilnya selalu dijaga −1 s/d 1 biar tidak meledak. Versi canggihnya (LSTM) punya penghapus selektif: lupa yang tak penting, simpan yang penting.</p>
+        <p>Tiap kejadian: <code>catatan = tanh(daya_ingat × catatan_lama + kejadian_baru)</code>. Hasilnya selalu dijaga −1 s/d 1 biar tidak meledak. Versi canggihnya punya penghapus selektif (namanya LSTM): lupa yang tak penting, simpan yang penting.</p>
       </details>
       <div class="card kesimpulan">💎 <b>Ingat 1 kalimat:</b> Mesin urutan = pembawa catatan kecil yang diupdate tiap kejadian baru.</div>
       <div class="quiz" data-quiz="rnn"></div>
@@ -450,9 +450,9 @@
       <div class="card story">🎮 <b>Misi main (baca ini saja cukup):</b> Kamu akan melatih AI <b>sungguhan</b> di browser ini. Buktikan sendiri: data berbentuk lingkaran <b>TIDAK BISA</b> dipisah garis lurus — butuh tim tengah + “kepribadian”. Tekan Latih dan lihat batas warnanya melengkung sendiri!</div>
       <div class="card guide">🖐️ <b>3 misi berurutan (jangan dilompat):</b>
         <ol>
-          <li><b>Misi 1 (yakin bisa):</b> dataset ✖, tim 4 orang, tekan <b>▶ Latih</b> → harusnya rapi dalam 1 menit.</li>
-          <li><b>Misi 2 (aha!):</b> dataset ⭕, tim 0 (tanpa tim tengah!) → latih → GAGAL. Naikkan tim jadi 4 → latih → BERHASIL. Itulah bukti garis lurus tak cukup.</li>
-          <li><b>Misi 3 (bos terakhir 🌀):</b> dataset spiral, tim 8+4 → butuh kesabaran, tapi bisa!</li>
+            <li><b>Misi 1 (yakin bisa):</b> bentuk silang ✖, tim 4 orang, tekan <b>▶ Latih</b> → harusnya rapi dalam 1 menit.</li>
+            <li><b>Misi 2 (aha!):</b> bentuk lingkaran ⭕, tim 0 (tanpa tim tengah!) → latih → GAGAL. Naikkan tim jadi 4 → latih → BERHASIL. Itulah bukti garis lurus tak cukup.</li>
+            <li><b>Misi 3 (bos terakhir 🌀):</b> bentuk spiral, tim 8+4 → butuh kesabaran, tapi bisa!</li>
         </ol>
       </div>
       <div class="cols wide">
@@ -473,7 +473,7 @@
             <button class="btn ghost" id="pg-reset">↺ Acak ulang otak</button>
             <button class="btn ghost" id="pg-newdata">🎲 Soal baru</button>
           </div>
-          <div class="calc" id="pg-calc">Epoch: 0 • Loss: - • Akurasi: -</div>
+          <div class="calc" id="pg-calc">Putaran 0 • Skor meleset - • Ketepatan - (klik Latih untuk mulai!)</div>
         </div>
         <div class="card"><h3>👁️ Lihat batas warna belajar (oranye vs biru)</h3>
           <canvas id="pg-canvas" width="420" height="420"></canvas>

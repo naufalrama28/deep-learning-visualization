@@ -20,10 +20,10 @@ function initVizBackprop(){
       li.classList.toggle("active",+li.getAttribute("data-s")===stepIdx);
     });
     var html="";
-    html+='<div class="bpbox">x1<br><b>'+s.x1.toFixed(2)+'</b>w1='+w1.toFixed(3)+'</div>';
-    html+='<div class="bpbox">x2<br><b>'+s.x2.toFixed(2)+'</b>w2='+w2.toFixed(3)+'</div>';
-    html+='<div class="bpbox">z<br><b>'+s.z.toFixed(3)+'</b>ŷ='+s.y.toFixed(3)+'</div>';
-    html+='<div class="bpbox">loss<br><b>'+s.loss.toFixed(4)+'</b>err='+s.err.toFixed(3)+'</div>';
+    html+='<div class="bpbox">Petunjuk 1: '+s.x1.toFixed(2)+'<br><b>pentingnya '+w1.toFixed(3)+'</b></div>';
+    html+='<div class="bpbox">Petunjuk 2: '+s.x2.toFixed(2)+'<br><b>pentingnya '+w2.toFixed(3)+'</b></div>';
+    html+='<div class="bpbox">Tebakan: <b>'+s.y.toFixed(3)+'</b><br>(maunya 1)</div>';
+    html+='<div class="bpbox">Meleset: <b>'+s.loss.toFixed(4)+'</b><br>selisih '+s.err.toFixed(3)+'</div>';
     $("bp-viz").innerHTML=html;
     var txt="";
     if(stepIdx===0)txt="1️⃣ MENEBASK: dengan cara main sekarang, tim menebak "+s.y.toFixed(3)+" (maunya 1).\n(Rincian boleh diskip: "+w1.toFixed(2)+"×"+s.x1.toFixed(2)+" + "+w2.toFixed(2)+"×"+s.x2.toFixed(2)+" + "+b.toFixed(2)+" = "+s.z.toFixed(3)+")";

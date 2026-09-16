@@ -17,29 +17,32 @@
 [ Render: canvas.draw / svg update + angka teks ]
 ```
 
-Semua state disimpan lokal per modul, tidak ada state global kecuali `AppState {theme, progress, fontScale}`.
+Semua state disimpan lokal per modul, tidak ada state global kecuali `AppState {theme, progress}` + `window.GLOBAL_SPEED` (kecepatan animasi).
 
-## 3. Peta File → Konsep
+## 8. Standar Bahasa (sinkron dengan AGENTS.md §5)
+Kode boleh pakai singkatan (`w`, `lr`, `h`), tapi **teks yang tampil ke user wajib bahasa sehari-hari** (lihat kamus baku di AGENTS.md). Rumus + istilah resmi hanya di `<details class="hitung">`.
+
+## 3. Peta File → Konsep (nama ramah di website, istilah resmi di sini untuk developer)
 | File | Konsep yang divisualkan | Teknik render |
 |---|---|---|
-| viz-neuron.js | `y = aktivasi(w1x1+w2x2+b)` | SVG neuron + meter output |
-| viz-activation.js | sigmoid/tanh/ReLU/softmax | Canvas grafik + titik geser |
-| viz-mlp.js | forward pass 2-3-2-1 | SVG nodes + animasi aliran (stroke-dashoffset) |
-| viz-loss.js | MSE & Cross-Entropy | Canvas kurva parabola + titik tebakan |
-| viz-gradient.js | `w -= lr * grad` | Canvas lembah + bola + jejak |
-| viz-backprop.js | chain rule langkah 1-4 | Tabel angka + panah mundur |
-| viz-overfit.js | polinomial degree 1/3/9 | Canvas titik data + kurva fit |
-| viz-cnn.js | konvolusi 3x3, ReLU, maxpool | Grid DOM (div) + heatmap warna |
-| viz-rnn.js | hidden state `h_t = tanh(W h + U x)` | Timeline langkah + bar memori |
-| viz-attention.js | `softmax(QK^T/√d)` | Matriks heatmap + kalimat |
-| viz-playground.js | MLP 2D + SGD mini-batch | Canvas decision boundary (resolusi 40x40) + scatter |
+| viz-neuron.js | otak mini: timbang petunjuk → YA/BELUM | Canvas daerah keputusan + lampu |
+| viz-activation.js | 4 kepribadian (tegas/lembut/cuek/seimbang) | Canvas grafik + titik geser |
+| viz-mlp.js | kerja tim berlapis 2-3-2-1 | SVG lingkaran + animasi aliran |
+| viz-loss.js | skor meleset tebak angka vs tebak pilihan | Canvas kurva lembah + titik tebakan |
+| viz-gradient.js | langkah belajar di lembah | Canvas lembah + bola + jejak |
+| viz-backprop.js | evaluasi mundur 4 langkah | Kotak angka + langkah 1→4 |
+| viz-overfit.js | kurang belajar vs pas vs menghafal | Canvas titik soal + garis cara belajar |
+| viz-cnn.js | raba gambar 5×5 pakai kacamata 3×3 | Grid DOM klik + heatmap warna |
+| viz-rnn.js | catatan untuk urutan kejadian | Chip langkah + grafik catatan |
+| viz-attention.js | siapa mendengarkan siapa (per kata) | Heatmap persen + kalimat klik |
+| viz-playground.js | latih jaringan sungguhan 2D | Canvas batas warna (grid 44×44) + titik soal |
 
-## 4. Playground (modul tersulit) — Desain
-- Dataset dibangkitkan prosedural (seed tetap agar reproducible): lingkaran, XOR, spiral, gaussian.
-- Model: MLP `2 → h1 → h2 → 1` (h configurable 0-8 neuron), aktivasi tanh/ReLU/sigmoid, output sigmoid.
-- Training: SGD manual, forward + backward penuh di JS, batch = seluruh data (sederhana, cepat untuk <400 titik).
-- Render boundary: evaluasi grid 40×40 tiap 10 epoch (throttle) agar tidak lag.
-- Kontrol: learning rate (0.001–1), epoch per klik, tombol Latih/Step/Reset, tambah noise.
+## 4. Latihan nyata (modul tersulit) — Desain jujur
+- Bentuk soal dibangkitkan prosedural dengan `Math.random` (acak tiap klik "Soal baru"): lingkaran, silang, spiral, dua kelompok. ±180 titik.
+- Model: jaringan `2 → tim1 → tim2 → 1` (tim 0–8 orang per lapis), gaya tim tanh/ReLU/sigmoid, keputusan akhir sigmoid.
+- Training: SGD manual full-batch (seluruh soal tiap putaran; sederhana & cepat untuk <400 titik), forward + backward ditulis eksplisit di JS.
+- Render batas warna: evaluasi grid 44×44 tiap selesai N putaran; grafik skor meleset max 200 titik terakhir.
+- Kontrol: bentuk soal, tim lapis 1–2, gaya tim, keberanian belajar (0.01–1), soal berantakan (noise), tombol Latih/Stop/+50/Acak/Soal baru.
 
 ## 5. Tema & Gaya
 CSS variables:

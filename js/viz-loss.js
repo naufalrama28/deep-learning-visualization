@@ -19,7 +19,7 @@ function initVizLoss(){
     ctx.strokeStyle="#94a3b8";
     ctx.beginPath();ctx.moveTo(pad,10);ctx.lineTo(pad,H-pad);ctx.lineTo(W-10,H-pad);ctx.stroke();
     ctx.fillStyle="#64748b";ctx.font="11px sans-serif";
-    ctx.fillText("tebakan ŷ →",W-110,H-10);ctx.fillText("loss",6,20);
+    ctx.fillText("tebakan →",W-110,H-10);ctx.fillText("skor meleset",6,20);
     // kurva
     ctx.strokeStyle="#4f46e5";ctx.lineWidth=3;ctx.beginPath();
     for(var px=pad;px<=W-10;px+=2){
@@ -32,7 +32,7 @@ function initVizLoss(){
     // target garis
     ctx.strokeStyle="#16a34a";ctx.setLineDash([5,4]);
     ctx.beginPath();ctx.moveTo(X(t),10);ctx.lineTo(X(t),H-pad);ctx.stroke();ctx.setLineDash([]);
-    ctx.fillStyle="#16a34a";ctx.fillText("target",X(t)-16,14);
+    ctx.fillStyle="#16a34a";ctx.fillText("jawaban",X(t)-20,14);
     // titik tebakan
     ctx.fillStyle="#dc2626";ctx.beginPath();ctx.arc(X(p),Y(L),8,0,7);ctx.fill();
     ctx.fillStyle="#fff";ctx.font="bold 9px sans-serif";ctx.fillText("mu",X(p)-7,Y(L)+3);

@@ -44,8 +44,8 @@ function initVizMlp(){
         svg.appendChild(line);
       }
     }
-    // node
-    var labels=[["x1","x2"],["h1","h2","h3"],["g1","g2"],["out"]];
+    // label lingkaran: bahasa sendiri yang konsisten (C=ciri masuk, A–E=tim, ★=keputusan)
+    var labels=[["C1","C2"],["A","B","C"],["D","E"],["★"]];
     for(var l2=0;l2<4;l2++){
       for(var n=0;n<layers[l2];n++){
         var p=pos(l2,n,layers[l2]),v=acts[l2][n];
@@ -65,8 +65,8 @@ function initVizMlp(){
         svg.appendChild(g);
       }
     }
-    $("mlp-calc").innerHTML="Input ["+i1.toFixed(2)+", "+i2.toFixed(2)+"] → hidden1 ["+f.a1.map(function(v){return v.toFixed(2)}).join(", ")+
-      "] → hidden2 ["+f.a2.map(function(v){return v.toFixed(2)}).join(", ")+"] → <b>output "+f.a3.toFixed(3)+"</b> ("+(f.a3>0.5?"kelas 1":"kelas 0")+")";
+    $("mlp-calc").innerHTML="Ciri terlihat ["+i1.toFixed(2)+", "+i2.toFixed(2)+"] → ringkasan tim depan ["+f.a1.map(function(v){return v.toFixed(2)}).join(", ")+
+      "] → ringkasan tim tengah ["+f.a2.map(function(v){return v.toFixed(2)}).join(", ")+"] → <b>keputusan "+f.a3.toFixed(3)+"</b> ("+(f.a3>0.5?"di atas 0,5 = YA":"di bawah 0,5 = BELUM")+")";
   }
   ["mlp-i1","mlp-i2","mlp-act","mlp-anim"].forEach(function(id){$(id).addEventListener("input",draw);$(id).addEventListener("change",draw)});
   $("mlp-random").onclick=function(){resetW();draw()};

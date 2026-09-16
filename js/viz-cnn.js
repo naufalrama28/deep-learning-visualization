@@ -38,7 +38,7 @@ function initVizCnn(){
     input.forEach(function(v,idx){
       var d=document.createElement("div");d.className="cell";
       d.style.background=v?"#1e293b":"#f1f5f9";d.style.color=v?"#fff":"#94a3b8";d.textContent=v;
-      d.title="Klik untuk ubah piksel "+idx;
+      d.title="Klik untuk menyalakan/mematikan kotak gambar ini";
       d.onclick=function(){input[idx]=input[idx]?0:1;draw()};
       din.appendChild(d);
     });
@@ -60,7 +60,8 @@ function initVizCnn(){
       var d=document.createElement("div");d.className="cell";d.style.background=color(v,pmn,pmx);d.textContent=(+v).toFixed(1);d.style.cursor="default";
       dpool.appendChild(d);
     })});
-    $("cnn-calc").innerHTML="Filter <b>"+fk+"</b> = ["+F.map(function(r){return r.map(function(v){return (+v).toFixed(1)}).join(",")}).join(" | ")+"]\nTiap sel = jumlah(piksel × filter) lalu ReLU(negatif→0).\nMax = "+mx.toFixed(2)+". Coba ganti pola/filter & klik piksel!";
+    var namaFilter={edge:"pendeteksi tepi",blur:"pelembut",sharpen:"penajam",vert:"pencari garis tegak"}[fk];
+    $("cnn-calc").innerHTML="Kacamata <b>"+namaFilter+"</b> sedang dipakai.\nTiap kotak peta = seberapa cocok gambar dengan kacamata di jendela itu (yang negatif dibuang jadi 0).\nTemuan terkuat = "+mx.toFixed(2)+". Coba gambar sendiri: klik kotak-kotak gambar!";
   }
   $("cnn-pattern").addEventListener("change",function(){setPattern(this.value);draw()});
   $("cnn-filter").addEventListener("change",draw);

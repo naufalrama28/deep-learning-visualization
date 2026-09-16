@@ -12,7 +12,7 @@ function initVizRnn(){
     var box=$("rnn-track");box.innerHTML="";
     seq.forEach(function(v,i){
       var d=document.createElement("div");d.className="step-chip"+(i<idx?" active":"");
-      d.textContent="t"+(i+1)+": x="+v+(i<hist.length?" h="+hist[i].toFixed(2):"");
+      d.textContent="Ke-"+(i+1)+": masuk "+v+(i<hist.length?" → ingatan "+hist[i].toFixed(2):"");
       box.appendChild(d);
     });
     // grafik h
@@ -35,7 +35,7 @@ function initVizRnn(){
       });
     }
     var last=hist.length?hist[hist.length-1]:0;
-    $("rnn-calc").innerHTML="Langkah "+idx+"/"+seq.length+" • h_terakhir = <b>"+last.toFixed(3)+"</b>\nRumus: h = tanh("+W.toFixed(2)+"×h_lama + "+U+"×(x/10)).\nW="+W.toFixed(2)+" → "+(W<0.4?"pelupa (ingatan cepat hilang)":W<0.95?"seimbang":"kuat (ingat lama, awas meledak)");
+    $("rnn-calc").innerHTML="Kejadian "+idx+" dari "+seq.length+" • isi catatan sekarang <b>"+last.toFixed(3)+"</b>\nDaya ingat "+W.toFixed(2)+" → "+(W<0.4?"pelupa: tiap kejadian baru, yang lama langsung hilang":W<0.95?"seimbang: ingat secukupnya, update secukupnya":"kuat: ingat lama, tapi awas nilainya jadi tidak karuan")+"\nCara update-nya (boleh diskip): catatan_baru = tanh("+W.toFixed(2)+" × catatan_lama + 0,9 × kejadian).";
   }
   function stepOnce(){
     var seq=parseSeq(),W=+$("rnn-w").value;

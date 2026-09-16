@@ -53,7 +53,7 @@ D:\Coding\deep-learning-visualization\
 - Vanilla JS saja. Dilarang menambah framework/CDN tanpa izin user.
 - Satu file `viz-*.js` mengekspos satu fungsi global `initVizNama()` yang dipanggil `app.js` saat modul dibuka.
 - Setiap visual harus punya fungsi `reset` / preset contoh.
-- ID elemen HTML diawali nama modul, mis. `neuron-w1`, `cnn-grid`.
+- ID elemen HTML diawali nama modul, mis. `neuron-w1`, `cnn-in`, `pg-train`.
 - CSS: gunakan variabel `--bg`, `--card`, dll agar dark mode otomatis. Jangan hardcode warna kecuali untuk visualisasi data.
 - Aksesibilitas: setiap `<input type="range">` wajib punya `<label>`.
 
@@ -65,20 +65,43 @@ D:\Coding\deep-learning-visualization\
 5. Tambah link sidebar + rute hash.
 6. Update `LEARNING_PATH.md` + `README.md`.
 
-## 5. Aturan Konten Edukasi
-Setiap modul WAJIB punya pola:
-1. **Analogi** (1 kalimat sehari-hari)
-2. **Coba ubah** (instruksi slider apa yang digeser)
-3. **Amati** (apa yang berubah)
-4. **Intuisi rumus** (rumus 1 baris + penjelasan kata per kata)
-5. **Contoh nyata** (preset tombol)
-6. **Kuis 2-3 soal** (feedback langsung)
+## 5. Aturan Konten Edukasi (wajib — inilah yang bikin project ini di atas rata-rata)
+Setiap modul WAJIB punya pola berurutan:
+1. **Cerita 30 detik** (`.card.story` — kehidupan sehari-hari, tanpa istilah teknis)
+2. **Panduan main gambar** (`.card.guide` — 3 langkah bernomor: geser apa → lihat apa)
+3. **Kontrol + visual** (label berbahasa sehari-hari; teks hasil: kalimat biasa dulu, angka belakangan)
+4. **Hitungan lipat** (`<details class="hitung">` — rumus + istilah resmi BOLEH hanya di sini)
+5. **Kesimpulan 1 kalimat** (`.card.kesimpulan` — awalan "Ingat 1 kalimat:")
+6. **Kuis cerita** (2-3 soal di `QUIZZES`, situasi sehari-hari + feedback tanpa jargon)
 
-Dilarang: rumus tanpa slider pendamping, istilah Inggris tanpa terjemahan.
+Aturan bahasa (dilarang dilanggar):
+- Teks utama (cerita/panduan/label/hasil/kuis): **dilarang ada istilah Inggris tanpa terjemahan.** Pengecualian: nama tombol teknis boleh jika label Indonesianya duluan.
+- Istilah resmi diperkenalkan HANYA lewat 2 cara: di kurung saat pertama muncul ("standar kelulusan (bias)"), atau di kotak hitungan lipat.
+- Pakai kamus baku ini secara konsisten (jangan bikin padanan baru sendiri):
+
+| Tulis ini | Jangan tulis ini |
+|---|---|
+| seberapa penting (bobot) | weight / w saja |
+| standar kelulusan (bias) | bias saja / threshold |
+| skor meleset (loss) | loss / MSE / cross-entropy di teks utama |
+| panjang langkah (learning rate) | lr / learning rate saja |
+| putaran latihan (epoch) | epoch saja |
+| ketepatan (akurasi) | accuracy |
+| tim depan/tengah (lapisan) | layer / hidden layer saja |
+| kacamata peraba (filter) | filter / kernel / konvolusi di teks utama |
+| peta temuan (feature map) | feature map saja |
+| hasil remasan (pooling) | pooling / max-pooling saja |
+| catatan (hidden state) | hidden state saja |
+| perhatian (attention) | attention / query / key saja |
+| soal latihan / soal ujian | train / test / dataset di teks utama |
+| kurang belajar / menghafal | underfit / overfit saja |
+| kemiringan | gradien saja |
+| keputusan YA / BELUM | output 1/0, kelas 1/0 |
 
 ## 6. Checklist Sebelum Selesai
 - [ ] Buka via `file://` dan `http://localhost:8000`, tidak ada error console
-- [ ] Semua slider merespon <100ms
+- [ ] Semua slider merespon <100ms; tiap modul ada tombol Reset/preset
 - [ ] Dark/light mode tidak merusak keterbacaan canvas (gambar ulang jika perlu)
 - [ ] Kuis bisa dijawab dan memberi feedback
 - [ ] Progress tersimpan (refresh tidak hilang centang)
+- [ ] Audit bahasa: tidak ada istilah Inggris tanpa terjemahan di luar `<details class="hitung">` (cari: epoch, loss, dataset, query, hidden, filter, pooling, gradien, underfit, overfit, threshold)

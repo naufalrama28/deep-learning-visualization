@@ -29,7 +29,7 @@ function initVizGradient(){
     var lr=+$("grad-lr").value;
     trail.push({x:w});if(trail.length>60)trail.shift();
     w=w-lr*g(w);
-    if(!isFinite(w)||Math.abs(w)>8){stop();$("grad-calc").innerHTML+="\n💥 DIVERGEN! Learning rate kebesaran. Klik Reset lalu coba lr kecil.";}
+    if(!isFinite(w)||Math.abs(w)>8){stop();$("grad-calc").innerHTML+="\n💥 KABUR! Langkahmu terlalu nekat. Klik Reset lalu coba langkah kecil.";}
     draw();
   }
   function stop(){if(timer){clearInterval(timer);timer=null;$("grad-run").textContent="▶ Jalankan"}}
@@ -37,7 +37,7 @@ function initVizGradient(){
   $("grad-run").onclick=function(){
     if(timer){stop();return}
     $("grad-run").textContent="⏸ Pause";
-    timer=setInterval(function(){var s=window.GLOBAL_SPEED||1;step();if(Math.abs(g(w))<0.01){stop();$("grad-calc").innerHTML+="\n✅ Sampai lembah! Gradien ≈ 0."}},300/s);
+    timer=setInterval(function(){var s=window.GLOBAL_SPEED||1;step();if(Math.abs(g(w))<0.01){stop();$("grad-calc").innerHTML+="\n✅ Sampai lembah! Tanahnya sudah datar."}},300/s);
   };
   $("grad-reset").onclick=function(){stop();w=+$("grad-start").value;trail=[];draw()};
   $("grad-start").addEventListener("input",function(){w=+$("grad-start").value;trail=[];draw()});

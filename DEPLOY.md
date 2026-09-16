@@ -18,6 +18,9 @@ Ganti nama site: Site settings → Change site name.
 
 ## Cara B — GitHub Pages (permanen + update otomatis via git)
 
+> Repo ini sudah di-git (`main`) dan live di https://naufalrama28.github.io/deep-learning-visualization/.
+> Perintah `init`/`remote add` di bawah hanya untuk mulai dari nol — kalau sudah clone, lewati ke `push`.
+
 ```powershell
 cd D:\Coding\deep-learning-visualization
 git init

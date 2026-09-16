@@ -98,7 +98,7 @@ function initVizPlayground(){
       if(epoch%5===0||steps<=50)lossHist.push(loss);
       if(lossHist.length>200)lossHist.shift();
       var acc=correct/data.length;
-      if(e===steps-1)$("pg-calc").textContent="Epoch: "+epoch+" • Loss: "+loss.toFixed(4)+" • Akurasi: "+(acc*100).toFixed(1)+"%"+(W.h1===0?"\n⚠️ h1=0 = model linear, mustahil untuk lingkaran/spiral!":"");
+      if(e===steps-1)$("pg-calc").textContent="Putaran "+epoch+" • Skor meleset "+loss.toFixed(4)+" (0 = sempurna) • Ketepatan "+(acc*100).toFixed(1)+"%"+(W.h1===0?"\n⚠️ Tim 0 = tanpa tim tengah, cuma garis lurus — mustahil untuk lingkaran/spiral! Tambah timnya.":"");
     }
     drawBoundary();drawLoss();
   }
@@ -137,7 +137,7 @@ function initVizPlayground(){
       if(i===0)lctx.moveTo(X,Y);else lctx.lineTo(X,Y);
     });
     lctx.stroke();lctx.lineWidth=1;
-    lctx.fillStyle="#64748b";lctx.font="11px sans-serif";lctx.fillText("kurva loss ("+lossHist.length+" titik)",10,14);
+    lctx.fillStyle="#64748b";lctx.font="11px sans-serif";lctx.fillText("grafik skor meleset ("+lossHist.length+" titik)",10,14);
   }
   function stop(){if(timer){clearInterval(timer);timer=null;$("pg-train").textContent="▶ Latih"}}
   $("pg-train").onclick=function(){
@@ -147,12 +147,12 @@ function initVizPlayground(){
   };
   $("pg-stop").onclick=stop;
   $("pg-step").onclick=function(){stop();trainEpochs(50)};
-  $("pg-reset").onclick=function(){stop();initW();drawBoundary();drawLoss();$("pg-calc").textContent="Epoch: 0 • Loss: - • Akurasi: - (bobot diacak ulang)"};
-  $("pg-newdata").onclick=function(){stop();genData();initW();drawBoundary();drawLoss();$("pg-calc").textContent="Epoch: 0 • Data baru! Klik Latih."};
-  ["pg-data","pg-noise"].forEach(function(id){$(id).addEventListener("change",function(){stop();genData();initW();drawBoundary();drawLoss();$("pg-calc").textContent="Epoch: 0 • Dataset diganti. Klik Latih."})});
+  $("pg-reset").onclick=function(){stop();initW();drawBoundary();drawLoss();$("pg-calc").textContent="Putaran 0 • Cara menimbang diacak ulang. Klik Latih!"};
+  $("pg-newdata").onclick=function(){stop();genData();initW();drawBoundary();drawLoss();$("pg-calc").textContent="Soal baru datang! Klik Latih."};
+["pg-data","pg-noise"].forEach(function(id){$(id).addEventListener("change",function(){stop();genData();initW();drawBoundary();drawLoss();$("pg-calc").textContent="Bentuk soal diganti. Klik Latih."})});
   ["pg-h1","pg-h2","pg-act"].forEach(function(id){$(id).addEventListener("input",function(){
     $("pg-h1-v").textContent=$("pg-h1").value;$("pg-h2-v").textContent=$("pg-h2").value;
-  });$(id).addEventListener("change",function(){stop();initW();drawBoundary();$("pg-calc").textContent="Epoch: 0 • Arsitektur diganti. Klik Latih."})});
+  });$(id).addEventListener("change",function(){stop();initW();drawBoundary();$("pg-calc").textContent="Susunan tim diganti. Klik Latih."})});
   $("pg-lr").addEventListener("input",function(){$("pg-lr-v").textContent=(+$("pg-lr").value).toFixed(2)});
   $("pg-noise").addEventListener("input",function(){$("pg-noise-v").textContent=(+$("pg-noise").value).toFixed(2)});
   document.addEventListener("themechange",function(){drawBoundary();drawLoss()});

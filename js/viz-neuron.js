@@ -21,7 +21,7 @@ function initVizNeuron(){
     // sumbu + garis keputusan w1x+w2y+b=0
     ctx.strokeStyle="#94a3b8";ctx.beginPath();ctx.moveTo(pad,8);ctx.lineTo(pad,H-pad);ctx.lineTo(W-8,H-pad);ctx.stroke();
     ctx.fillStyle=css("--muted","#666");ctx.font="11px sans-serif";
-    ctx.fillText("x1→",W-40,H-10);ctx.fillText("x2",6,20);
+    ctx.fillText("petunjuk 1 →",W-92,H-10);ctx.fillText("petunjuk 2",6,20);
     ctx.strokeStyle="#111";ctx.lineWidth=2.5;ctx.beginPath();
     var drew=false;
     // gambar garis: untuk x1 0..1 hitung x2 = -(w1x1+b)/w2
@@ -43,7 +43,7 @@ function initVizNeuron(){
     $("neuron-calc").innerHTML=(y?"💡 <b>Keputusan: YA, matang!</b> Total keyakinan "+z.toFixed(2)+" lewat standar (di atas 0).":"⚫ <b>Keputusan: BELUM, mentah.</b> Total keyakinan "+z.toFixed(2)+" belum lewat standar.")+
       "\nRinciannya (boleh diskip): "+w1.toFixed(1)+"×"+x1.toFixed(2)+" + "+w2.toFixed(1)+"×"+x2.toFixed(2)+" + ("+b.toFixed(1)+") = "+z.toFixed(2);
     var lamp=$("neuron-lamp");
-    lamp.textContent=y?"💡 MENYALA (output=1)":"⚫ MATI (output=0)";
+    lamp.textContent=y?"💡 MENYALA — keputusan: YA":"⚫ MATI — keputusan: BELUM";
     lamp.classList.toggle("on",!!y);
   }
   ["neuron-x1","neuron-x2","neuron-w1","neuron-w2","neuron-b"].forEach(function(id){$(id).addEventListener("input",draw)});

@@ -38,9 +38,15 @@ function initVizActivation(){
     // gradien numerik
     var e=0.01, g=(fn(name,x+e)-fn(name,x-e))/(2*e);
     if(name==="step") g=0;
-    $("act-calc").innerHTML="f(<b>"+x.toFixed(1)+"</b>) = <b>"+(name==="step"?y:y.toFixed(3))+"</b>\nKemiringan (gradien) ≈ <b>"+g.toFixed(3)+"</b>"+
-      (name==="sigmoid"&&Math.abs(x)>3?"\n⚠️ Jenuh (saturasi): ujung sigmoid datar → belajar lambat!":"")+
-      (name==="relu"&&x<0?"\nReLU mati (gradien 0) untuk x negatif.":"");
+    // teks hasil: kalimat biasa dulu, angka belakangan
+    var nama = name==="sigmoid"?"Si Lembut":name==="tanh"?"Si Seimbang":name==="relu"?"Si Cuek":"Si Tegas";
+    var arti = name==="step" ? (y?"kata "+nama+": YA!":"kata "+nama+": TIDAK.")
+      : "kata "+nama+": keyakinan "+(y>1?(y).toFixed(1):(y*100).toFixed(0)+"%");
+    var miring = name==="step" ? "Si Tegas tidak punya kemiringan (langsung lompat)."
+      : "Di titik ini garisnya "+(Math.abs(g)<0.1?"hampir datar (susah berubah)":"cukup miring ("+g.toFixed(2)+") — masih gampang berubah")+".";
+    $("act-calc").innerHTML="Sinyal masuk <b>"+x.toFixed(1)+"</b> → "+arti+"\n"+miring+
+      (name==="sigmoid"&&Math.abs(x)>3?"\n⚠️ Kalau sinyalnya terlalu ekstrem, Si Lembut jadi macet (datar total) → belajarnya lambat. Makanya jangan sampai ke ujung!":"")+
+      (name==="relu"&&x<0?"\nSi Cuek mendiamkan semua sinyal negatif (keluar 0 terus).":"");
   }
   $("act-fn").addEventListener("change",draw);
   $("act-x").addEventListener("input",draw);

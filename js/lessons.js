@@ -19,7 +19,7 @@ var QUIZZES = {
   neuron: [
     { q:"Di pasar buah, ada petunjuk 'bunyi tok-tok' dan 'garis kulit'. Apa gunanya 'seberapa penting' (bobot)?", opts:["Menentukan petunjuk mana yang lebih didengar","Menghitung jumlah buah","Menyalakan lampu pasar"], answer:0, fb:"Makin penting = makin keras didengar mesin." },
     { q:"'Standar kelulusan' diperketat. Apa yang terjadi?", opts:["Mesin jadi pelit bilang YA, garisnya bergeser","Mesin rusak","Buahnya hilang"], answer:0, fb:"Standar = ambang. Ketat = susah lolos." },
-    { q:"Aturan 'harus dua-duanya ada' itu contoh ...", opts:["Semangka matang = bunyi OKE dan garis OKE","Cukup salah satu","Tidak perlu petunjuk"], answer:0, fb:"Itulah logika AND dalam kehidupan." }
+    { q:"Aturan 'harus dua-duanya ada' itu contoh ...", opts:["Semangka matang = bunyi OKE dan garis OKE","Cukup salah satu","Tidak perlu petunjuk"], answer:0, fb:"Dua-duanya wajib ada — kalau satu hilang, keputusannya BELUM." }
   ],
   aktivasi: [
     { q:"Kenapa mesin butuh 'kepribadian' seperti Si Cuek/Si Lembut?", opts:["Biar bisa paham hal melengkung, bukan cuma garis lurus","Biar warnanya bagus","Biar koding pendek"], answer:0, fb:"Tanpa ini, 100 lapis pun cuma garis lurus." },
