@@ -1,17 +1,17 @@
 // Sumber kebenaran konten. Aturan: bahasa warung dulu, istilah teknis selalu ada terjemahannya.
 var MODULES = [
-  { id:"beranda", title:"Beranda & Peta Belajar", time:"5 mnt" },
-  { id:"neuron", title:"Otak Mini (Neuron)", time:"10 mnt", goal:"Paham cara mesin menimbang petunjuk.", terms:["bobot = seberapa penting petunjuk","bias = standar kelulusan"] },
-  { id:"aktivasi", title:"Kapan Lampu Menyala", time:"8 mnt", goal:"Kenapa mesin butuh 'kepribadian'.", terms:["Si Lembut (sigmoid)","Si Cuek (ReLU)","Si Tegas (step)"] },
-  { id:"mlp", title:"Kerja Tim Berlapis", time:"10 mnt", goal:"Melihat tebakan mengalir lapis demi lapis.", terms:["tim depan/tengah/ketua (layer)","mengoper ringkasan"] },
-  { id:"loss", title:"Seberapa Meleset?", time:"8 mnt", goal:"Skor meleset makin kecil makin bagus.", terms:["skor meleset (loss)","jawaban benar (target)"] },
-  { id:"gradient", title:"Bola ke Lembah", time:"10 mnt", goal:"Langkah kecil vs nekat.", terms:["panjang langkah (learning rate)","kemiringan (gradien)"] },
-  { id:"backprop", title:"Evaluasi Tim", time:"12 mnt", goal:"Bagi salah ke belakang dengan adil.", terms:["bagi-bagi salah (backward)","koreksi (update)"] },
-  { id:"overfit", title:"Hafalan vs Paham", time:"10 mnt", goal:"Nilai ujian lebih penting dari latihan.", terms:["menghafal (overfitting)","paham (generalisasi)"] },
-  { id:"cnn", title:"Mata Komputer", time:"12 mnt", goal:"Meraba foto pakai pola kecil.", terms:["bingkai peraba (filter)","peta temuan (feature map)","peta ringkas (pooling)"] },
-  { id:"rnn", title:"Daya Ingat", time:"10 mnt", goal:"Catatan kecil untuk urutan.", terms:["urutan (sequence)","catatan (hidden state)"] },
-  { id:"attention", title:"Rapat Kata", time:"12 mnt", goal:"Tiap kata memilih yang didengarkan.", terms:["perhatian (attention)","dibagi 100% (softmax)"] },
-  { id:"playground", title:"Latihan Nyata", time:"20 mnt", goal:"Latih AI sungguhan di browser.", terms:["bentuk soal (dataset)","tim tengah (hidden)","batas warna (boundary)"] }
+  { id:"beranda", title:"Markas Sari", time:"5 mnt" },
+  { id:"neuron", title:"Misi 1 — Otak Mini", time:"10 mnt", goal:"Pasang sel otak penimbang (neuron, perceptron).", terms:["neuron","perceptron","bobot (weight)","bias"] },
+  { id:"aktivasi", title:"Misi 2 — Lampu Keyakinan", time:"8 mnt", goal:"Beri perasaan bertingkat (aktivasi).", terms:["fungsi aktivasi","step","sigmoid","tanh","ReLU","gradien","saturasi"] },
+  { id:"mlp", title:"Misi 3 — Tim Peringkas", time:"10 mnt", goal:"Bentuk tim berlapis (MLP).", terms:["MLP","layer","hidden layer","forward pass","output"] },
+  { id:"loss", title:"Misi 4 — Cermin", time:"8 mnt", goal:"Nilai kesalahan dengan loss.", terms:["loss","MSE","cross-entropy","target","prediksi"] },
+  { id:"gradient", title:"Misi 5 — Menuruni Lembah", time:"10 mnt", goal:"Belajar selangkah demi selangkah.", terms:["gradient descent","learning rate","gradien","divergen"] },
+  { id:"backprop", title:"Misi 6 — Evaluasi Adil", time:"12 mnt", goal:"Koreksi seluruh tim (backprop).", terms:["backpropagation","backward pass","update","chain rule"] },
+  { id:"overfit", title:"Misi 7 — Jangan Menghafal", time:"10 mnt", goal:"Bedakan paham vs hafal.", terms:["overfitting","underfitting","generalisasi","data latih","data uji"] },
+  { id:"cnn", title:"Misi 8 — Mata", time:"12 mnt", goal:"Melihat foto dengan filter (CNN).", terms:["CNN","konvolusi","filter","feature map","pooling"] },
+  { id:"rnn", title:"Misi 9 — Ingatan", time:"10 mnt", goal:"Mengingat urutan (RNN).", terms:["RNN","sequence","hidden state","LSTM"] },
+  { id:"attention", title:"Misi 10 — Telinga", time:"12 mnt", goal:"Mendengar kata yang tepat (attention).", terms:["attention","query","key","value","softmax","Transformer"] },
+  { id:"playground", title:"Misi 11 — Ujian Kelulusan", time:"20 mnt", goal:"Latih AI sungguhan (dataset, epoch).", terms:["dataset","hidden neuron","decision boundary","epoch","akurasi"] }
 ];
 
 // Bank kuis: bahasa cerita, tanpa jargon tanpa terjemahan.

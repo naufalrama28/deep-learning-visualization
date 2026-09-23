@@ -41,6 +41,8 @@ D:\Coding\deep-learning-visualization\
 │   ├── viz-rnn.js         # Modul 10: RNN/LSTM
 │   ├── viz-attention.js   # Modul 11: attention transformer
 │   └── viz-playground.js  # Modul 12: playground klasifikasi 2D
+├── tools/
+│   └── audit-bahasa.py   # audit mutu: struktur misi + anti-coinage + ID + kuis
 ├── PRD.md
 ├── ARCHITECTURE.md
 ├── LEARNING_PATH.md
@@ -66,45 +68,47 @@ D:\Coding\deep-learning-visualization\
 6. Update `LEARNING_PATH.md` + `README.md`.
 
 ## 5. Aturan Konten Edukasi (wajib — inilah yang bikin project ini di atas rata-rata)
-Setiap modul WAJIB punya pola berurutan:
-1. **Cerita 30 detik** (`.card.story` — kehidupan sehari-hari, tanpa istilah teknis)
-2. **Panduan main gambar** (`.card.guide` — 3 langkah bernomor: geser apa → lihat apa)
-3. **Kontrol + visual** (label berbahasa sehari-hari; teks hasil: kalimat biasa dulu, angka belakangan)
-4. **Hitungan lipat** (`<details class="hitung">` — rumus + istilah resmi BOLEH hanya di sini)
-5. **Kesimpulan 1 kalimat** (`.card.kesimpulan` — awalan "Ingat 1 kalimat:")
-6. **Kuis cerita** (2-3 soal di `QUIZZES`, situasi sehari-hari + feedback tanpa jargon)
+Setiap modul WAJIB punya pola berurutan (verifikasi via `tools/audit-bahasa.py`):
+1. **Kilasan** (`.card.kilas` — 1-2 kalimat "previously on", menyambung misi lalu)
+2. **Cerita 30 detik** (`.card.story` — tokoh Sari/warung, tanpa istilah teknis baru)
+3. **Panduan main gambar** (`.card.guide` — 3 langkah bernomor: geser apa → lihat apa)
+4. **Tantangan 30 detik** (`.card.tantangan` — tebak-dulu: prediksi + petunjuk, tanpa bocorkan jawaban)
+5. **Kontrol + visual** (label jelas; teks hasil: kalimat biasa dulu, angka belakangan)
+6. **Soal analis** (`.card.analis` — 1 skenario aplikatif HOTS + `<details>` jawaban model)
+7. **Hitungan lipat** (`<details class="hitung">` — rumus + istilah resmi BOLEH di sini)
+8. **Kesimpulan 1 kalimat** (`.card.kesimpulan` — awalan "Ingat 1 kalimat:")
+9. **Kotak istilah** (`.card.istilah` — WAJIB 1 per modul, chip "Indonesia = **Inggris**")
+10. **Kuis cerita** (2-3 soal di `QUIZZES`: `{q, opts[], answer, fb}` — answer wajib indeks valid)
 
 Aturan bahasa (dilarang dilanggar):
-- Teks utama (cerita/panduan/label/hasil/kuis): **dilarang ada istilah Inggris tanpa terjemahan.** Pengecualian: nama tombol teknis boleh jika label Indonesianya duluan.
-- Istilah resmi diperkenalkan HANYA lewat 3 cara (tidak boleh di tempat lain):
-  1. di kurung saat pertama muncul ("standar kelulusan (bias)"),
-  2. di kotak hitungan lipat (`<details class="hitung">`),
-  3. di kotak istilah terlihat (`.card.istilah` — WAJIB ada 1 per modul, pola: "Indonesia = **Inggris**" per chip).
-- Pakai kamus baku ini secara konsisten (jangan bikin padanan baru sendiri):
+- **Istilah Inggris yang sudah hidup dipakai langsung, jangan diterjemahkan aneh-aneh.**
+  Contoh benar: loss, epoch, dataset, filter, overfitting, hidden layer, learning rate.
+  Contoh salah (DILARANG, ditolak audit): hasil remasan, kacamata peraba, kemelesetan.
+- Setiap istilah resmi wajib ada artinya di kamus beranda dan/atau kotak istilah modulnya.
+- Teks hasil visual: kalimat biasa dulu, angka belakangan.
+- Kamus baku padanan yang BOLEH dipakai (jangan bikin sendiri):
 
 | Tulis ini | Jangan tulis ini |
 |---|---|
-| seberapa penting (bobot) | weight / w saja |
-| standar kelulusan (bias) | bias saja / threshold |
-| skor meleset (loss) | loss / MSE / cross-entropy di teks utama |
-| panjang langkah (learning rate) | lr / learning rate saja |
-| putaran latihan (epoch) | epoch saja |
-| ketepatan (akurasi) | accuracy |
-| tim depan/tengah (lapisan) | layer / hidden layer saja |
-| bingkai peraba (filter) | filter / kernel / konvolusi di teks utama |
-| peta temuan (feature map) | feature map saja |
-| peta ringkas (pooling) | pooling / max-pooling saja |
-| catatan (hidden state) | hidden state saja |
-| perhatian (attention) | attention / query / key saja |
-| soal latihan / soal ujian | train / test / dataset di teks utama |
-| kurang belajar / menghafal | underfit / overfit saja |
-| kemiringan | gradien saja |
+| bobot (weight) | w saja tanpa penjelasan |
+| bias (nilai awal/ambang) | standar kelulusan sebagai istilah utama |
+| loss (skor meleset) | loss tanpa arti / "kemelesetan" |
+| learning rate (panjang langkah) | lr saja |
+| epoch (satu putaran) | epoch saja |
+| akurasi (ketepatan) | accuracy saja |
+| data latih / data uji | train/test/soal saja |
+| derajat polinomial | degree saja |
+| feature map (peta temuan) | feature map tanpa arti |
+| hasil pooling | remasan / pooling tanpa arti |
+| hidden state (catatan) | hidden state tanpa arti |
+| query/key/value | Q/K saja tanpa kepanjangan |
 | keputusan YA / BELUM | output 1/0, kelas 1/0 |
 
 ## 6. Checklist Sebelum Selesai
 - [ ] Buka via `file://` dan `http://localhost:8000`, tidak ada error console
 - [ ] Semua slider merespon <100ms; tiap modul ada tombol Reset/preset
 - [ ] Dark/light mode tidak merusak keterbacaan canvas (gambar ulang jika perlu)
-- [ ] Kuis bisa dijawab dan memberi feedback
-- [ ] Progress tersimpan (refresh tidak hilang centang)
+- [ ] Kuis bisa dijawab dan memberi feedback (+XP benar pertama)
+- [ ] Progress + XP tersimpan (refresh tidak hilang); Reset menghapus keduanya
 - [ ] Audit bahasa: jalankan `python tools/audit-bahasa.py` (harus LOLOS). Pengecualian sah: kamus, `.card.istilah`, `<details class="hitung">`, dan pola "Indonesia (Inggris)"
+- [ ] Uji interaksi lolos: router 12 rute, XP/maskot, semua visual + training playground

@@ -1,51 +1,81 @@
-# Alat audit bahasa — memastikan teks website ramah awam tapi istilahnya lengkap.
+# Audit mutu Misi Si Cerdas — struktur wajib + larangan coinage aneh + integritas ID/kuis.
 # Cara pakai (dari folder proyek):  python tools/audit-bahasa.py
-# Keluar 0 = lolos. Keluar 1 = ada istilah Inggris nyasar di teks utama.
-# Lihat AGENTS.md bagian 5 (aturan konten) dan 6 (checklist).
+# Keluar 0 = LOLOS. Keluar 1 = GAGAL (daftar temuan dicetak).
+# Kebijakan istilah (AGENTS.md bag. 5): istilah Inggris yang sudah hidup
+# (loss, epoch, dataset, filter, ...) BOLEH dipakai langsung; yang dilarang
+# adalah terjemahan harfiah yang aneh — daftarnya di BANNED.
 
 import re, glob, sys
+sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
 GAGAL = []
+MODS = ["neuron","aktivasi","mlp","loss","gradient","backprop",
+        "overfit","cnn","rnn","attention","playground"]
 
-# 1) Teks utama index.html: buang wadah resmi (hitung lipat, kamus, kotak istilah, script)
 html = open('index.html', encoding='utf-8').read()
-utama = re.sub(r'<details.*?</details>', ' ', html, flags=re.S)
-utama = re.sub(r'<table class="kamus">.*?</table>', ' ', utama, flags=re.S)
-utama = re.sub(r'<div class="card istilah">.*?</div>\s*</div>', ' ', utama, flags=re.S)
-utama = re.sub(r'<script.*?</script>', ' ', utama, flags=re.S)
-teks = re.sub(r'<[^>]+>', ' ', utama)
-teks = re.sub(r'\s+', ' ', teks)
 
-POLA = ['epoch', 'loss', 'dataset', 'query', 'hidden', 'filter', 'pooling',
-        'gradien', 'underfit', 'overfit', 'threshold', 'weight', 'kernel',
-        'stride', 'feature map', 'softmax', 'forward', 'backward',
-        'chain rule', 'learning rate', 'cross-entropy', 'perceptron',
-        'konvolusi', 'hyperparameter', 'divergen', 'overshoot', 'saturasi']
-for p in POLA:
-    for m in re.finditer(p, teks, flags=re.I):
-        s = max(0, m.start() - 50)
-        GAGAL.append('[index] (%s) ...%s...' % (p, teks[s:m.end() + 50].strip()))
+# 1) Coinage aneh warisan (dilarang muncul di teks tampil mana pun)
+BANNED = ["hasil remasan", "kacamata peraba", "kemelesetan",
+          "Keberanian belajar", "skor kemelesetan"]
+sumber = [("index.html", html)]
+for f in sorted(glob.glob('js/viz-*.js')) + ['js/lessons.js', 'js/app.js']:
+    sumber.append((f, open(f, encoding='utf-8').read()))
+for nama, src in sumber:
+    for b in BANNED:
+        if re.search(b, src, flags=re.I):
+            GAGAL.append('[coinage] %s masih mengandung "%s"' % (nama, b))
 
-# 2) String yang tampil di viz-*.js: periksa hanya isi teks harfiah (bukan nama variabel).
-#    Pola yang BOLEH: Indonesia-duluan + resmi di kurung, mis. "Si Lembut (sigmoid)".
-BOLEH = re.compile(r'[A-Za-z ]+\([A-Za-z /0-9.\-^]+\)')
-for f in sorted(glob.glob('js/viz-*.js')):
-    for i, line in enumerate(open(f, encoding='utf-8').read().split('\n'), 1):
-        if not any(k in line for k in ['innerHTML', 'textContent', '.title=', 'fillText']):
-            continue
-        # buang ID elemen (bukan teks tampil): getElementById("...") dan $("...")
-        kode = re.sub(r'getElementById\("[^"]*"\)', '', line)
-        kode = re.sub(r'\$\("[^"]*"\)', '', kode)
-        for lit in re.findall(r'"([^"]*)"', kode) + re.findall(r"'([^']*)'", kode):
-            bersih = BOLEH.sub(' ', lit)
-            for p in POLA:
-                if re.search(p, bersih, flags=re.I):
-                    GAGAL.append('[%s:%d] (%s) %s' % (f, i, p, lit[:120]))
-                    break
+# 2) Struktur wajib tiap misi
+for m in MODS:
+    if ('id="sec-%s"' % m) not in html:
+        GAGAL.append('[struktur] section sec-%s hilang' % m)
+for pat, nama, kecualikan in [
+    ('card kilas', 'kilas', []),
+    ('card story', 'cerita', []),
+    ('card guide', 'panduan', []),
+    ('card analis', 'soal analis', []),
+    ('card kesimpulan', 'kesimpulan', []),
+    ('card istilah', 'kotak istilah', []),
+    ('class="cols', 'area main', []),
+    ('data-quiz="%s"', 'kuis', MODS),
+]:
+    for m in MODS:
+        n = html.count(pat % m) if '%s' in pat else html.count(pat)
+        if '%s' in pat:
+            if m not in kecualikan and n < 1:
+                GAGAL.append('[struktur] %s Modul %s hilang' % (nama, m))
+        # pola tanpa %s dihitung global di bawah
+if html.count('card kilas') < 11:
+    GAGAL.append('[struktur] kilas kurang dari 11: %d' % html.count('card kilas'))
+for wajib, jml in [('card analis', 11), ('card kesimpulan', 11), ('card istilah', 11)]:
+    c = html.count(wajib)
+    if c < jml:
+        GAGAL.append('[struktur] %s hanya %d (minta %d)' % (wajib, c, jml))
+if html.count('<details class="hitung">') < 10:
+    GAGAL.append('[struktur] kotak hitungan kurang dari 10')
+if html.count('id="mascot"') != 1 or html.count('id="xp-fill"') != 1:
+    GAGAL.append('[struktur] blok maskot/XP sidebar rusak')
+
+# 3) Integritas ID: semua getElementById harus ada di HTML
+ids_html = set(re.findall(r'id="([^"]+)"', html))
+for f in sorted(glob.glob('js/viz-*.js')) + ['js/app.js']:
+    for got in set(re.findall(r'getElementById\("([^"]+)"\)', open(f, encoding='utf-8').read())):
+        if got not in ids_html:
+            GAGAL.append('[id] %s memanggil #%s yang tidak ada' % (f, got))
+
+# 4) Integritas kuis: tiap soal punya jawaban valid + feedback
+src = open('js/lessons.js', encoding='utf-8').read()
+for m in MODS:
+    if ('"%s"' % m) not in src and ("'%s'" % m) not in src and (m + ':') not in src:
+        GAGAL.append('[kuis] bank soal %s hilang' % m)
+for mm in re.finditer(r'\{\s*q:"', src):
+    pot = src[mm.start():mm.start() + 400]
+    if 'answer:' not in pot or 'fb:' not in pot:
+        GAGAL.append('[kuis] soal tanpa answer/fb: %s...' % pot[:60])
 
 if GAGAL:
-    print('GAGAL — istilah Inggris tanpa terjemahan di teks utama:')
+    print('GAGAL — %d temuan:' % len(GAGAL))
     for g in GAGAL:
         print(' ', g)
     sys.exit(1)
-print('LOLOS — teks utama bersih, istilah resmi hanya di kamus/kotak istilah/hitungan.')
+print('LOLOS — struktur lengkap, tanpa coinage aneh, ID & kuis utuh.')

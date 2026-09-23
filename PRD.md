@@ -1,12 +1,12 @@
 # PRD — Website Visualisasi Deep Learning untuk Pemula
 
-**Nama Proyek:** Deep Learning Visualization (DL-Viz)
+**Nama Proyek:** Misi Si Cerdas (DL-Viz)
 **Lokasi:** `D:\Coding\deep-learning-visualization`
 **Live:** https://naufalrama28.github.io/deep-learning-visualization/
-**Versi:** 1.1.0 (edisi bahasa super awam)
-**Tanggal:** 16 Sep 2026
-**Bahasa:** Bahasa Indonesia (istilah Inggris selalu diterjemahkan saat pertama muncul)
-**Target:** Orang awam/non-komputer, pelajar SMA-kuliah, guru, otodidak
+**Versi:** 2.0.0 (rework: narasi Sari + XP + analis HOTS + istilah wajar)
+**Tanggal:** 23 Sep 2026
+**Bahasa:** Indonesia + istilah Inggris yang hidup (loss, epoch, dataset…), tanpa terjemahan aneh
+**Target:** Orang awam total yang ingin jadi master — pelajar, guru, otodidak
 
 ## 1. Latar Belakang & Masalah
 Kebanyakan materi deep learning berupa rumus (∑, ∂, matriks) tanpa gambaran intuitif. Pemula kesulitan membayangkan:
@@ -16,12 +16,12 @@ Kebanyakan materi deep learning berupa rumus (∑, ∂, matriks) tanpa gambaran 
 
 ## 2. Tujuan Produk
 Membuat website edukasi interaktif yang:
-1. **Bercerita dulu:** tiap konsep dibuka analogi 30 detik dari kehidupan sehari-hari.
-2. **Tergambar:** setiap konsep ada visual SVG/Canvas yang dimainkan lewat 3 langkah panduan.
-3. **Tanpa paksaan rumus:** hitungan disembunyikan di kotak lipat; pemahaman tidak bergantung padanya.
-4. **Jelas & lengkap:** 11 modul + 1 latihan nyata, tiap modul ditutup 1 kalimat kesimpulan.
-5. **Bisa diatur/diubah:** semua visual punya slider, tombol, input yang mengubah hasil real-time + tombol Reset.
-6. **Contoh + konfigurasi bebas:** ada preset contoh + mode bebas + latihan melatih jaringan sungguhan.
+1. **Bercerita bersambung:** Sari + Si Cerdas, 11 misi berantai; tiap misi dibuka kilasan misi lalu.
+2. **Tergambar:** setiap konsep ada visual SVG/Canvas yang dimainkan lewat 3 langkah + tantangan tebak-dulu.
+3. **Melatih nalar:** tiap misi ada soal analis HOTS aplikatif + jawaban model (bukan sekadar ingatan).
+4. **Jujur beristilah:** istilah hidup dipakai langsung (loss, epoch…), selalu ada artinya di kamus/kotak istilah.
+5. **Memotivasi:** XP (+100 misi, +25 kuis), 6 level maskot Si Cerdas, 11 lencana kemampuan.
+6. **Bisa diatur/diubah:** semua visual real-time + Reset; latihan nyata melatih jaringan sungguhan.
 
 Standar bahasa (wajib): Indonesia dulu, istilah Inggris di kurung saat pertama muncul
 (bobot, standar kelulusan, skor meleset, panjang langkah, putaran latihan, ketepatan,
@@ -40,7 +40,7 @@ Prinsip: **tidak perlu install, tidak perlu coding untuk mulai.** Cukup buka `in
 ## 4. Ruang Lingkup (Scope)
 ### In-Scope v1.1
 - 11 modul belajar + 1 latihan nyata (lihat LEARNING_PATH.md)
-- Setiap modul: Cerita 30 detik → Panduan main gambar 3 langkah → Visual interaktif → Kotak hitungan lipat (opsional) → 1 kalimat kesimpulan → Kuis cerita → Istilah kunci terjemahan
+- Setiap misi: Kilasan → Cerita Sari 30 detik → Panduan 3 langkah → Tantangan tebak-dulu → Visual interaktif → Soal analis HOTS + jawaban model → Hitungan lipat (opsional) → Kesimpulan 1 kalimat → Kotak istilah resmi → Kuis (+XP)
 - Latihan nyata (bentuk soal lingkaran, silang, spiral, dua kelompok) dengan jaringan yang dilatih di browser
 - 100% statis: HTML + CSS + Vanilla JS, tanpa build, tanpa npm, bisa offline
 - Responsif (HP & laptop), dark/light mode, Bahasa Indonesia, kecepatan animasi bisa diatur
@@ -52,11 +52,12 @@ Prinsip: **tidak perlu install, tidak perlu coding untuk mulai.** Cukup buka `in
 - Video / audio narasi
 
 ## 5. Persyaratan Fungsional
-- FR1: Navigasi sidebar + routing hash (`#neuron`, `#cnn`, dst) + tombol next/prev
-- FR2: Setiap visual merespon <100ms setelah slider diubah + tombol Reset per modul
-- FR3: Latihan nyata: user bisa pilih bentuk soal, panjang langkah, susunan tim, gaya tim, lalu tekan Latih/Stop/+50/Acak/Soal baru dan melihat batas warna + grafik skor meleset live
-- FR4: Mode terang/gelap + kecepatan animasi bisa diatur
-- FR5: Kuis cek-paham per modul (pilihan ganda bahasa cerita, feedback langsung, tanpa nilai server)
+- FR1: Navigasi sidebar berkelompok + routing hash + tombol kembali/lanjut otomatis
+- FR2: Setiap visual merespon <100ms + tombol Reset per misi
+- FR3: Latihan nyata: dataset, learning rate (default 0.5 — teruji konvergen), hidden layer, aktivasi; Latih/Stop/+50/Acak/Dataset-baru; boundary + grafik loss live
+- FR4: Mode terang/gelap + kecepatan animasi; hormat prefers-reduced-motion
+- FR5: Kuis (+25 XP jawaban benar pertama) + soal analis HOTS + jawaban model per misi
+- FR6: XP/level/maskot/11 lencana tersimpan (localStorage ganda: progress + xp); Reset menghapus semua
 
 ## 6. Persyaratan Non-Fungsional
 - NFR1: Buka dengan double-click `index.html` tanpa server (fallback) — disarankan via Live Server / `npx serve`
@@ -66,26 +67,26 @@ Prinsip: **tidak perlu install, tidak perlu coding untuk mulai.** Cukup buka `in
 
 ## 7. Struktur Modul (ringkas — nama ramah di website, istilah resmi di kurung)
 1. Beranda & Peta Belajar (+ kamus 1 menit, jalur super awam)
-2. Otak Mini — neuron (menimbang petunjuk, standar kelulusan)
-3. Kapan Lampu Menyala — aktivasi (Si Tegas/Lembut/Cuek/Seimbang)
-4. Kerja Tim Berlapis — jaringan (mengoper ringkasan)
-5. Seberapa Meleset? — skor meleset (tebakan vs jawaban)
-6. Bola ke Lembah — langkah belajar (panjang langkah kecil vs nekat)
-7. Evaluasi Tim — backprop (bagi salah ke belakang, 4 langkah)
-8. Hafalan vs Paham — overfitting (soal latihan vs soal ujian)
-9. Mata Komputer — CNN (bingkai peraba, peta temuan, peta ringkas)
-10. Daya Ingat — RNN (catatan untuk urutan; LSTM = penghapus selektif)
-11. Rapat Kata — attention/Transformer (tiap kata memilih yang didengarkan)
-12. Latihan Nyata — latih jaringan sungguhan (lingkaran, silang, spiral)
+2. Misi 1 Otak Mini — perceptron (bobot, bias, decision boundary)
+3. Misi 2 Lampu Keyakinan — aktivasi (step, sigmoid, tanh, ReLU)
+4. Misi 3 Tim Peringkas — MLP (hidden layer, forward pass)
+5. Misi 4 Cermin — loss (MSE, cross-entropy, target, prediksi)
+6. Misi 5 Menuruni Lembah — gradient descent (learning rate, divergen)
+7. Misi 6 Evaluasi Adil — backprop (backward pass, chain rule, 4 langkah)
+8. Misi 7 Jangan Menghafal — overfitting (data latih vs data uji)
+9. Misi 8 Mata — CNN (filter, feature map, pooling)
+10. Misi 9 Ingatan — RNN (hidden state; LSTM)
+11. Misi 10 Telinga — attention/Transformer (query/key/value)
+12. Misi 11 Ujian Kelulusan — latih jaringan sungguhan (dataset, epoch, akurasi)
 
 Detail kurikulum: lihat `LEARNING_PATH.md`.
 
 ## 8. Kriteria Keberhasilan
-- [ ] Semua 11 visual + latihan nyata berjalan tanpa error di Chrome & Edge terbaru
-- [ ] Orang non-komputer bisa menjawab 80% kuis setelah mengikuti panduan 3 langkah (uji manual 3 orang)
-- [ ] Tidak ada istilah Inggris yang muncul tanpa terjemahan di teks utama (hitungan boleh, karena di kotak lipat)
-- [ ] File bisa dibuka via `file://` maupun `http://localhost` maupun Pages
-- [ ] Tidak ada dependensi eksternal wajib (CDN opsional = nol)
+- [ ] 41 cek otomatis lolos (router, XP/maskot, semua visual, training 400 epoch konvergen)
+- [ ] `python tools/audit-bahasa.py` LOLOS (tanpa coinage aneh, struktur 11 misi utuh)
+- [ ] Orang non-komputer menjawab 80% kuis + 60% soal analis setelah mengikuti misi (uji 3 orang)
+- [ ] File dibuka via `file://`, `localhost`, maupun Pages tanpa error
+- [ ] Nol dependensi eksternal (CDN = nol; font sistem saja)
 
 ## 9. Risiko & Mitigasi
 | Risiko | Mitigasi |

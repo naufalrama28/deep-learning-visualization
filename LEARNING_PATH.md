@@ -1,93 +1,97 @@
-# LEARNING_PATH.md — Jalur Belajar (untuk orang non-komputer juga bisa!)
+# LEARNING_PATH.md — 11 Misi Merakit Si Cerdas (Warung Sari)
 
-> Cara pakai: ikuti urutan 1→12. Tiap modul 8–15 menit dengan pola yang sama:
-> **cerita 30 detik → mainkan gambar (3 langkah) → tantangan 30 detik 🎯 → baca 1 kalimat kesimpulan → kuis cerita → centang selesai.**
-> Mulai dari peta **🔁 Siklus belajar mesin** di beranda (tebak → nilai → langkah → koreksi, ulangi) — semua modul menempel di lingkaran itu.
-> Rumus selalu tersembunyi di kotak lipat — boleh diskip, tidak mengurangi pemahaman.
+> Kamu = insinyur magang Sari. Si Cerdas mulai dari NOL (Level 0 • Bibit).
+> Tiap misi: **kilasan → briefing 30 detik → 3 langkah main → tantangan → soal analis → kesimpulan → istilah resmi → kuis → klaim XP.**
+> Misi tuntas = +100 XP + 1 kemampuan terbuka. Kuis benar = +25 XP.
+> Level: Bibit → Tunas → Anak → Remaja → Dewasa → Master.
 
-## 🚀 Jalur super awam (kalau waktumu sedikit)
-Cukup 4 modul ini = 80% intuisi deep learning:
-1. **Otak Mini** (cara mesin menimbang petunjuk)
-2. **Seberapa Meleset?** (skor meleset makin kecil makin bagus)
-3. **Bola ke Lembah** (cara mesin belajar: langkah kecil berulang)
-4. **Latihan Nyata** (latih AI sungguhan di browser 🎮)
+## 🚀 Jalur cepat (4 misi = 80% intuisi)
+1. Otak Mini → 4. Cermin → 5. Menuruni Lembah → 11. Ujian Kelulusan.
 
-## Modul 1 — Beranda & Peta Belajar (5 mnt)
-- **Dapat apa:** tahu peta 11 konsep + kamus 8 istilah + cara pakai website.
-- **Lakukan:** baca kamus 1 menit, klik kartu modul yang menarik.
+## Misi 1 — Otak Mini: pasang sel otak pertama (10 mnt)
+- **Misi Sari:** warung kebanjiran semangka; Sari tak sempat mencicipi satu-satu.
+- **Mainkan:** geser bobot → garis berputar; geser bias → garis bergeser; preset AND/OR.
+- **Analis:** pintu gudang AND + sensor mati — siapa lolos? pelajaran redundansi.
+- **Kesimpulan:** neuron menimbang petunjuk, totalnya menentukan YA/BELUM.
+- **Istilah:** neuron, perceptron, weight (bobot), bias, decision boundary, gerbang AND/OR.
+- **Kemampuan terbuka:** 🔓 Menimbang.
 
-## Modul 2 — Otak Mini ⭐ mulai di sini jika dari nol (10 mnt)
-- **Cerita:** timbang semangka matang dari 2 petunjuk (bunyi + garis kulit).
-- **Mainkan:** geser "seberapa penting" → garis berputar. Geser "standar kelulusan" → garis bergeser. Klik contoh "harus dua-duanya".
-- **Ingat 1 kalimat:** neuron itu timbangan petunjuk — totalnya menentukan YA atau BELUM.
-- **Istilah baru:** otak mini (neuron), yang dimainkan ini (perceptron), seberapa penting (bobot/weight), standar kelulusan (bias), garis pemisah (decision boundary), gerbang AND/OR.
+## Misi 2 — Lampu Keyakinan: beri perasaan bertingkat (8 mnt)
+- **Misi Sari:** "hampir matang, cek besok" tak bisa diwakili YA/BELUM kaku.
+- **Mainkan:** Si Cuek vs Si Lembut; cari titik "macet" di ujung sigmoid.
+- **Analis:** alarm peringatan dini pilih siapa? kapan Si Tegas lebih tepat?
+- **Kesimpulan:** tanpa aktivasi, mesin sedalam apa pun cuma garis lurus.
+- **Istilah:** fungsi aktivasi, step/threshold, sigmoid, tanh, ReLU, gradien, saturasi.
 
-## Modul 3 — Kapan Lampu Menyala (8 mnt)
-- **Cerita:** 4 kepribadian: Si Tegas, Si Lembut, Si Cuek, Si Seimbang.
-- **Mainkan:** pilih Si Cuek → geser sinyal → lihat garis patah. Ganti Si Lembut → lihat huruf S halus.
-- **Kenapa penting:** tanpa "kepribadian" ini, mesin sedalam apa pun cuma bisa garis lurus.
-- **Ingat 1 kalimat:** tanpa aturan kapan bereaksi, mesin cuma bisa garis lurus.
-- **Istilah baru:** aturan menyala (aktivasi/fungsi aktivasi).
+## Misi 3 — Tim Peringkas: dari 1 otak ke jaringan (10 mnt)
+- **Misi Sari:** 2 petunjuk tak cukup; warung butuh banyak ciri sekaligus.
+- **Mainkan:** geser ciri → tebakan mengalir; acak 5× → keputusan goyang.
+- **Analis:** 50 lapis tanpa aktivasi — kenapa uang komputasi terbuang?
+- **Kesimpulan:** jaringan = estafet peringkas, makin lapis makin abstrak.
+- **Istilah:** MLP, layer, hidden layer, forward pass, output.
 
-## Modul 4 — Kerja Tim Berlapis (10 mnt)
-- **Cerita:** tebak hewan berlapis — tim depan lihat ciri, tim tengah simpulkan, ketua putuskan.
-- **Mainkan:** geser ciri → angka mengalir ke kanan. Klik acak → keputusan bisa berubah total.
-- **Ingat 1 kalimat:** jaringan = tim estafet peringkas, makin banyak lapis makin abstrak.
-- **Istilah baru:** tim depan/tengah (lapisan/layer), mengoper ringkasan.
+## Misi 4 — Cermin: nilai kesalahan sendiri (8 mnt)
+- **Misi Sari:** "tebakanmu bagus atau tidak?" — Si Cerdas terdiam.
+- **Mainkan:** geser tebakan ke jawaban → loss turun; salah-tapi-pede dihukum berat.
+- **Analis:** model A stabil vs model B kadang fatal — MSE pilih siapa? adilkah?
+- **Kesimpulan:** belajar = mengecilkan loss terus-menerus.
+- **Istilah:** loss, MSE, cross-entropy, target, prediksi.
 
-## Modul 5 — Seberapa Meleset? (8 mnt)
-- **Cerita:** lempar dart — jarak dari bullseye = skor meleset.
-- **Mainkan:** geser tebakan mendekati jawaban → skor turun ke lembah. Ganti jenis permainan → salah tapi pede dihukum berat.
-- **Ingat 1 kalimat:** belajar = mengecilkan skor meleset terus-menerus.
-- **Istilah baru:** skor meleset (loss), jawaban benar (target).
+## Misi 5 — Menuruni Lembah: seni memperbaiki diri (10 mnt)
+- **Misi Sari:** "kamu tahu salah — cara membetulkannya bagaimana?"
+- **Mainkan (wajib 3×):** langkah sedang → sampai; kecil → lama; raksasa → kabur. 💥
+- **Analis:** prediksi akibat learning rate raksasa + taktik penyelamatan.
+- **Kesimpulan:** intip kemiringan (gradien), melangkah turun sedikit-sedikit.
+- **Istilah:** gradient descent, learning rate, gradien, divergen.
 
-## Modul 6 — Bola ke Lembah (10 mnt)
-- **Cerita:** ski dalam kabut — cuma bisa rasakan miringnya tanah, melangkah turun.
-- **Mainkan (wajib 3x):** langkah sedang → sampai. Langkah super kecil → lama. Langkah super besar → mental/kabur! 💥
-- **Ingat 1 kalimat:** belajar = intip kemiringan, melangkah turun sedikit demi sedikit.
-- **Istilah baru:** panjang langkah (learning rate), kemiringan (gradien).
+## Misi 6 — Evaluasi Adil: koreksi seluruh tim (12 mnt)
+- **Misi Sari:** tim protes — yang disalahkan kok selalu ketua?
+- **Mainkan:** 4 langkah × 2–3 putaran → loss mengecil; ubah input → pelaku berubah.
+- **Analis:** contoh X membaik tapi Y memburuk — rusak atau normal?
+- **Kesimpulan:** backprop = salahkan adil ke belakang, koreksi sedikit-sedikit.
+- **Istilah:** backpropagation, backward pass, update, chain rule.
 
-## Modul 7 — Evaluasi Tim (12 mnt)
-- **Cerita:** tim kalah — kesalahan dibagi ke belakang sesuai andil, lalu dikoreksi.
-- **Mainkan:** klik Langkah → 4x pelan-pelan. Ulangi 2–3 putaran → skor meleset mengecil.
-- **Ingat 1 kalimat:** backprop = menyalahkan dengan adil ke belakang, mengoreksi sedikit-sedikit.
-- **Istilah baru:** bagi-bagi salah (backward), koreksi (update).
+## Misi 7 — Jangan Menghafal: jebakan nilai sempurna (10 mnt)
+- **Misi Sari:** nilai latihan 100, pelanggan baru kecewa — lulus latihan ≠ lulus hidup.
+- **Mainkan:** derajat 1 → kaku; 3–4 → pas ✅; 9 → meliuk gila 🤯.
+- **Analis:** tolak usul "tambah 200 lapis"; beri 3 obat + alasan.
+- **Kesimpulan:** yang penting nilai di data yang belum pernah dilihat.
+- **Istilah:** overfitting, underfitting, generalisasi, training/test data, derajat polinomial.
 
-## Modul 8 — Hafalan vs Paham (10 mnt)
-- **Cerita:** Si Penghafal (latihan 100, ujian jeblok) vs Si Paham Konsep (stabil).
-- **Mainkan:** kerumitan 1 → kaku. 3–4 → pas ✅. 9 → meliuk gila menghafal 🤯.
-- **Ingat 1 kalimat:** yang penting nilai di soal yang belum pernah dilihat.
-- **Istilah baru:** menghafal (overfitting), kurang belajar (underfitting), soal latihan vs soal ujian.
+## Misi 8 — Mata: melihat foto struk (12 mnt)
+- **Misi Sari:** berhenti menyuapi angka — Si Cerdas harus melihat sendiri.
+- **Mainkan:** gambar X + filter tepi; gambar huruf T sendiri; bandingkan filter.
+- **Analis:** foto miring 45° — filter tegak gagal? solusi dunia nyata?
+- **Kesimpulan:** raba tiap sudut pola kecil, rangkum berlapis-lapis.
+- **Istilah:** CNN, konvolusi, filter/kernel, feature map, max-pooling.
 
-## Modul 9 — Mata Komputer (12 mnt)
-- **Cerita:** meraba foto dalam gelap pakai bingkai kecil, mencatat pola tiap sudut.
-- **Mainkan:** gambar X + bingkai tepi → peta menyala. Klik kotak untuk menggambar sendiri!
-- **Ingat 1 kalimat:** komputer melihat dengan meraba tiap sudut, merangkum berlapis-lapis.
-- **Istilah baru:** bingkai peraba (filter), peta temuan (feature map), peta ringkas (pooling).
+## Misi 9 — Ingatan: hidup dalam waktu (10 mnt)
+- **Misi Sari:** kemarin sepi, hari ini ramai — besok stok apa? Foto tak menjawabnya.
+- **Mainkan:** mainkan urutan; daya ingat 0 → amnesia; 9,9,9,0 → anjlok.
+- **Analis:** ramal 365 hari dengan catatan kecil — 2 risiko + kapan cukup?
+- **Kesimpulan:** mesin urutan = pembawa catatan yang diupdate tiap kejadian.
+- **Istilah:** RNN, sequence, hidden state, LSTM.
 
-## Modul 10 — Daya Ingat (10 mnt)
-- **Cerita:** nonton sinetron sambil bawa catatan kecil yang diupdate tiap episode.
-- **Mainkan:** mainkan urutan → catatan berubah. Daya ingat 0 → amnesia total!
-- **Ingat 1 kalimat:** mesin urutan = pembawa catatan kecil yang diupdate tiap kejadian.
-- **Istilah baru:** urutan (sequence), catatan (hidden state). Versi canggih: penghapus selektif (LSTM).
+## Misi 10 — Telinga: mendengar yang tepat (12 mnt)
+- **Misi Sari:** chat pelanggan panjang — catatan kecil kebingungan.
+- **Mainkan:** klik "ia" → siapa paling pekat? uji "bank" di dua kalimat.
+- **Analis:** "harga tempe kemarin vs hari ini" — akibat salah dengar + cara menguji.
+- **Kesimpulan:** attention = tiap kata memilih yang didengarkan.
+- **Istilah:** attention, query/key/value, softmax, Transformer.
 
-## Modul 11 — Rapat Kata (12 mnt)
-- **Cerita:** "…karena IA lapar" — otak menoleh ke "kucing". Tiap kata memilih yang didengarkan.
-- **Mainkan:** klik kata "ia" → lihat yang paling pekat. Coba kata lain!
-- **Ingat 1 kalimat:** attention = tiap kata memilih siapa yang didengarkan agar paham konteks.
-- **Istilah baru:** perhatian (attention), dibagi habis 100%. Dasar ChatGPT & co. (Transformer).
+## Misi 11 — Ujian Kelulusan: latih AI sungguhan 🎮 (20 mnt)
+- **Misi Sari:** semua keping di tangan — buktikan dengan melatih sendiri.
+- **Misi 1:** XOR, hidden 4 → ~15 detik rapi. **Misi 2:** lingkaran, hidden 0 → GAGAL; 4 → BERHASIL.
+- **Misi 3 (bos 🌀):** spiral 8+4; mentok ~65%? acak ulang (nasib init kadang apes).
+- **Analis (ujian kelulusan):** spiral 100% latih / 70% uji — diagnosis + rencana + kapan berhenti.
+- **Kesimpulan:** soal melengkung butuh hidden layer — garis lurus takkan cukup.
+- **Istilah:** dataset, hidden neuron, decision boundary, epoch, akurasi.
+- **Kemampuan terbuka:** 🔓 Kemandirian. Si Cerdas lulus — level Master di depan mata.
 
-## Modul 12 — Latihan Nyata 🎮 (20 mnt)
-- **Misi 1 (yakin bisa):** bentuk silang ✖, tim 4 → Latih → rapi < 1 menit.
-- **Misi 2 (aha!):** lingkaran ⭕, tim 0 → GAGAL. Tim 4 → BERHASIL. Bukti garis lurus tak cukup!
-- **Misi 3 (bos terakhir 🌀):** spiral, tim 8+4 → butuh kesabaran.
-- **Ingat 1 kalimat:** soal melengkung butuh tim tengah — garis lurus takkan pernah cukup.
-- **Istilah baru:** bentuk soal (dataset), tim tengah (hidden neuron), batas warna (decision boundary), putaran latihan (epoch), ketepatan (akurasi).
-
-## Kuis Akhir (jawab dengan kata-katamu sendiri)
-1. Jelaskan ke teman: apa itu "seberapa penting" dan "standar kelulusan"?
-2. Kenapa mesin butuh "kepribadian" (Si Cuek/Si Lembut)?
-3. Apa yang diperkecil mesin saat belajar?
-4. Jelaskan "panjang langkah" pakai cerita ski.
-5. Kenapa komputer cocok membaca foto dengan "bingkai kecil"?
-6. Apa beda anak menghafal vs anak paham — untuk mesin?
+## Kuis Akhir (jawab dengan kata-katamu, lalu cek ke Sari)
+1. Jelaskan ke Sari: apa yang dilakukan satu perceptron?
+2. Kenapa 50 lapis tanpa aktivasi = buang uang?
+3. Apa yang diperkecil saat training, dan bagaimana cara menurunkannya?
+4. Bedakan menghafal vs paham — untuk mesin DAN untukmu.
+5. Kenapa foto butuh filter, urutan butuh ingatan, chat butuh attention?
+6. Kapan kamu berhenti melatih model? (Jawaban "saat latih 100%" = belum lulus!)

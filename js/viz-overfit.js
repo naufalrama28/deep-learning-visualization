@@ -49,8 +49,8 @@ function initVizOverfit(){
     // titik latih (biru) & uji (abu, kecil)
     train.forEach(function(p){ctx.fillStyle="#4f46e5";ctx.beginPath();ctx.arc(X(p.x),Y(Math.max(-4,Math.min(4,p.y))),4,0,7);ctx.fill()});
     test.forEach(function(p){ctx.fillStyle="rgba(100,116,139,.55)";ctx.beginPath();ctx.arc(X(p.x),Y(Math.max(-4,Math.min(4,p.y))),2.5,0,7);ctx.fill()});
-    var verdict=d<=1?"📉 KURANG BELAJAR: garisnya kaku lurus, soal gampang pun gagal.":d<=5?"✅ PAS: garis halus mengikuti pola, tidak menghafal coretan.":"📈 MENGHAFAL: garis meliuk gila mengejar tiap titik — termasuk yang salah!";
-    $("over-calc").innerHTML="Cara belajar level "+d+" → skor meleset latihan <b>"+tr.toFixed(3)+"</b> vs ujian <b>"+te.toFixed(3)+"</b> (makin kecil makin bagus)\n"+verdict+"\nKeterangan gambar: hijau putus-putus = pola sebenarnya, biru = cara belajar mesin, titik biru = soal latihan, abu-abu = soal ujian baru";
+    var verdict=d<=1?"📉 KURANG BELAJAR <i>(underfitting)</i>: garisnya kaku lurus, soal gampang pun gagal.":d<=5?"✅ PAS: garis halus mengikuti pola, tidak menghafal coretan.":"📈 MENGHAFAL <i>(overfitting)</i>: garis meliuk gila mengejar tiap titik — termasuk yang salah!";
+    $("over-calc").innerHTML="Derajat polinomial "+d+" → loss data latih <b>"+tr.toFixed(3)+"</b> vs loss data uji <b>"+te.toFixed(3)+"</b> (makin kecil makin bagus)\n"+verdict+"\nKeterangan gambar: hijau putus-putus = pola sebenarnya, biru = cara belajar mesin, titik biru = data latih, abu-abu = data uji baru";
   }
   ["over-degree","over-noise","over-n"].forEach(function(id){$(id).addEventListener("input",function(){if(id!=="over-degree")genData();draw()})});
   $("over-new").onclick=function(){genData();draw()};

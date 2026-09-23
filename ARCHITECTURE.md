@@ -19,9 +19,6 @@
 
 Semua state disimpan lokal per modul, tidak ada state global kecuali `AppState {theme, progress}` + `window.GLOBAL_SPEED` (kecepatan animasi).
 
-## 8. Standar Bahasa (sinkron dengan AGENTS.md §5)
-Kode boleh pakai singkatan (`w`, `lr`, `h`), tapi **teks yang tampil ke user wajib bahasa sehari-hari** (lihat kamus baku di AGENTS.md). Rumus + istilah resmi hanya di `<details class="hitung">`.
-
 ## 3. Peta File → Konsep (nama ramah di website, istilah resmi di sini untuk developer)
 | File | Konsep yang divisualkan | Teknik render |
 |---|---|---|
@@ -35,28 +32,38 @@ Kode boleh pakai singkatan (`w`, `lr`, `h`), tapi **teks yang tampil ke user waj
 | viz-cnn.js | raba gambar 5×5 pakai bingkai 3×3 | Grid DOM klik + heatmap warna |
 | viz-rnn.js | catatan untuk urutan kejadian | Chip langkah + grafik catatan |
 | viz-attention.js | siapa mendengarkan siapa (per kata) | Heatmap persen + kalimat klik |
-| viz-playground.js | latih jaringan sungguhan 2D | Canvas batas warna (grid 44×44) + titik soal |
+| viz-playground.js | latih jaringan sungguhan 2D | Canvas decision boundary (grid 44×44) + titik data |
 
 ## 4. Latihan nyata (modul tersulit) — Desain jujur
-- Bentuk soal dibangkitkan prosedural dengan `Math.random` (acak tiap klik "Soal baru"): lingkaran, silang, spiral, dua kelompok. ±180 titik.
-- Model: jaringan `2 → tim1 → tim2 → 1` (tim 0–8 orang per lapis), gaya tim tanh/ReLU/sigmoid, keputusan akhir sigmoid.
-- Training: SGD manual full-batch (seluruh soal tiap putaran; sederhana & cepat untuk <400 titik), forward + backward ditulis eksplisit di JS.
-- Render batas warna: evaluasi grid 44×44 tiap selesai N putaran; grafik skor meleset max 200 titik terakhir.
-- Kontrol: bentuk soal, tim lapis 1–2, gaya tim, panjang langkah (0,01–1), soal berantakan (noise), tombol Latih/Stop/+50/Acak/Soal baru.
+- Dataset dibangkitkan prosedural dengan `Math.random` (acak tiap klik "Dataset baru"): lingkaran, XOR, spiral, dua kelompok. ±180 titik.
+- Model: jaringan `2 → h1 → h2 → 1` (hidden layer 0–8 neuron per lapis), aktivasi tanh/ReLU/sigmoid, output sigmoid.
+- Training: SGD manual full-batch (seluruh data tiap epoch), forward + backward eksplisit di JS.
+- Render: decision boundary grid 44×44 tiap selesai N epoch; grafik loss 200 titik terakhir.
+- Kontrol: dataset, hidden layer 1–2, aktivasi, learning rate default **0.5** (teruji: konvergen mulus, stabil 3 seed, aman sampai 1.0), noise, tombol Latih/Stop/+50/Acak/Dataset-baru.
 
-## 5. Tema & Gaya
-CSS variables:
+## 5. Tema & Gaya ("kertas warung": hangat, editorial, bukan ungu-generik)
+CSS variables (terang):
 ```css
-:root { --bg:#f6f7fb; --card:#fff; --text:#1a2233; --accent:#4f46e5; }
-[data-theme="dark"] { --bg:#0f172a; --card:#1e293b; --text:#e2e8f0; }
+:root { --bg:#f6f1e7; --card:#fffdf7; --text:#26211a; --accent:#d9480f; --accent2:#0b7285; }
 ```
-Canvas membaca `getComputedStyle` saat init + saat tema berubah (event `themechange`).
+Gelap = versi hangat (`#171310`/`#221b14`, aksen amber + teal). Judul pakai serif
+sistem (Georgia/Palatino) agar beda dari situs generik — tanpa webfont (tetap offline).
+Latar pola titik halus via `radial-gradient`. Canvas membaca `getComputedStyle`
+saat init + saat tema berubah (event `themechange`).
 
-## 6. Penyimpanan Lokal
-`localStorage["dlviz-progress"] = {neuron:true, aktivasi:false, ...}`
+## 6. Penyimpanan Lokal (ganda, agar reset mandiri)
+`localStorage["dlviz-progress"] = {neuron:true, ...}` (centang misi)
+`localStorage["dlviz-xp"] = {xp, done:{}, quiz:{}}` (+100/misi, +25/kuis benar pertama)
 `localStorage["dlviz-theme"] = "dark"|"light"`
+Level Si Cerdas: Bibit(0) → Tunas(150) → Anak(400) → Remaja(700) → Dewasa(1100) → Master(1500).
+Maskot = SVG robot yang tumbuh per level (antena → bola → senyum + pipi → bintang → toga wisuda).
 
 ## 7. Batasan & Utang Teknis yang Disadari
-- Decision boundary resolusi rendah (demi performa) — cukup untuk intuisi.
-- Tidak ada auto-test; verifikasi manual via checklist AGENTS.md.
+- Decision boundary resolusi rendah (grid 44×44, demi performa) — cukup untuk intuisi.
+- Canvas butuh browser sungguhan (harness jsdom memakai mock 2D; visual piksel dicek manual).
 - Upgrade masa depan: export PNG, mode buta-warna, TTS narasi.
+
+## 8. Standar Bahasa (sinkron dengan AGENTS.md §5)
+Istilah Inggris yang hidup dipakai langsung (loss, epoch, dataset…); yang dilarang
+adalah terjemahan harfiah aneh (lihat BANNED di `tools/audit-bahasa.py`). Setiap istilah
+resmi wajib ada artinya di kamus beranda dan/atau kotak istilah modulnya.

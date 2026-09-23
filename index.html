@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Deep Learning Visualization — Paham Tanpa Rumus Dulu 👀</title>
-<meta name="description" content="Belajar deep learning untuk orang non-komputer: cerita sehari-hari dulu, mainkan gambarnya, rumus boleh diskip. Bahasa Indonesia, offline, gratis.">
+<title>Misi Si Cerdas — Belajar Deep Learning dari Nol 🤖</title>
+<meta name="description" content="Bantu Sari merakit Si Cerdas, AI warung, dalam 12 misi interaktif. Dari nol total sampai bisa melatih AI sungguhan. Bahasa Indonesia, offline, gratis.">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -15,13 +15,22 @@
       <div class="brand-logo">🧠</div>
       <div>
         <div class="brand-title">DL-Viz</div>
-        <div class="brand-sub">Cerita dulu, gambar dulu, rumus belakangan</div>
+        <div class="brand-sub">Misi Sari: merakit Si Cerdas 🤖</div>
       </div>
     </div>
     <div class="progress-wrap">
-      <div class="progress-top"><span>Progress belajar</span><span id="progress-text">0%</span></div>
+      <div class="progress-top"><span>Progress misi</span><span id="progress-text">0%</span></div>
       <div class="progress-bar"><div id="progress-fill"></div></div>
     </div>
+    <div class="mascot-wrap">
+      <div id="mascot" role="img" aria-label="Si Cerdas, robot yang sedang kamu latih"></div>
+      <div class="mascot-info">
+        <div id="level-name">Level 0 • Bibit</div>
+        <div class="xp-bar"><div id="xp-fill"></div></div>
+        <div class="xp-row"><span id="xp-text" class="tiny">0 XP</span><span id="abilities-count" class="tiny"></span></div>
+      </div>
+    </div>
+    <div class="abilities" id="abilities"></div>
     <nav id="nav">
       <a href="#beranda" data-route="beranda">🏠 Beranda & Peta</a>
       <div class="nav-group">🧱 Dasar — cara mesin berpikir</div>
@@ -42,7 +51,7 @@
     </nav>
     <div class="side-footer">
       <button id="theme-btn" class="btn small">🌙 Mode Gelap</button>
-      <button id="reset-progress" class="btn small ghost">↺ Reset progress</button>
+      <button id="reset-progress" class="btn small ghost" title="Hapus centang misi, XP, dan jawaban kuis">↺ Reset semua</button>
       <p class="tiny">100% offline • Tanpa install • Bahasa Indonesia<br>Buka via <code>index.html</code> atau <code>localhost:8000</code></p>
     </div>
   </aside>
@@ -62,18 +71,18 @@
     <section id="sec-beranda" class="page">
       <div class="hero">
         <div>
-          <h2>Paham <span class="hl">cara kerja AI</span> tanpa pusing rumus. 👀</h2>
-          <p>Aturannya di sini: <b>cerita dulu → mainkan gambarnya → rumus boleh diskip.</b> Kalau kamu bisa main tebak-tebakan dan menggeser tombol, kamu bisa ikut sampai habis.</p>
+          <h2>Bantu Sari merakit <span class="hl">Si Cerdas</span>, AI warung pertamanya. 🤖</h2>
+          <p>Sari punya warung kelontong. Ia bermimpi punya robot kecil yang bisa <b>memilih buah matang, meramal stok, membaca foto struk, bahkan menjawab chat pelanggan</b> — tapi Sari (dan kamu) mulai dari <b>NOL besar</b>. Dalam <b>11 misi</b> ini, kamu merakit Si Cerdas bagian demi bagian. Tiap misi tuntas = satu kemampuan baru terbuka + XP.</p>
           <div class="badge-row">
-            <span class="badge">✅ Tanpa matematika dulu</span>
+            <span class="badge">✅ Mulai dari nol total</span>
+            <span class="badge">✅ Tanpa rumus dulu</span>
             <span class="badge">✅ Tanpa coding</span>
-            <span class="badge">✅ 15 menit langsung paham</span>
           </div>
           <div class="hero-btns">
-            <a class="btn primary" href="#neuron">▶ Mulai dari Nol (paling gampang)</a>
-            <a class="btn" href="#playground">🎮 Langsung main-main</a>
+            <a class="btn primary" href="#neuron">▶ Mulai Misi 1: Otak Mini</a>
+            <a class="btn" href="#playground">🎮 Intip misi terakhir</a>
           </div>
-          <div class="tips">🖐️ Cara pakai tiap halaman: 1) Baca cerita 30 detik → 2) Ikuti 3 langkah main gambar → 3) Baca 1 kalimat kesimpulan → 4) Kuis cerita → 5) Centang selesai.</div>
+          <div class="tips">🖐️ Cara main tiap misi: 1) Baca briefing 30 detik → 2) Ikuti 3 langkah main → 3) Tantangan 30 detik → 4) Soal analis → 5) Kuis → 6) Klaim XP (centang selesai).</div>
         </div>
         <div class="hero-card">
           <h3>🗺️ Peta belajar — mau yang mana?</h3>
@@ -103,17 +112,21 @@
         <p class="tiny">Diulang 1000× = mahir (modul 12). Kelewat diulang = menghafal (modul 7). Semua AI yang kamu kenal — lahir dari lingkaran ini.</p>
       </div>
       <div class="card">
-        <h3>📖 Kamus 1 menit (istilah seram → bahasa warung)</h3>
+        <h3>📖 Kamus kilat (istilah asli + artinya gampangnya)</h3>
         <table class="kamus">
-          <tr><th>Istilah</th><th>Artinya gampangnya</th></tr>
-          <tr><td>Neuron</td><td>Otak mini: menimbang petunjuk, lalu memutuskan ya/tidak</td></tr>
-          <tr><td>Bobot</td><td>Seberapa penting sebuah petunjuk (makin besar = makin didengar)</td></tr>
-          <tr><td>Bias = standar kelulusan</td><td>Ambang keputusan YA/BELUM (digeser = dilonggarkan/diketatkan)</td></tr>
-          <tr><td>Aktivasi = aturan menyala</td><td>Aturan kapan lampu menyala</td></tr>
-          <tr><td>Skor meleset (loss)</td><td>Seberapa jauh tebakan dari jawaban (0 = tepat!) — makin kecil makin bagus</td></tr>
-          <tr><td>Panjang langkah (learning rate)</td><td>Seberapa besar tiap langkah belajar (kecil = hati-hati, besar = nekat)</td></tr>
-          <tr><td>Putaran latihan (epoch)</td><td>Satu putaran melihat semua contoh</td></tr>
-          <tr><td>Menghafal (overfitting)</td><td>Nilai latihan bagus tapi soal baru jeblok</td></tr>
+          <tr><th>Istilah (pakai ini)</th><th>Artinya gampangnya</th></tr>
+          <tr><td>neuron</td><td>unit penimbang: menimbang petunjuk → putuskan YA/BELUM</td></tr>
+          <tr><td>perceptron</td><td>neuron paling sederhana (yang dipakai di Misi 1)</td></tr>
+          <tr><td>bobot <i>(weight)</i></td><td>seberapa penting tiap petunjuk (makin besar = makin didengar)</td></tr>
+          <tr><td>bias</td><td>nilai awal yang menggeser keputusan (dinaikkan = gampang lolos)</td></tr>
+          <tr><td>loss</td><td>skor meleset: 0 = tepat, makin kecil makin bagus</td></tr>
+          <tr><td>learning rate</td><td>panjang tiap langkah belajar (kecil = hati-hati, besar = nekat)</td></tr>
+          <tr><td>epoch</td><td>satu putaran melihat semua data</td></tr>
+          <tr><td>akurasi</td><td>persen tebakan yang benar</td></tr>
+          <tr><td>overfitting</td><td>hafal data latih, gagal di data baru</td></tr>
+          <tr><td>dataset</td><td>kumpulan contoh untuk latihan & ujian</td></tr>
+          <tr><td>hidden layer</td><td>lapisan tengah (tim tengah peringkas)</td></tr>
+          <tr><td>filter</td><td>pola kecil untuk meraba gambar</td></tr>
         </table>
       </div>
       <div class="grid3" id="home-cards"></div>
@@ -125,6 +138,7 @@
 
     <!-- ============ NEURON ============ -->
     <section id="sec-neuron" class="page hidden">
+      <div class="card kilas">🔙 <b>Titik awal:</b> Si Cerdas belum bisa apa-apa — kepalanya masih kosong melompong. Misi pertamamu: pasang <b>satu sel otak</b> yang bisa menimbang petunjuk, agar Sari tidak perlu mencicipi tiap semangka sendiri.</div>
       <div class="card story">🍉 <b>Cerita 30 detik:</b> Kamu jualan buah. Pembeli tanya “ini semangka matang?”. Kamu timbang 2 petunjuk: <b>bunyi tok-tok</b> dan <b>garis kulit</b>. Kalau bunyi lebih penting bagimu, kamu “mendengarkannya” lebih keras. Kalau total keyakinanmu lewat standar, kamu bilang <b>YA, matang!</b> — Itulah neuron: menimbang petunjuk, lalu memutuskan.</div>
       <div class="card guide">🖐️ <b>Mainkan gambarnya dulu (3 langkah):</b>
         <ol>
@@ -164,6 +178,9 @@
       <details class="hitung"><summary>📐 Penasaran hitungannya? Klik di sini (boleh diskip!)</summary>
         <p>Total skor = (pentingnya petunjuk 1 × petunjuk 1) + (pentingnya petunjuk 2 × petunjuk 2) + standar. Lampu menyala kalau totalnya di atas 0. Nama kerennya: <code>z = w₁·x₁ + w₂·x₂ + b</code>, <code>y = 1 jika z &gt; 0</code>. Bobot = pentingnya petunjuk. Bias = standar kelulusan.</p>
       </details>
+      <div class="card analis">🧠 <b>Soal analis (calon master wajib coba):</b> Pintu gudang Sari harus terbuka hanya jika <b>(tangan bawa keranjang) DAN (bukan kucing tetangga)</b>. (a) Bisakah 1 perceptron mengerjakannya? (b) Suatu hari sensor kucing rusak — selalu 0. Apa yang terjadi? Apa pelajarannya soal sensor tunggal?
+        <details><summary>Intip cara berpikirnya (jawab dulu baru buka!)</summary><p>(a) Bisa — ini aturan AND. (b) Pintu jadi hanya bergantung pada sensor keranjang + bias; si kucing selalu lolos. Pelajaran: satu sensor mati = satu petunjuk hilang total. Sistem nyata butuh sensor cadangan dan alarm jika ada input yang “diam terus”.</p></details>
+      </div>
       <div class="card kesimpulan">💎 <b>Ingat 1 kalimat:</b> Neuron itu timbangan petunjuk — yang penting didengar keras, totalnya menentukan YA atau TIDAK.</div>
       <div class="card istilah">🏷️ <b>Nama resminya</b> <span class="tiny">(hafalkan yang kiri, kenali yang kanan — biar nyambung kalau baca buku/artikel)</span>
         <div class="tags"><span class="tag">otak mini = <b>neuron</b></span><span class="tag">yang kamu mainkan ini = <b>perceptron</b></span><span class="tag">seberapa penting = <b><i>weight</i></b></span><span class="tag">standar kelulusan = <b><i>bias</i></b></span><span class="tag">garis pemisah = <b><i>decision boundary</i></b></span><span class="tag">aturan dua-duanya / salah satu = <b>gerbang <i>AND / OR</i></b></span></div>
@@ -174,6 +191,7 @@
 
     <!-- ============ AKTIVASI ============ -->
     <section id="sec-aktivasi" class="page hidden">
+      <div class="card kilas">🔙 <b>Kilasan Misi 1:</b> Si Cerdas kini bisa menimbang 2 petunjuk dan bilang YA/BELUM. Masalahnya: ia kaku — keyakinannya selalu 0% atau 100%, seperti robot murahan. Misi 2 memberinya <b>perasaan bertingkat</b>.</div>
       <div class="card story">💡 <b>Cerita 30 detik:</b> Bayangkan 4 jenis orang ditanya “kamu yakin?”. Si Tegas: “YA atau TIDAK, titik!” Si Lembut: “hmm... 70% yakin.” Si Cuek: “kalau jelek aku diam saja, kalau bagus aku Gas!” Nah, mesin juga punya “kepribadian” seperti itu — namanya fungsi aktivasi.</div>
       <div class="card guide">🖐️ <b>Mainkan gambarnya dulu (3 langkah):</b>
         <ol>
@@ -203,6 +221,9 @@
       <details class="hitung"><summary>📐 Penasaran hitungannya? Klik di sini (boleh diskip!)</summary>
         <p>Si Lembut: <code>1/(1+e⁻ˣ)</code> (peluang 0–1). Si Seimbang: tanh (−1 s/d 1). Si Cuek: <code>max(0,x)</code> (buang yang negatif). Kemiringan garis = seberapa cepat mesin bisa belajar di titik itu.</p>
       </details>
+      <div class="card analis">🧠 <b>Soal analis:</b> Sari butuh alarm <b>“mangga hampir matang, cek besok”</b> (peringatan dini), bukan vonis matang/mentah. Pilih: Si Tegas atau Si Lembut? Beri 2 alasan. Lalu: kapan Si Tegas justru lebih tepat?
+        <details><summary>Intip cara berpikirnya (jawab dulu baru buka!)</summary><p>Si Lembut: memberi derajat keyakinan (70%) sehingga kata “hampir” terwakili, dan ambang peringatannya bisa digeser. Si Tegas justru tepat untuk keputusan final yang butuh aksi tegas — mis. tolak kiriman busuk atau bayar supplier.</p></details>
+      </div>
       <div class="card kesimpulan">💎 <b>Ingat 1 kalimat:</b> Tanpa aturan “kapan bereaksi”, mesin cuma bisa garis lurus — makanya butuh aktivasi.</div>
       <div class="card istilah">🏷️ <b>Nama resminya</b> <span class="tiny">(hafalkan yang kiri, kenali yang kanan)</span>
         <div class="tags"><span class="tag">aturan menyala = <b>fungsi aktivasi</b></span><span class="tag">Si Tegas = <b><i>step / threshold</i></b></span><span class="tag">Si Lembut = <b><i>sigmoid</i></b></span><span class="tag">Si Seimbang = <b><i>tanh</i></b></span><span class="tag">Si Cuek = <b><i>ReLU</i></b></span><span class="tag">kemiringan garis = <b><i>gradien</i></b></span><span class="tag">macet di ujung = <b><i>saturasi</i></b></span></div>
@@ -213,6 +234,7 @@
 
     <!-- ============ MLP ============ -->
     <section id="sec-mlp" class="page hidden">
+      <div class="card kilas">🔙 <b>Kilasan Misi 2:</b> Si Cerdas kini punya “kepribadian” dan bisa menyatakan keyakinan halus (70%, 30%…). Tapi ia masih bekerja sendirian dengan 2 petunjuk. Warung Sari butuh yang paham <b>banyak ciri sekaligus</b> — saatnya membentuk tim.</div>
       <div class="card story">🏃 <b>Cerita 30 detik:</b> Tebak hewan berlapis: tim depan melihat “ada garis? ada bulu?”, tim tengah menyimpulkan “kayak kucing?”, ketua memutuskan “KUCING!”. Tiap tim cuma mengoper <b>ringkasan</b> ke tim berikut — itulah jaringan berlapis.</div>
       <div class="card guide">🖐️ <b>Mainkan gambarnya dulu (3 langkah):</b>
         <ol>
@@ -241,6 +263,9 @@
       <details class="hitung"><summary>📐 Penasaran hitungannya? Klik di sini (boleh diskip!)</summary>
         <p>Tiap panah = kalikan lalu jumlahkan, terus lewat “kepribadian” (aktivasi). Ditumpuk berlapis-lapis, tumpukan hal sederhana ini bisa mengenali hal rumit seperti wajah kucing.</p>
       </details>
+      <div class="card analis">🧠 <b>Soal analis:</b> Sari menambah <b>50 lapis sekaligus TAPI lupa memasang aktivasi</b>. Apa yang terjadi pada kemampuan jaringan? Jelaskan ke Sari kenapa uang komputasinya terbuang — pakai bahasa warung.
+        <details><summary>Intip cara berpikirnya (jawab dulu baru buka!)</summary><p>Tidak bertambah apa-apa: tumpukan fungsi lurus tetaplah fungsi lurus (seperti 50 fotokopi dari fotokopi). Uang terbuang karena 50 lapis tak menambah “kelengkungan” kemampuan. Satu lapis + aktivasi mengalahkan 50 lapis tanpa aktivasi.</p></details>
+      </div>
       <div class="card kesimpulan">💎 <b>Ingat 1 kalimat:</b> Jaringan = tim estafet peringkas, makin banyak lapis makin abstrak ringkasannya.</div>
       <div class="card istilah">🏷️ <b>Nama resminya</b> <span class="tiny">(hafalkan yang kiri, kenali yang kanan)</span>
         <div class="tags"><span class="tag">jaringan ini = <b>MLP</b></span><span class="tag">tim = <b><i>layer</i> (lapisan)</b></span><span class="tag">tim tengah = <b><i>hidden layer</i></b></span><span class="tag">mengoper tebakan = <b><i>forward pass</i></b></span><span class="tag">keputusan akhir = <b><i>output</i></b></span></div>
@@ -251,6 +276,7 @@
 
     <!-- ============ LOSS ============ -->
     <section id="sec-loss" class="page hidden">
+      <div class="card kilas">🔙 <b>Kilasan Misi 3:</b> Si Cerdas kini kerja tim berlapis dan tebakannya mengalir indah. Sari mengangguk… lalu bertanya: <b>“tebakanmu ini bagus atau tidak?”</b> Si Cerdas terdiam — ia belum punya cermin. Misi ini memberinya cermin.</div>
       <div class="card story">🎯 <b>Cerita 30 detik:</b> Main lempar dart. Bullseye = jawaban benar. Lemparanmu = tebakan mesin. <b>Jaraknya</b> itulah skor meleset. Tugas mesin seumur hidupnya: bikin lemparan makin dekat ke tengah.</div>
       <div class="card guide">🖐️ <b>Mainkan gambarnya dulu (2 langkah):</b>
         <ol>
@@ -270,11 +296,14 @@
           <input type="range" id="loss-pred" min="0.01" max="0.99" step="0.01" value="0.3">
           <div class="calc" id="loss-calc"></div>
         </div>
-        <div class="card"><h3>👁️ Lihat lembah kemelesetan</h3><canvas id="loss-canvas" width="420" height="320"></canvas><p class="tiny">Titik merah = tebakanmu. Makin dekat ke garis hijau, makin dalam lembah = makin bagus.</p></div>
+        <div class="card"><h3>👁️ Lihat lembah loss</h3><canvas id="loss-canvas" width="420" height="320"></canvas><p class="tiny">Titik merah = tebakanmu. Makin dekat ke garis hijau, makin dalam lembah = makin bagus.</p></div>
       </div>
       <details class="hitung"><summary>📐 Penasaran hitungannya? Klik di sini (boleh diskip!)</summary>
         <p>Tebak angka: <code>(benar − tebakan)²</code> (kuadrat selisih). Tebak pilihan: <code>−[y·log ŷ + (1−y)·log(1−ŷ)]</code> (“betapa kagetnya” mesin saat salah).</p>
       </details>
+      <div class="card analis">🧠 <b>Soal analis:</b> Model A selalu meleset 0,1. Model B biasanya tepat tapi kadang meleset 2,0. MSE memilih siapa? Menurutmu adilkah untuk warung Sari? Kapan B justru lebih berbahaya?
+        <details><summary>Intip cara berpikirnya (jawab dulu baru buka!)</summary><p>MSE memilih A — pengkuadratan menghukum 2,0 dengan sangat berat (4 lawan 0,01). Adil jika satu kesalahan besar = bencana (mis. salah harga grosir merugikan besar). B berbahaya tepat di situ: rata-rata bagus tapi sesekali fatal. Tidak ada metrik yang netral — pilih sesuai akibat di dunia nyata.</p></details>
+      </div>
       <div class="card kesimpulan">💎 <b>Ingat 1 kalimat:</b> Skor meleset = jarak dari benar; belajar = mengecilkan jarak ini terus-menerus.</div>
       <div class="card istilah">🏷️ <b>Nama resminya</b> <span class="tiny">(hafalkan yang kiri, kenali yang kanan)</span>
         <div class="tags"><span class="tag">skor meleset = <b><i>loss</i></b></span><span class="tag">tebak angka = <b><i>MSE</i></b></span><span class="tag">tebak pilihan = <b><i>cross-entropy</i></b></span><span class="tag">jawaban benar = <b><i>target</i></b></span><span class="tag">tebakan mesin = <b><i>prediksi</i></b></span></div>
@@ -285,6 +314,7 @@
 
     <!-- ============ GRADIENT ============ -->
     <section id="sec-gradient" class="page hidden">
+      <div class="card kilas">🔙 <b>Kilasan Misi 4:</b> Si Cerdas kini bisa menghitung loss-nya sendiri. Sari menepuk bahunya: <b>“Bagus, kamu tahu salah. Sekarang… cara membetulkannya bagaimana?”</b> Misi ini: seni memperbaiki diri selangkah demi selangkah.</div>
       <div class="card story">⛷️ <b>Cerita 30 detik:</b> Kamu main ski dalam kabut tebal. Tidak kelihatan lembahnya di mana. Yang bisa kamu rasakan cuma: <b>tanah di bawah kaki miring ke mana?</b> Ya sudah, melangkah saja ke arah turun. Ulangi. Lama-lama sampai lembah. Itulah cara mesin belajar.</div>
       <div class="card guide">🖐️ <b>Mainkan gambarnya dulu (3 langkah wajib!):</b>
         <ol>
@@ -312,6 +342,9 @@
       <details class="hitung"><summary>📐 Penasaran hitungannya? Klik di sini (boleh diskip!)</summary>
         <p>Tiap langkah: <code>posisi_baru = posisi_lama − panjang_langkah × kemiringan</code>. Miring ke kanan → melangkah kiri. Nama kerennya gradient descent.</p>
       </details>
+      <div class="card analis">🧠 <b>Soal analis:</b> Sari tidak sabar dan memasang learning rate raksasa “biar sekali jadi”. (a) Prediksi 2 hal yang bisa terjadi pada bola. (b) Ia menolak mengecilkan learning rate. Taktik apa yang masih bisa menyelamatkan pelatihannya?
+        <details><summary>Intip cara berpikirnya (jawab dulu baru buka!)</summary><p>(a) Bola mental-mental melewati lembah (overshoot) bahkan kabur jauh (divergen). (b) Mulai dari beberapa titik awal berbeda lalu ambil hasil terbaik, atau turunkan learning rate bertahap. Intinya: tidak ada jalan pintas satu langkah raksasa.</p></details>
+      </div>
       <div class="card kesimpulan">💎 <b>Ingat 1 kalimat:</b> Belajar = mengintip kemiringan tanah, melangkah turun sedikit demi sedikit.</div>
       <div class="card istilah">🏷️ <b>Nama resminya</b> <span class="tiny">(hafalkan yang kiri, kenali yang kanan)</span>
         <div class="tags"><span class="tag">cara ski ini = <b><i>gradient descent</i></b></span><span class="tag">panjang langkah = <b><i>learning rate</i></b></span><span class="tag">kemiringan tanah = <b><i>gradien</i></b></span><span class="tag">lembah = <b><i>minimum</i></b></span><span class="tag">bola kabur = <b><i>divergen</i></b></span></div>
@@ -322,6 +355,7 @@
 
     <!-- ============ BACKPROP ============ -->
     <section id="sec-backprop" class="page hidden">
+      <div class="card kilas">🔙 <b>Kilasan Misi 5:</b> Si Cerdas kini bisa menuruni lembah loss selangkah demi selangkah. Tapi timnya protes: <b>“yang disalahkan kok selalu ketua?!”</b> Benar juga — Misi ini mengajarinya evaluasi yang adil ke seluruh tim.</div>
       <div class="card story">⚽ <b>Cerita 30 detik:</b> Tim kalah 0–1. Siapa salah? Bukan cuma kiper! Pelatih memutar ulang: siapa passing ngawur? Siapa salah posisi? <b>Kesalahan dibagi ke belakang</b> sesuai andil masing-masing, lalu tiap pemain dikoreksi. Itulah backprop: evaluasi yang adil, mundur dari hasil ke tiap anggota.</div>
       <div class="card guide">🖐️ <b>Mainkan gambarnya dulu:</b> Klik tombol <b>Langkah →</b> 4 kali, pelan-pelan. Perhatikan urutannya: 1) menebak → 2) sadar salah → 3) bagi-bagi salah → 4) koreksi. Ulangi 2–3 putaran, lihat skor melesetnya <b>mengecil</b>!
       </div>
@@ -353,6 +387,9 @@
       <details class="hitung"><summary>📐 Penasaran hitungannya? Klik di sini (boleh diskip!)</summary>
         <p>“Seberapa salah hasil kalau cara mainku digeser dikit?” = (salahnya hasil) × (pengaruhku ke hasil). Nama kerennya chain rule. Koreksi = cara_lama − galak × bagian_salahku.</p>
       </details>
+      <div class="card analis">🧠 <b>Soal analis:</b> Setelah dikoreksi, contoh X membaik <b>TAPI contoh Y memburuk</b>. Rusak atau normal? Apa yang dilakukan praktisi sungguhan dalam situasi ini?
+        <details><summary>Intip cara berpikirnya (jawab dulu baru buka!)</summary><p>Normal. Koreksi dari satu contoh bisa merugikan contoh lain — yang dioptimasi adalah <b>rata-rata banyak contoh</b>, bukan satu contoh. Praktisi: latih dengan banyak contoh sekaligus, pantau rata-rata loss, atur learning rate, dan tambah data.</p></details>
+      </div>
       <div class="card kesimpulan">💎 <b>Ingat 1 kalimat:</b> Backprop = menyalahkan dengan adil ke belakang, lalu mengoreksi sedikit-sedikit.</div>
       <div class="card istilah">🏷️ <b>Nama resminya</b> <span class="tiny">(hafalkan yang kiri, kenali yang kanan)</span>
         <div class="tags"><span class="tag">evaluasi mundur = <b><i>backpropagation</i></b></span><span class="tag">bagi-bagi salah = <b><i>backward pass</i></b></span><span class="tag">koreksi = <b><i>update</i></b></span><span class="tag">aturan membagi = <b><i>chain rule</i></b></span></div>
@@ -363,6 +400,7 @@
 
     <!-- ============ OVERFIT ============ -->
     <section id="sec-overfit" class="page hidden">
+      <div class="card kilas">🔙 <b>Kilasan Misi 6:</b> Evaluasi Si Cerdas kini adil — tiap anggota tim dikoreksi sesuai andilnya. Sari pun melatihnya 1000 putaran. Nilai latihannya: <b>sempurna!</b> Tapi minggu depannya, pelanggan baru kecewa berat. Lulus latihan ≠ lulus kehidupan — Misi ini membongkar jebakannya.</div>
       <div class="card story">📚 <b>Cerita 30 detik:</b> Dua siswa les. Si Penghafal: 100 soal latihan dihafal mati, nilai try-out 100! Tapi ujian asli soalnya beda dikit → jeblok. Si Paham Konsep: latihan 85, ujian 87 — stabil. Mesin pun bisa jadi “si penghafal” kalau dibiarkan terlalu rumit. Itulah yang disebut menghafal.</div>
       <div class="card guide">🖐️ <b>Mainkan gambarnya dulu (3 langkah):</b>
         <ol>
@@ -376,21 +414,24 @@
           <h3>🎛️ Geser-geser</h3>
           <label for="over-degree">Kerumitan cara belajar <span class="val" id="over-degree-v">3</span></label>
           <input type="range" id="over-degree" min="1" max="9" step="1" value="3">
-          <label for="over-noise">Soal latihannya berantakan? <span class="val" id="over-noise-v">0.3</span></label>
+          <label for="over-noise">Data latih berantakan? <span class="val" id="over-noise-v">0.3</span></label>
           <input type="range" id="over-noise" min="0" max="1" step="0.05" value="0.3">
-          <label for="over-n">Jumlah soal latihan <span class="val" id="over-n-v">18</span></label>
+          <label for="over-n">Jumlah data latih <span class="val" id="over-n-v">18</span></label>
           <input type="range" id="over-n" min="8" max="40" step="1" value="18">
           <div class="row"><button class="btn small" id="over-new">🎲 Soal baru</button><button class="btn small ghost" id="over-reset">↺ Reset</button></div>
           <div class="calc" id="over-calc"></div>
         </div>
-        <div class="card"><h3>👁️ Lihat: garis = cara belajar mesin, titik = soal</h3><canvas id="over-canvas" width="420" height="320"></canvas><p class="tiny">Titik biru = soal latihan. Titik abu = soal ujian (baru). Garis hijau putus-putus = pola sebenarnya.</p></div>
+        <div class="card"><h3>👁️ Lihat: garis = cara belajar mesin, titik = data</h3><canvas id="over-canvas" width="420" height="320"></canvas><p class="tiny">Titik biru = data latih. Titik abu = data uji (baru). Garis hijau putus-putus = pola sebenarnya.</p></div>
       </div>
       <details class="hitung"><summary>📐 Penasaran hitungannya? Klik di sini (boleh diskip!)</summary>
         <p>Model sederhana = penggaris (kaku tapi jujur). Model rumit = tali lentur (bisa nempel ke semua titik, termasuk salah). Obat menghafal: soal lebih banyak, cara lebih sederhana, berhenti sebelum hafal (early stopping).</p>
       </details>
+      <div class="card analis">🧠 <b>Soal analis:</b> Si Cerdas hafal 30 struk dan gagal di pelanggan baru. Sari usul: <b>tambah 200 lapis biar pintar</b>. (a) Setuju? (b) Beri 3 obat beserta alasan tiap obat.
+        <details><summary>Intip cara berpikirnya (jawab dulu baru buka!)</summary><p>(a) Tidak — makin rumit makin jago menghafal. (b) 1) Data latih lebih banyak & beragam: hafalan tak lagi cukup. 2) Model lebih sederhana: dipaksa mencari pola umum. 3) Berhenti sebelum hafal (early stopping) sambil mengecek data uji.</p></details>
+      </div>
       <div class="card kesimpulan">💎 <b>Ingat 1 kalimat:</b> Yang penting bukan nilai latihan, tapi nilai di soal yang belum pernah dilihat.</div>
       <div class="card istilah">🏷️ <b>Nama resminya</b> <span class="tiny">(hafalkan yang kiri, kenali yang kanan)</span>
-        <div class="tags"><span class="tag">menghafal = <b><i>overfitting</i></b></span><span class="tag">kurang belajar = <b><i>underfitting</i></b></span><span class="tag">paham = <b><i>generalisasi</i></b></span><span class="tag">soal latihan = <b><i>train data</i></b></span><span class="tag">soal ujian = <b><i>test data</i></b></span></div>
+        <div class="tags"><span class="tag">menghafal = <b><i>overfitting</i></b></span><span class="tag">kurang belajar = <b><i>underfitting</i></b></span><span class="tag">paham = <b><i>generalisasi</i></b></span><span class="tag">data latih = <b><i>training data</i></b></span><span class="tag">data uji = <b><i>test data</i></b></span><span class="tag">kerumitan garis = <b>derajat polinomial</b></span></div>
       </div>
       <div class="quiz" data-quiz="overfit"></div>
       <div class="nav-foot"><button class="btn ghost done-btn" data-mod="overfit">✓ Tandai selesai</button><a class="btn primary" href="#cnn">Lanjut: mata komputer →</a></div>
@@ -398,6 +439,7 @@
 
     <!-- ============ CNN ============ -->
     <section id="sec-cnn" class="page hidden">
+      <div class="card kilas">🔙 <b>Kilasan Misi 7:</b> Si Cerdas kini jujur — paham, bukan menghafal. Tapi Sari sadar: selama ini petunjuknya <b>disuapi angka</b> oleh Sari sendiri. “Kapan kamu bisa melihat foto struk belanja dengan matamu sendiri?” Tantangan baru: beri Si Cerdas mata.</div>
       <div class="card story">🔦 <b>Cerita 30 detik:</b> Kamu meraba foto dalam gelap pakai bingkai kecil. Geser bingkai ke tiap sudut, tiap berhenti tanya: “ada garis di sini? ada tepi?”. Lama-lama di kepalamu terkumpul peta: “oh, ada lingkaran di tengah!” — begitulah komputer “melihat” foto.</div>
       <div class="card guide">🖐️ <b>Mainkan gambarnya dulu (3 langkah):</b>
         <ol>
@@ -412,23 +454,26 @@
           <h3>🎛️ Geser-geser</h3>
           <label for="cnn-pattern">Gambar 5×5 (boleh diklik!)</label>
           <select id="cnn-pattern"><option value="x">Huruf X</option><option value="o">Kotak O</option><option value="line">Garis tegak</option><option value="random">Acak</option></select>
-          <label for="cnn-filter">Bingkai peraba 3×3</label>
+          <label for="cnn-filter">Filter 3×3 (pola peraba)</label>
           <select id="cnn-filter"><option value="edge">Pendeteksi tepi</option><option value="blur">Pelembut (blur)</option><option value="sharpen">Penajam</option><option value="vert">Pencari garis tegak</option></select>
-          <p class="tiny">Klik kotak gambar untuk menyalakan/mematikan. Peta temuan + peta ringkas ikut berubah.</p>
+          <p class="tiny">Klik kotak gambar untuk menyalakan/mematikan. Feature map + hasil pooling ikut berubah.</p>
           <div class="row"><button class="btn small ghost" id="cnn-reset">↺ Reset</button></div>
           <div class="calc" id="cnn-calc"></div>
         </div>
         <div class="card"><h3>👁️ Gambar → Peta temuan → Versi mungil</h3>
           <div class="cnn-grids">
             <div><b>Gambar</b><div id="cnn-in" class="grid5"></div></div>
-            <div><b>Peta temuan</b><div id="cnn-out" class="grid3cnn"></div></div>
-            <div><b>Peta ringkas</b><div id="cnn-pool" class="grid2"></div></div>
+            <div><b>Feature map</b><div id="cnn-out" class="grid3cnn"></div></div>
+            <div><b>Hasil pooling</b><div id="cnn-pool" class="grid2"></div></div>
           </div>
         </div>
       </div>
       <details class="hitung"><summary>📐 Penasaran hitungannya? Klik di sini (boleh diskip!)</summary>
         <p>Tiap kotak peta = kecocokan gambar dengan bingkai di jendela 3×3 itu (yang negatif dibuang jadi 0). “Meremas” (pooling) = ambil yang terbesar tiap kotak 2×2 biar gambar mengecil tapi intinya awet. Ditumpuk banyak lapis: garis → bentuk → benda.</p>
       </details>
+      <div class="card analis">🧠 <b>Soal analis:</b> Foto struk miring 45°. Apakah filter pencari garis tegak masih menemukannya? Bagaimana CNN sungguhan mengatasi foto miring dan bergeser?
+        <details><summary>Intip cara berpikirnya (jawab dulu baru buka!)</summary><p>Banyak yang gagal — filter hanya cocok pada orientasi yang pernah dilatih. Solusi nyata: <b>augmentasi</b> (latih dengan foto yang diputar/digeser), filter yang beragam, dan pooling yang membantu sedikit terhadap pergeseran kecil.</p></details>
+      </div>
       <div class="card kesimpulan">💎 <b>Ingat 1 kalimat:</b> Komputer melihat dengan meraba tiap sudut pakai pola kecil, lalu merangkumnya berlapis-lapis.</div>
       <div class="card istilah">🏷️ <b>Nama resminya</b> <span class="tiny">(hafalkan yang kiri, kenali yang kanan)</span>
         <div class="tags"><span class="tag">meraba = <b><i>konvolusi (convolution)</i></b></span><span class="tag">bingkai peraba = <b><i>filter / kernel</i></b></span><span class="tag">peta temuan = <b><i>feature map</i></b></span><span class="tag">peta ringkas = <b><i>max-pooling</i></b></span><span class="tag">jaringan peraba = <b><i>CNN</i></b></span></div>
@@ -439,6 +484,7 @@
 
     <!-- ============ RNN ============ -->
     <section id="sec-rnn" class="page hidden">
+      <div class="card kilas">🔙 <b>Kilasan Misi 8:</b> Si Cerdas kini bisa melihat foto. Tapi warung hidup dalam <b>waktu</b>: kemarin sepi, hari ini ramai, besok butuh stok apa? Foto tak bisa menjawabnya. Misi ini memberinya ingatan.</div>
       <div class="card story">📝 <b>Cerita 30 detik:</b> Kamu nonton sinetron sambil bawa catatan kecil. Tiap episode baru, kamu update catatan: gabung ingatan lama + kejadian baru. Kalau catatanmu gampang hilang tintanya (pelupa), kamu bingung “eh ini siapa?”. Kalau awet, kamu paham alurnya. Mesin urutan (lagu, chat, saham) bekerja persis begitu.</div>
       <div class="card guide">🖐️ <b>Mainkan gambarnya dulu:</b> Klik <b>▶ Mainkan urutan</b>. Lihat catatan (garis biru) berubah tiap angka masuk. Lalu geser <b>daya ingat ke 0</b> dan mainkan lagi — catatannya datar = amnesia total!
       </div>
@@ -462,6 +508,9 @@
       <details class="hitung"><summary>📐 Penasaran hitungannya? Klik di sini (boleh diskip!)</summary>
         <p>Tiap kejadian: <code>catatan = tanh(daya_ingat × catatan_lama + kejadian_baru)</code>. Hasilnya selalu dijaga −1 s/d 1 biar tidak meledak. Versi canggihnya punya penghapus selektif (namanya LSTM): lupa yang tak penting, simpan yang penting.</p>
       </details>
+      <div class="card analis">🧠 <b>Soal analis:</b> Sari ingin meramal stok minggu depan dari <b>365 hari data</b>, hanya dengan catatan kecil. (a) Sebut 2 risiko yang mengintai. (b) Kapan catatan kecil cukup, kapan tidak?
+        <details><summary>Intip cara berpikirnya (jawab dulu baru buka!)</summary><p>(a) Info lama memudar (lupa) dan satu kejadian ekstrem bisa menimpa segalanya. (b) Cukup untuk pola pendek seperti mingguan; tidak cukup untuk ketergantungan jauh seperti musiman — di situlah perlu LSTM, catatan lebih besar, atau attention.</p></details>
+      </div>
       <div class="card kesimpulan">💎 <b>Ingat 1 kalimat:</b> Mesin urutan = pembawa catatan kecil yang diupdate tiap kejadian baru.</div>
       <div class="card istilah">🏷️ <b>Nama resminya</b> <span class="tiny">(hafalkan yang kiri, kenali yang kanan)</span>
         <div class="tags"><span class="tag">catatan = <b><i>hidden state</i></b></span><span class="tag">urutan kejadian = <b><i>sequence</i></b></span><span class="tag">penghapus selektif = <b><i>LSTM</i></b></span><span class="tag">jaringan ingatan = <b><i>RNN</i></b></span></div>
@@ -472,6 +521,7 @@
 
     <!-- ============ ATTENTION ============ -->
     <section id="sec-attention" class="page hidden">
+      <div class="card kilas">🔙 <b>Kilasan Misi 9:</b> Si Cerdas kini ingat urutan lewat catatan kecilnya. Tapi catatan itu sempit dan pelupa — untuk <b>chat panjang pelanggan</b>, ia kebingungan sendiri. Misi ini mengajarinya cara mendengarkan yang cerdas.</div>
       <div class="card story">🗣️ <b>Cerita 30 detik:</b> “Kucing mengejar tikus karena <b>ia</b> lapar.” Siapa “ia”? Otakmu langsung menoleh ke “kucing”, bukan ke “tikus”. Nah, mesin bahasa melakukan hal yang sama untuk tiap kata: bertanya <b>“aku harus mendengarkan siapa?”</b> — itulah perhatian (attention), dasar ChatGPT & co.</div>
       <div class="card guide">🖐️ <b>Mainkan gambarnya dulu:</b> Klik kata <b>“ia”</b> di bawah → lihat kolomnya: kata mana yang paling pekat (paling didengarkan)? Coba klik kata lain juga!
       </div>
@@ -494,6 +544,9 @@
       <details class="hitung"><summary>📐 Penasaran hitungannya? Klik di sini (boleh diskip!)</summary>
         <p>Kemiripan tiap pasangan kata dihitung, lalu diubah jadi persen (total 100%) — nama kerennya <code>softmax(QKᵀ/√d)</code>. Transformer = banyak “rapat” seperti ini sekaligus, paralel.</p>
       </details>
+      <div class="card analis">🧠 <b>Soal analis:</b> Chatbot ditanya <b>“berapa harga tempe kemarin dan hari ini?”</b> (a) Kata mana wajib diperhatikan untuk menjawab “kemarin”? (b) Apa akibat nyata jika salah dengar? (c) Bagaimana Sari menguji chatbot sebelum dipakai pelanggan?
+        <details><summary>Intip cara berpikirnya (jawab dulu baru buka!)</summary><p>(a) “Kemarin” harus menarik harga lama; “hari ini” menarik harga baru. (b) Menjawab harga salah → pelanggan komplain, kepercayaan runtuh. (c) Uji dengan daftar pertanyaan jebakan + kunci jawaban, hitung akurasinya — jangan pernah langsung ke pelanggan.</p></details>
+      </div>
       <div class="card kesimpulan">💎 <b>Ingat 1 kalimat:</b> Attention = tiap kata memilih siapa yang mau didengarkan agar paham konteks.</div>
       <div class="card istilah">🏷️ <b>Nama resminya</b> <span class="tiny">(hafalkan yang kiri, kenali yang kanan)</span>
         <div class="tags"><span class="tag">perhatian = <b><i>attention</i></b></span><span class="tag">yang bertanya = <b><i>query (Q)</i></b></span><span class="tag">yang didengarkan = <b><i>key (K)</i></b></span><span class="tag">isi yang dikirim = <b><i>value (V)</i></b></span><span class="tag">dibagi habis = <b><i>softmax</i></b></span><span class="tag">mesin rapat massal = <b><i>Transformer</i></b></span></div>
@@ -504,24 +557,25 @@
 
     <!-- ============ PLAYGROUND ============ -->
     <section id="sec-playground" class="page hidden">
+      <div class="card kilas">🔙 <b>Kilasan Misi 10:</b> Semua keping sudah di tangan — menimbang, keyakinan, tim, cermin, langkah, evaluasi, kejujuran, mata, ingatan, telinga. <b>Misi terakhir:</b> rakit semuanya jadi satu otak utuh, dan latih AI sungguhan dengan tanganmu sendiri. Buktikan kamu (dan Si Cerdas) lulus!</div>
       <div class="card story">🎮 <b>Misi main (baca ini saja cukup):</b> Kamu akan melatih AI <b>sungguhan</b> di browser ini. Buktikan sendiri: data berbentuk lingkaran <b>TIDAK BISA</b> dipisah garis lurus — butuh tim tengah + “kepribadian”. Tekan Latih dan lihat batas warnanya melengkung sendiri!</div>
       <div class="card guide">🖐️ <b>3 misi berurutan (jangan dilompat):</b>
         <ol>
-            <li><b>Misi 1 (yakin bisa):</b> bentuk silang ✖, tim 4 orang, tekan <b>▶ Latih</b> → harusnya rapi dalam 1 menit.</li>
-            <li><b>Misi 2 (aha!):</b> bentuk lingkaran ⭕, tim 0 (tanpa tim tengah!) → latih → GAGAL. Naikkan tim jadi 4 → latih → BERHASIL. Itulah bukti garis lurus tak cukup.</li>
-            <li><b>Misi 3 (bos terakhir 🌀):</b> bentuk spiral, tim 8+4 → butuh kesabaran, tapi bisa!</li>
+          <li><b>Misi 1 (yakin bisa):</b> dataset silang ✖, hidden layer 4 neuron, tekan <b>▶ Latih</b> → tunggu ~15 detik sampai rapi.</li>
+          <li><b>Misi 2 (aha!):</b> dataset lingkaran ⭕, hidden layer 0 (tanpa lapisan tengah!) → latih → GAGAL. Naikkan jadi 4 → latih → BERHASIL. Itulah bukti garis lurus tak cukup.</li>
+          <li><b>Misi 3 (bos terakhir 🌀):</b> dataset spiral, hidden layer 8+4 → butuh kesabaran. Kalau akurasi mentok di ~65%, klik <b>Acak ulang otak</b> dan coba lagi (nasib awal yang acak kadang apes — praktisi pun mengulang!).</li>
         </ol>
       </div>
       <div class="cols wide">
         <div class="card controls">
           <h3>🎛️ Atur tim & latihanmu</h3>
           <div class="pg-grid">
-            <div><label for="pg-data">Bentuk soal</label><select id="pg-data"><option value="circle">⭕ Lingkaran</option><option value="xor">✖ Silang (XOR)</option><option value="spiral">🌀 Spiral (bos!)</option><option value="gauss">🔵 Dua kelompok</option></select></div>
-            <div><label for="pg-h1">Tim lapis 1 (orang) <span class="val" id="pg-h1-v">4</span></label><input type="range" id="pg-h1" min="0" max="8" step="1" value="4"></div>
-            <div><label for="pg-h2">Tim lapis 2 (orang) <span class="val" id="pg-h2-v">0</span></label><input type="range" id="pg-h2" min="0" max="8" step="1" value="0"></div>
-            <div><label for="pg-act">Gaya tim</label><select id="pg-act"><option value="tanh" selected>Seimbang (Tanh)</option><option value="relu">Cuek (ReLU)</option><option value="sigmoid">Lembut (Sigmoid)</option></select></div>
-            <div><label for="pg-lr">Panjang langkah <span class="val" id="pg-lr-v">0.1</span></label><input type="range" id="pg-lr" min="0.01" max="1" step="0.01" value="0.1"></div>
-            <div><label for="pg-noise">Soal berantakan? <span class="val" id="pg-noise-v">0.1</span></label><input type="range" id="pg-noise" min="0" max="0.5" step="0.05" value="0.1"></div>
+            <div><label for="pg-data">Dataset</label><select id="pg-data"><option value="circle">⭕ Lingkaran</option><option value="xor">✖ Silang (XOR)</option><option value="spiral">🌀 Spiral (bos!)</option><option value="gauss">🔵 Dua kelompok</option></select></div>
+            <div><label for="pg-h1">Hidden layer 1 (neuron) <span class="val" id="pg-h1-v">4</span></label><input type="range" id="pg-h1" min="0" max="8" step="1" value="4"></div>
+            <div><label for="pg-h2">Hidden layer 2 (neuron) <span class="val" id="pg-h2-v">0</span></label><input type="range" id="pg-h2" min="0" max="8" step="1" value="0"></div>
+            <div><label for="pg-act">Aktivasi</label><select id="pg-act"><option value="tanh" selected>Seimbang (Tanh)</option><option value="relu">Cuek (ReLU)</option><option value="sigmoid">Lembut (Sigmoid)</option></select></div>
+            <div><label for="pg-lr">Learning rate <span class="val" id="pg-lr-v">0.5</span></label><input type="range" id="pg-lr" min="0.01" max="1" step="0.01" value="0.5"></div>
+            <div><label for="pg-noise">Noise (keacakan data) <span class="val" id="pg-noise-v">0.1</span></label><input type="range" id="pg-noise" min="0" max="0.5" step="0.05" value="0.1"></div>
           </div>
           <div class="row">
             <button class="btn primary" id="pg-train">▶ Latih</button>
@@ -530,12 +584,15 @@
             <button class="btn ghost" id="pg-reset">↺ Acak ulang otak</button>
             <button class="btn ghost" id="pg-newdata">🎲 Soal baru</button>
           </div>
-          <div class="calc" id="pg-calc">Putaran 0 • Skor meleset - • Ketepatan - (klik Latih untuk mulai!)</div>
+          <div class="calc" id="pg-calc">Epoch 0 • Loss - • Akurasi - (klik Latih untuk mulai!)</div>
         </div>
         <div class="card"><h3>👁️ Lihat batas warna belajar (oranye vs biru)</h3>
           <canvas id="pg-canvas" width="420" height="420"></canvas>
           <canvas id="pg-loss" width="420" height="120"></canvas>
         </div>
+      </div>
+      <div class="card analis">🧠 <b>Soal analis (ujian kelulusan!):</b> Spiralmu 100% di data latih tapi 70% di soal baru. (a) Diagnosisnya? (b) Susun rencana 3 langkah memakai tombol yang ada. (c) Kapan kamu berhenti melatih?
+        <details><summary>Intip cara berpikirnya (jawab dulu baru buka!)</summary><p>(a) Overfitting klasik. (b) Tambah data yang beragam, sederhanakan hidden layer, latih bertahap sambil memantau akurasi. (c) Berhenti saat akurasi soal baru berhenti naik (early stopping) — bukan saat data latih 100%.</p></details>
       </div>
       <div class="card kesimpulan">💎 <b>Ingat 1 kalimat:</b> Soal melengkung butuh tim tengah + kepribadian — garis lurus saja tidak akan pernah cukup.</div>
       <div class="card istilah">🏷️ <b>Nama resminya</b> <span class="tiny">(hafalkan yang kiri, kenali yang kanan)</span>

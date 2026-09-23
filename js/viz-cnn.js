@@ -61,7 +61,7 @@ function initVizCnn(){
       dpool.appendChild(d);
     })});
     var namaFilter={edge:"pendeteksi tepi",blur:"pelembut",sharpen:"penajam",vert:"pencari garis tegak"}[fk];
-    $("cnn-calc").innerHTML="Bingkai <b>"+namaFilter+"</b> sedang dipakai.\nTiap kotak peta = seberapa cocok gambar dengan bingkai di jendela itu (yang negatif dibuang jadi 0).\nTemuan terkuat = "+mx.toFixed(2)+". Coba gambar sendiri: klik kotak-kotak gambar!";
+    $("cnn-calc").innerHTML="Filter <b>"+namaFilter+"</b> sedang dipakai.\nTiap kotak feature map = seberapa cocok gambar dengan filter di jendela itu (yang negatif dibuang jadi 0).\nTemuan terkuat = "+mx.toFixed(2)+". Coba gambar sendiri: klik kotak-kotak gambar!";
   }
   $("cnn-pattern").addEventListener("change",function(){setPattern(this.value);draw()});
   $("cnn-filter").addEventListener("change",draw);

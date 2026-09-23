@@ -1,64 +1,52 @@
-# Deep Learning Visualization — Paham Cara Kerja AI Tanpa Pusing Rumus 🧠
+# Misi Si Cerdas — Rakit AI Warung dari Nol Total 🤖
 
-Website interaktif **Bahasa Indonesia** untuk **semua orang** — termasuk yang bukan dari ilmu komputer.
-Setiap konsep deep learning diajarkan dengan pola: **cerita sehari-hari dulu → mainkan gambarnya → rumus boleh diskip.**
+Bantu **Sari** membangun **Si Cerdas**, AI warung pertamanya: memilih buah matang,
+meramal stok, membaca foto struk, menjawab chat pelanggan. Kamu mulai dari **NOL besar** —
+11 misi interaktif Bahasa Indonesia, tiap misi membuka 1 kemampuan + XP.
 
-🌐 **Coba langsung (online):** https://naufalrama28.github.io/deep-learning-visualization/
+🌐 **Main langsung (online):** https://naufalrama28.github.io/deep-learning-visualization/
 
 ![Tanpa dependensi](https://img.shields.io/badge/dependensi-nol-brightgreen) ![Bahasa](https://img.shields.io/badge/bahasa-Indonesia-blue) ![Offline](https://img.shields.io/badge/offline-bisa-orange)
 
 ## ✨ Fitur
-- **11 modul visual + 1 latihan nyata**: Otak Mini, Lampu Menyala, Kerja Tim Berlapis, Skor Meleset, Bola ke Lembah, Evaluasi Tim, Hafalan vs Paham, Mata Komputer, Daya Ingat, Rapat Kata, + **Latihan Nyata (latih AI sungguhan di browser)**
-- **Cerita dulu, rumus belakangan**: tiap modul dibuka cerita 30 detik (pasar buah, ski, sinetron…), ditutup 1 kalimat kesimpulan. Hitungan disembunyikan di kotak lipat.
-- **Semua bisa diutak-atik**: 60+ tombol geser/klik — seberapa penting petunjuk, standar kelulusan, panjang langkah, bingkai peraba, bentuk soal, susunan tim. Ada tombol Reset di tiap halaman.
-- **Panduan 3 langkah** di tiap modul — pengunjung tidak pernah bingung "harus apa".
-- **Kuis cerita** tiap modul + progress tersimpan otomatis + mode gelap/terang + responsif HP & laptop + 100% offline.
+- **11 misi bersambung**: tiap misi dibuka kilasan misi lalu ("previously on…"), ditutup kemampuan baru. Cerita Sari terus jalan dari Misi 1 sampai 11.
+- **Gamifikasi**: maskot Si Cerdas tumbuh (Bibit → Tunas → Anak → Remaja → Dewasa → Master), +100 XP per misi, +25 XP per jawaban kuis benar, 11 lencana kemampuan.
+- **Pedagogi berlapis**: briefing → main 3 langkah → tantangan 30 detik (tebak dulu!) → **soal analis HOTS** + jawaban model → kesimpulan 1 kalimat → istilah resmi → kuis.
+- **Istilah asli, bukan terjemahan aneh**: loss, epoch, dataset, filter, overfitting… dipakai wajar seperti dosen Indonesia, selalu ada artinya di kamus + kotak istilah.
+- **Semua bisa diutak-atik**: 60+ kontrol + Reset per misi. Mode gelap/terang, responsif HP, 100% offline.
 
-## 🚀 Cara Membuka (pilih 1)
+## 🚀 Cara Membuka
+**Online:** buka link di atas di Chrome/Edge/HP.
+**Folder:** klik 2x `index.html`, atau `python -m http.server 8000` → `http://localhost:8000`.
 
-**1. Versi online (paling mudah):**
-Buka https://naufalrama28.github.io/deep-learning-visualization/ di Chrome/Edge/HP.
+## 🗺️ Mulai Belajar
+- **Waktu sedikit?** Jalur cepat (4 misi = 80% intuisi): Otak Mini → Cermin → Lembah → Ujian Kelulusan.
+- **Lengkap?** Ikuti Misi 1→11 di `LEARNING_PATH.md` (8–15 mnt/misi).
+- Aturan main tiap misi: baca kilasan → briefing → 3 langkah → tantangan → analis → kesimpulan → istilah → kuis → klaim XP.
 
-**2. Klik 2x dari folder:**
-Buka folder ini → klik 2x `index.html`.
-
-**3. Server lokal:**
-```powershell
-cd D:\Coding\deep-learning-visualization
-python -m http.server 8000
-# buka http://localhost:8000 di Chrome/Edge
-```
-
-## 🗺️ Mulai Belajar (8–15 mnt per modul)
-- **Waktu sedikit?** Ikut **jalur super awam** (4 modul = 80% intuisi): Otak Mini → Seberapa Meleset? → Bola ke Lembah → Latihan Nyata.
-- **Waktu banyak?** Ikuti urutan 1→12 di `LEARNING_PATH.md`.
-- Tiap modul: baca cerita → ikuti 3 langkah main gambar → baca kesimpulan → jawab kuis → centang selesai.
-
-## 📖 Kamus singkat (istilah → bahasa sehari-hari)
-| Istilah | Artinya |
-|---|---|
-| Bobot | Seberapa penting sebuah petunjuk |
-| Standar kelulusan (bias) | Ambang keputusan YA/BELUM |
-| Skor meleset (loss) | Jarak tebakan dari jawaban (0 = tepat) |
-| Panjang langkah (learning rate) | Seberapa besar tiap langkah belajar |
-| Putaran latihan (epoch) | Satu putaran melihat semua contoh |
-| Menghafal (overfitting) | Nilai latihan bagus, soal baru jeblok |
+## 📖 Kamus kilat (istilah asli + artinya)
+neuron • perceptron • bobot (weight) • bias • loss • learning rate • epoch •
+akurasi • overfitting • dataset • hidden layer • filter. Lengkap di beranda.
 
 ## 📁 Struktur
 ```
-index.html                  # satu-satunya halaman (11 modul + latihan)
-css/style.css               # tema terang/gelap, kartu cerita/panduan/kesimpulan
-js/app.js                   # navigasi, progress, tema, kuis
-js/lessons.js               # judul modul + bank kuis (sumber kebenaran konten)
-js/viz-*.js                 # satu file = satu visual interaktif
+index.html                  # 11 misi (kilas/cerita/panduan/tantangan/analis/istilah/kuis)
+css/style.css               # identitas "kertas warung" + mode gelap hangat
+js/app.js                   # router, XP/level/maskot, kuis, tema, progress
+js/lessons.js               # judul misi + bank kuis
+js/viz-*.js                 # satu file = satu mesin visual interaktif
+tools/audit-bahasa.py       # audit mutu otomatis (struktur + anti-coinage + ID + kuis)
 PRD.md | ARCHITECTURE.md | LEARNING_PATH.md | AGENTS.md | DEPLOY.md
 ```
 
-## ❓ FAQ
-**Saya bukan anak komputer, bisa ikut?** Bisa — itu target utama. Tidak perlu matematika & coding; cukup bisa menggeser tombol.
-**Perlu install / internet?** Versi online cukup browser. Versi folder 100% offline setelah didapat.
-**Cocok untuk anak SMA / guru?** Ya — tiap modul ada cerita, panduan langkah, dan 1 kalimat kesimpulan yang bisa dikutip.
-**Ada rumusnya?** Ada, tapi disembunyikan di kotak lipat "Penasaran hitungannya?" — dibuka hanya kalau sudah penasaran.
-**Bisa rusak kalau salah pencet?** Tidak — tiap halaman ada tombol Reset.
+## ✅ Mutu terjaga otomatis
+- `python tools/audit-bahasa.py` — struktur 11 misi, larangan terjemahan aneh, integritas ID & kuis.
+- Harness jsdom (uji router, XP, maskot, semua visual, training 400 epoch): 41 cek, semua lolos.
 
-Selamat mengutak-atik! 🎛️
+## ❓ FAQ
+**Bukan anak komputer, bisa?** Itu target utama — mulai dari nol total, tanpa matematika & coding.
+**Istilah Inggrisnya tidak diterjemahkan?** Sengaja. Yang dipakai = istilah yang memang hidup (loss, epoch…). Artinya selalu ada di kamus/kotak istilah. Yang dilarang = terjemahan harfiah yang aneh.
+**Bisa rusak kalau salah pencet?** Tidak — tiap misi ada Reset; progress & XP tersimpan di browser.
+**Untuk guru?** Tiap misi ada soal analis + jawaban model — siap pakai untuk diskusi kelas.
+
+Selamat merakit! 🎛️

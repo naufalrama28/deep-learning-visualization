@@ -37,7 +37,8 @@ function initVizGradient(){
   $("grad-run").onclick=function(){
     if(timer){stop();return}
     $("grad-run").textContent="⏸ Pause";
-    timer=setInterval(function(){var s=window.GLOBAL_SPEED||1;step();if(Math.abs(g(w))<0.01){stop();$("grad-calc").innerHTML+="\n✅ Sampai lembah! Tanahnya sudah datar."}},300/s);
+    var sp=(window.GLOBAL_SPEED||1);
+    timer=setInterval(function(){step();if(Math.abs(g(w))<0.01){stop();$("grad-calc").innerHTML+="\n✅ Sampai lembah! Tanahnya sudah datar."}},300/sp);
   };
   $("grad-reset").onclick=function(){stop();w=+$("grad-start").value;trail=[];draw()};
   $("grad-start").addEventListener("input",function(){w=+$("grad-start").value;trail=[];draw()});

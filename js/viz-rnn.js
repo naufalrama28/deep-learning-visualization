@@ -12,7 +12,7 @@ function initVizRnn(){
     var box=$("rnn-track");box.innerHTML="";
     seq.forEach(function(v,i){
       var d=document.createElement("div");d.className="step-chip"+(i<idx?" active":"");
-      d.textContent="Ke-"+(i+1)+": masuk "+v+(i<hist.length?" → ingatan "+hist[i].toFixed(2):"");
+      d.textContent="Ke-"+(i+1)+": masuk "+v+(i<hist.length?" → catatan "+hist[i].toFixed(2):"");
       box.appendChild(d);
     });
     // grafik h
@@ -50,7 +50,8 @@ function initVizRnn(){
     if(timer){clearInterval(timer);timer=null;this.textContent="▶ Mainkan urutan";return}
     this.textContent="⏸ Pause";
     var self=this;
-    timer=setInterval(function(){var s=window.GLOBAL_SPEED||1;if(!stepOnce()){clearInterval(timer);timer=null;self.textContent="▶ Mainkan urutan"}},600/s);
+    var sp=(window.GLOBAL_SPEED||1);
+    timer=setInterval(function(){if(!stepOnce()){clearInterval(timer);timer=null;self.textContent="▶ Mainkan urutan"}},600/sp);
   };
   $("rnn-reset").onclick=function(){idx=0;hist=[];if(timer){clearInterval(timer);timer=null;$("rnn-play").textContent="▶ Mainkan urutan"}drawTrack()};
   $("rnn-seq").addEventListener("change",function(){idx=0;hist=[];drawTrack()});
