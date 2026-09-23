@@ -1,0 +1,14 @@
+# User Taste Profile
+- Communicates primarily in Bahasa Indonesia (Indonesian); comfortable mixing with English for technical terms. Confidence: 0.95
+- Prefers direct, passionate, and informal communication style — uses caps for emphasis, exclamation marks, and colloquial language. Confidence: 0.9
+- Explicitly rejects "AI slop" — generic, low-effort, copy-paste content with jargon that doesn't connect coherently. Expects substance over surface-level output. Confidence: 0.95
+- Demands high-quality, professional, fresh, modern, clean design that looks unique and distinctive — not generic AI-template aesthetics. Confidence: 0.95
+- Expects no flaws in the final product; will not accept rushed or incomplete work. "GA ADA MINUSNYA" (no flaws at all). Confidence: 0.9
+- Prefers iterative refinement (trial and error) over rushing to finish — "Jangan buru-buru mau kelarin tasknya." Quality over speed. Confidence: 0.9
+- Wants complete rework / fresh start rather than incremental patches on bad existing structures. "REMAKE... tanpa ada ingatan atau mempertahankan konten, tampilan lama." Confidence: 0.85
+- Values pedagogically-sound content backed by science (active learning, analogies, visuals, applicable problems, high-order thinking skills). Confidence: 0.9
+- Wants content to be progressive — building from absolute beginner to deep mastery, with all topics connected in a coherent narrative arc. Confidence: 0.9
+- Expects gamified, story-driven learning experience with goals and narrative continuity — not disjointed topic dumps. Confidence: 0.85
+- Technical terminology should stay in English if the English term is the proper/clean version — do not force Indonesian translation that sounds awkward. Confidence: 0.85
+- Expects the AI to operate as a multi-role expert: mentor, analyst, consultant, executor — not just a code generator. Confidence: 0.9
+- Expects deep domain knowledge in web development, producing high-quality, functional, and unique websites. Confidence: 0.85

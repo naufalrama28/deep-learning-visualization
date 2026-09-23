@@ -1,103 +1,203 @@
-# PRD — Website Visualisasi Deep Learning untuk Pemula
+# PRD — Neural Lab: Deep Learning Interaktif
 
-**Nama Proyek:** Misi Si Cerdas (DL-Viz)
-**Lokasi:** `D:\Coding\deep-learning-visualization`
+**Versi:** 3.0.0 (rework total — fresh start)
+**Tanggal:** 23 September 2026
+**Status:** Development
+**Stack:** HTML5 + CSS3 + Vanilla JS (zero dependencies, zero build)
 **Live:** https://naufalrama28.github.io/deep-learning-visualization/
-**Versi:** 2.0.0 (rework: narasi Sari + XP + analis HOTS + istilah wajar)
-**Tanggal:** 23 Sep 2026
-**Bahasa:** Indonesia + istilah Inggris yang hidup (loss, epoch, dataset…), tanpa terjemahan aneh
-**Target:** Orang awam total yang ingin jadi master — pelajar, guru, otodidak
 
-## 1. Latar Belakang & Masalah
-Kebanyakan materi deep learning berupa rumus (∑, ∂, matriks) tanpa gambaran intuitif. Pemula kesulitan membayangkan:
-- Bagaimana mesin menimbang petunjuk lalu memutuskan (bobot, bias, aktivasi)?
-- Bagaimana tebakan diukur lalu diperbaiki berulang (skor meleset, langkah belajar, evaluasi mundur)?
-- Bagaimana komputer "melihat" gambar, "mengingat" urutan, "memilih" kata yang didengarkan?
+---
 
-## 2. Tujuan Produk
-Membuat website edukasi interaktif yang:
-1. **Bercerita bersambung:** Sari + Si Cerdas, 11 misi berantai; tiap misi dibuka kilasan misi lalu.
-2. **Tergambar:** setiap konsep ada visual SVG/Canvas yang dimainkan lewat 3 langkah + tantangan tebak-dulu.
-3. **Melatih nalar:** tiap misi ada soal analis HOTS aplikatif + jawaban model (bukan sekadar ingatan).
-4. **Jujur beristilah:** istilah hidup dipakai langsung (loss, epoch…), selalu ada artinya di kamus/kotak istilah.
-5. **Memotivasi:** XP (+100 misi, +25 kuis), 6 level maskot Si Cerdas, 11 lencana kemampuan.
-6. **Bisa diatur/diubah:** semua visual real-time + Reset; latihan nyata melatih jaringan sungguhan.
+## 1. Visi Produk
 
-Standar bahasa (wajib): Indonesia dulu, istilah Inggris di kurung saat pertama muncul
-(bobot, standar kelulusan, skor meleset, panjang langkah, putaran latihan, ketepatan,
-menghafal/kurang belajar, bingkai peraba, peta temuan, peta ringkas, catatan, perhatian).
-Detail di `AGENTS.md` §5 + kamus di `README.md`.
+**Satu kalimat:** Website edukasi deep learning terbaik dalam Bahasa Indonesia — dari nol mutlak sampai bisa melatih AI sendiri — dengan visualisasi interaktif berkualitas tinggi yang membuat konsep abstrak menjadi terasa nyata.
 
-## 3. Pengguna
-| Persona | Kebutuhan |
-|---|---|
-| Andi (SMA, bukan anak komputer) | Cerita + geser tombol, langsung paham tanpa rumus & coding |
-| Sari (mahasiswa non-informatika) | Intuisi + istilah terjemahan + 1 kalimat kesimpulan untuk tugas |
-| Budi (otodidak ngoding) | Latihan nyata untuk coba susunan tim & panjang langkah |
+**Mengapa ini ada:**
+- Materi deep learning mayoritas dalam bahasa Inggris, penuh rumus, tanpa visual intuitif
+- Pemula Indonesia tidak punya jalur belajar yang terstruktur, bertahap, dan menyenangkan
+- Website belajar yang ada要么 terlalu akademis (rumus duluan)要么 terlalu dangkal (tidak sampai ke konsep inti)
 
-Prinsip: **tidak perlu install, tidak perlu coding untuk mulai.** Cukup buka `index.html`.
+**Prinsip desain:**
+1. **Main dulu, rumus belakangan** — setiap konsep dimulai dari eksplorasi visual, bukan definisi
+2. **Cerita menyambung** — 12 bab yang saling terkait lewat narasi dan konsep
+3. **Jujur beristilah** — istilah Inggris yang hidup dipakai langsung, tidak diterjemahkan aneh
+4. **Overkill di visual** — setiap visualisasi harus yang terbaik yang bisa dibuat dengan vanilla JS
+5. **HOTS, bukan hafalan** — setiap bab melatih nalar analitis, bukan ingatan
 
-## 4. Ruang Lingkup (Scope)
-### In-Scope v1.1
-- 11 modul belajar + 1 latihan nyata (lihat LEARNING_PATH.md)
-- Setiap misi: Kilasan → Cerita Sari 30 detik → Panduan 3 langkah → Tantangan tebak-dulu → Visual interaktif → Soal analis HOTS + jawaban model → Hitungan lipat (opsional) → Kesimpulan 1 kalimat → Kotak istilah resmi → Kuis (+XP)
-- Latihan nyata (bentuk soal lingkaran, silang, spiral, dua kelompok) dengan jaringan yang dilatih di browser
-- 100% statis: HTML + CSS + Vanilla JS, tanpa build, tanpa npm, bisa offline
-- Responsif (HP & laptop), dark/light mode, Bahasa Indonesia, kecepatan animasi bisa diatur
-- Progress belajar tersimpan di localStorage
+---
 
-### Out-of-Scope v1.0
-- Backend, login, database
-- Training model besar / GPU / Python
-- Video / audio narasi
+## 2. Target Pengguna
 
-## 5. Persyaratan Fungsional
-- FR1: Navigasi sidebar berkelompok + routing hash + tombol kembali/lanjut otomatis
-- FR2: Setiap visual merespon <100ms + tombol Reset per misi
-- FR3: Latihan nyata: dataset, learning rate (default 0.5 — teruji konvergen), hidden layer, aktivasi; Latih/Stop/+50/Acak/Dataset-baru; boundary + grafik loss live
-- FR4: Mode terang/gelap + kecepatan animasi; hormat prefers-reduced-motion
-- FR5: Kuis (+25 XP jawaban benar pertama) + soal analis HOTS + jawaban model per misi
-- FR6: XP/level/maskot/11 lencana tersimpan (localStorage ganda: progress + xp); Reset menghapus semua
+| Persona | Latar Belakang | Kebutuhan |
+|---------|---------------|-----------|
+| **Rina** (17, SMA) | Belum pernah coding, takut matematika | Cerita + visual yang membuat "oh ternyata begitu!" |
+| **Dimas** (21, mahasiswa non-IT) | Bisa Excel, pernah dengar "AI" dari berita | Jalur terstruktur yang tidak melompat-lompat |
+| **Pak Hadi** (40, guru SMA) | Ingin mengajar AI di kelasnya | Materi + soal analitis siap pakai |
+| **Putri** (25, otodidak) | Bisa Python dasar, ingin paham deep learning | Playground + penjelasan yang mendalam |
 
-## 6. Persyaratan Non-Fungsional
-- NFR1: Buka dengan double-click `index.html` tanpa server (fallback) — disarankan via Live Server / `npx serve`
-- NFR2: Total < 2MB, load < 2 detik di laptop standar
-- NFR3: Aksesibilitas: label pada semua kontrol, kontras cukup, bisa keyboard (tab)
-- NFR4: Kode mudah dibaca pemula: komentar Indonesia, fungsi kecil, file per topik
+**Prinsip:** Tidak perlu install, tidak perlu coding, tidak perlu matematika lanjutan. Cukup buka browser.
 
-## 7. Struktur Modul (ringkas — nama ramah di website, istilah resmi di kurung)
-1. Beranda & Peta Belajar (+ kamus 1 menit, jalur super awam)
-2. Misi 1 Otak Mini — perceptron (bobot, bias, decision boundary)
-3. Misi 2 Lampu Keyakinan — aktivasi (step, sigmoid, tanh, ReLU)
-4. Misi 3 Tim Peringkas — MLP (hidden layer, forward pass)
-5. Misi 4 Cermin — loss (MSE, cross-entropy, target, prediksi)
-6. Misi 5 Menuruni Lembah — gradient descent (learning rate, divergen)
-7. Misi 6 Evaluasi Adil — backprop (backward pass, chain rule, 4 langkah)
-8. Misi 7 Jangan Menghafal — overfitting (data latih vs data uji)
-9. Misi 8 Mata — CNN (filter, feature map, pooling)
-10. Misi 9 Ingatan — RNN (hidden state; LSTM)
-11. Misi 10 Telinga — attention/Transformer (query/key/value)
-12. Misi 11 Ujian Kelulusan — latih jaringan sungguhan (dataset, epoch, akurasi)
+---
 
-Detail kurikulum: lihat `LEARNING_PATH.md`.
+## 3. Struktur Konten — 12 Bab
+
+Setiap bab mengikuti pola pedagogis yang sama:
+
+```
+1. Kilasan      → 2 kalimat menyambung dari bab sebelumnya
+2. Cerita       → Analogi sehari-hari (tokoh Sari & warung)
+3. Panduan      → 3 langkah eksplorasi visual (nomor)
+4. Tantangan    → Tebak-dulu sebelum tahu jawaban
+5. Visual       → Interaktif penuh, semua kontrol bisa digeser
+6. Analis       → Soal HOTS aplikatif + jawaban model
+7. Hitungan     → Rumus (opsional, dalam collapsible)
+8. Kesimpulan   → 1 kalimat yang bisa diingat
+9. Istilah      → Kamus mini: Indonesia = English
+10. Kuis        → 2-3 soal pilihan ganda + feedback edukatif
+```
+
+### Peta Bab
+
+| # | Judul | Konsep Inti | Visualisasi Kunci |
+|---|-------|-------------|-------------------|
+| 0 | Peta Perjalanan | Orientasi, motivasi, roadmap | Peta visual interaktif |
+| 1 | Satu Otak Kecil | Neuron, weight, bias, decision boundary | Canvas: daerah keputusan + garis pemisah |
+| 2 | Memberi Perasaan | Fungsi aktivasi (step, sigmoid, tanh, ReLU) | Canvas: kurva + titik interaktif |
+| 3 | Kekuatan Tim | MLP, layer, forward pass | SVG: jaringan dengan animasi aliran |
+| 4 | Cermin Kebenaran | Loss (MSE, cross-entropy) | Canvas: kurva lembah + titik |
+| 5 | Menuruni Bukit | Gradient descent, learning rate | Canvas: lembah + bola + jejak |
+| 6 | Evaluasi Bersama | Backpropagation, chain rule | DOM: 4 langkah interaktif |
+| 7 | Hafal vs Paham | Overfitting, underfitting, regularisasi | Canvas: polinomial + data |
+| 8 | Mata Digital | CNN, konvolusi, filter, pooling | Grid: klik gambar + heatmap |
+| 9 | Ingatan Berantai | RNN, hidden state, LSTM | Canvas: grafik state + chip |
+| 10 | Seni Mendengarkan | Attention, Q/K/V, Transformer | Grid: heatmap attention |
+| 11 | Laboratorium | Training playground, eksperimen bebas | Canvas: decision boundary + loss chart |
+
+---
+
+## 4. Persyaratan Fungsional
+
+### F1: Navigasi & Routing
+- Sidebar dengan daftar 12 bab, dikelompokkan (Dasar → Belajar → Indra → Praktik)
+- Hash-based routing (#bab1, #bab2, dst.)
+- Tombol "Bab Sebelumnya" / "Bab Berikutnya" di setiap halaman
+- Progress indicator: bab mana yang sudah selesai
+
+### F2: Sistem Gamifikasi
+- XP: +100 per bab selesai, +25 per kuis benar pertama kali
+- Level: 6 tingkat dengan nama dan threshold
+- Maskot: SVG yang berevolusi per level
+- Badge/lencana: 12 kemampuan yang terbuka
+
+### F3: Visualisasi Interaktif
+- Setiap bab punya visualisasi yang merespon <100ms
+- Semua kontrol punya label yang jelas
+- Tombol Reset di setiap visualisasi
+- Animasi smooth, menghormati prefers-reduced-motion
+- Canvas/SVG redraw saat tema berubah
+
+### F4: Kuis & Soal Analitis
+- 2-3 soal pilihan ganda per bab
+- Feedback edukatif (bukan sekadar "benar/salah")
+- Soal analis HOTS dengan jawaban model (collapsible)
+- Jawaban diacak (tidak selalu di posisi yang sama)
+
+### F5: Mode & Aksesibilitas
+- Dark/light mode (toggle + simpan preferensi)
+- Kecepatan animasi global (0.5x, 1x, 1.5x, 2x)
+- Semua `<input>` punya `<label>`
+- Keyboard navigable (tab order)
+- Kontras WCAG AA minimum
+
+### F6: Penyimpanan
+- localStorage untuk: progress, XP, tema, preferensi
+- Tombol "Reset Semua" yang menghapus semua data
+- Data tetap ada setelah refresh
+
+---
+
+## 5. Persyaratan Non-Fungsional
+
+| Aspek | Target |
+|-------|--------|
+| Performance | Load <2s, visual <100ms response |
+| Size | Total <2MB (tanpa dependensi) |
+| Offline | Bisa dibuka via file:// tanpa server |
+| Responsive | Mobile (320px) → Desktop (1920px) |
+| Browser | Chrome, Firefox, Edge, Safari (latest 2) |
+| Code quality | Komentar Indonesia, fungsi kecil, file per bab |
+| Accessibility | WCAG 2.1 AA minimum |
+
+---
+
+## 6. Desain Visual
+
+### Filosofi: "Neural Canvas"
+Clean, modern, scientific feel. Tidak generik (bukan purple-gradient AI slop). Punya karakter.
+
+### Palet Warna
+- **Light mode:** Background `#fafbfc`, card `#ffffff`, text `#1a1a2e`, accent `#2563eb`, accent2 `#059669`
+- **Dark mode:** Background `#0d1117`, card `#161b22`, text `#e6edf3`, accent `#58a6ff`, accent2 `#3fb950`
+- **Data viz:** Palette 6 warna yang distinguishable (termasuk colorblind-safe)
+
+### Typography
+- Body: system-ui, -apple-system, sans-serif (14-16px)
+- Headings: same family, bold, tight tracking
+- Code/numbers: ui-monospace, monospace
+- Fluid sizing dengan clamp()
+
+### Komponen
+- Cards: border tipis, border-radius 12px, shadow halus
+- Buttons: rounded, hover state jelas, primary/secondary/ghost
+- Sliders: custom styled, thumb besar (touch-friendly)
+- Canvas: border tipis, rounded, responsive max-width
+
+---
+
+## 7. Arsitektur Teknis
+
+```
+index.html          ← Struktur HTML semua 12 bab
+css/
+  style.css         ← Design system lengkap (variables, components, layout)
+js/
+  lib/
+    canvas-utils.js ← Shared: axes, grid, coord mapping, theme colors
+  app.js            ← Router, state, XP, quiz engine, theme
+  lessons.js        ← Data: metadata bab + bank kuis
+  viz-bab01.js      ← Modul 1: Neuron
+  viz-bab02.js      ← Modul 2: Aktivasi
+  ...
+  viz-bab11.js      ← Modul 11: Playground
+```
+
+### Konvensi
+- Setiap viz-babXX.js mengekspos `initVizBabXX()` global
+- State lokal per modul (closure), tidak bocor ke global
+- Canvas redraw via `themechange` event
+- `window.GLOBAL_SPEED` untuk kontrol kecepatan animasi
+
+---
 
 ## 8. Kriteria Keberhasilan
-- [ ] 41 cek otomatis lolos (router, XP/maskot, semua visual, training 400 epoch konvergen)
-- [ ] `python tools/audit-bahasa.py` LOLOS (tanpa coinage aneh, struktur 11 misi utuh)
-- [ ] Orang non-komputer menjawab 80% kuis + 60% soal analis setelah mengikuti misi (uji 3 orang)
-- [ ] File dibuka via `file://`, `localhost`, maupun Pages tanpa error
-- [ ] Nol dependensi eksternal (CDN = nol; font sistem saja)
+
+- [ ] 12 bab lengkap dengan semua visualisasi interaktif
+- [ ] Setiap bab: 10 komponen pedagogis (kilas → kuis)
+- [ ] Dark/light mode sempurna di semua visualisasi
+- [ ] Responsif 320px → 1920px
+- [ ] Zero console errors di semua browser modern
+- [ ] Training playground konvergen di 4 dataset
+- [ ] Soal analis HOTS di setiap bab
+- [ ] Kuis bisa dijawab, feedback edukatif, XP tersimpan
+
+---
 
 ## 9. Risiko & Mitigasi
-| Risiko | Mitigasi |
-|---|---|
-| JS terlalu berat | Vanilla + Canvas, tanpa library |
-| User bingung rumus | Rumus selalu disertai slider + analogi |
-| Tidak bisa buka karena CORS/module | Pakai `<script>` biasa, bukan ES module |
 
-## 10. Tahapan Pengerjaan
-1. Dokumen (PRD, Arsitektur, AGENTS, Learning Path) ✅ tahap ini
-2. Kerangka (index.html + style.css + app.js)
-3. Visual inti (neuron → backprop)
-4. Visual lanjutan (overfit → playground)
-5. Verifikasi buka lokal + checklist PRD
+| Risiko | Mitigasi |
+|--------|----------|
+| Canvas lambat di mobile | Grid resolusi adaptif, requestAnimationFrame |
+| User bosan di tengah | Cerita menyambung, XP, variasi visual |
+| Istilah membingungkan | Kamus di setiap bab + kamus global di beranda |
+| Playground tidak konvergen | Xavier init, LR default teruji, 3 seed diverifikasi |
+| Browser lama | Progressive enhancement, fallback graceful |

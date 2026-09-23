@@ -1,65 +1,306 @@
-// Sumber kebenaran konten. Aturan: bahasa warung dulu, istilah teknis selalu ada terjemahannya.
+/**
+ * lessons.js — Data konten: metadata bab + bank kuis
+ * Neural Lab v3
+ */
 var MODULES = [
-  { id:"beranda", title:"Markas Sari", time:"5 mnt" },
-  { id:"neuron", title:"Misi 1 — Otak Mini", time:"10 mnt", goal:"Pasang sel otak penimbang (neuron, perceptron).", terms:["neuron","perceptron","bobot (weight)","bias"] },
-  { id:"aktivasi", title:"Misi 2 — Lampu Keyakinan", time:"8 mnt", goal:"Beri perasaan bertingkat (aktivasi).", terms:["fungsi aktivasi","step","sigmoid","tanh","ReLU","gradien","saturasi"] },
-  { id:"mlp", title:"Misi 3 — Tim Peringkas", time:"10 mnt", goal:"Bentuk tim berlapis (MLP).", terms:["MLP","layer","hidden layer","forward pass","output"] },
-  { id:"loss", title:"Misi 4 — Cermin", time:"8 mnt", goal:"Nilai kesalahan dengan loss.", terms:["loss","MSE","cross-entropy","target","prediksi"] },
-  { id:"gradient", title:"Misi 5 — Menuruni Lembah", time:"10 mnt", goal:"Belajar selangkah demi selangkah.", terms:["gradient descent","learning rate","gradien","divergen"] },
-  { id:"backprop", title:"Misi 6 — Evaluasi Adil", time:"12 mnt", goal:"Koreksi seluruh tim (backprop).", terms:["backpropagation","backward pass","update","chain rule"] },
-  { id:"overfit", title:"Misi 7 — Jangan Menghafal", time:"10 mnt", goal:"Bedakan paham vs hafal.", terms:["overfitting","underfitting","generalisasi","data latih","data uji"] },
-  { id:"cnn", title:"Misi 8 — Mata", time:"12 mnt", goal:"Melihat foto dengan filter (CNN).", terms:["CNN","konvolusi","filter","feature map","pooling"] },
-  { id:"rnn", title:"Misi 9 — Ingatan", time:"10 mnt", goal:"Mengingat urutan (RNN).", terms:["RNN","sequence","hidden state","LSTM"] },
-  { id:"attention", title:"Misi 10 — Telinga", time:"12 mnt", goal:"Mendengar kata yang tepat (attention).", terms:["attention","query","key","value","softmax","Transformer"] },
-  { id:"playground", title:"Misi 11 — Ujian Kelulusan", time:"20 mnt", goal:"Latih AI sungguhan (dataset, epoch).", terms:["dataset","hidden neuron","decision boundary","epoch","akurasi"] }
+  { id: 'bab01', title: 'Satu Otak Kecil', time: '10 mnt', goal: 'Pasang sel otak pertama yang bisa menimbang petunjuk', terms: ['neuron', 'perceptron', 'weight', 'bias', 'decision boundary'] },
+  { id: 'bab02', title: 'Memberi Perasaan', time: '8 mnt', goal: 'Beri mesin kemampuan menyatakan keyakinan bertingkat', terms: ['fungsi aktivasi', 'sigmoid', 'tanh', 'ReLU', 'gradien'] },
+  { id: 'bab03', title: 'Kekuatan Tim', time: '10 mnt', goal: 'Rakit tim neuron berlapis yang bisa menangani banyak ciri', terms: ['MLP', 'hidden layer', 'forward pass', 'layer'] },
+  { id: 'bab04', title: 'Cermin Kebenaran', time: '8 mnt', goal: 'Berikan mesin cermin untuk menilai tebakannya sendiri', terms: ['loss', 'MSE', 'cross-entropy', 'target', 'prediksi'] },
+  { id: 'bab05', title: 'Menuruni Bukit', time: '10 mnt', goal: 'Ajari mesin seni memperbaiki diri selangkah demi selangkah', terms: ['gradient descent', 'learning rate', 'gradien', 'konvergensi'] },
+  { id: 'bab06', title: 'Evaluasi Bersama', time: '12 mnt', goal: 'Bagi kesalahan secara adil ke seluruh anggota tim', terms: ['backpropagation', 'chain rule', 'backward pass', 'update'] },
+  { id: 'bab07', title: 'Hafal vs Paham', time: '10 mnt', goal: 'Hindari jebakan menghafal data latih', terms: ['overfitting', 'underfitting', 'generalisasi', 'training data', 'test data'] },
+  { id: 'bab08', title: 'Mata Digital', time: '12 mnt', goal: 'Beri mesin kemampuan melihat gambar', terms: ['CNN', 'konvolusi', 'filter', 'feature map', 'pooling'] },
+  { id: 'bab09', title: 'Ingatan Berantai', time: '10 mnt', goal: 'Beri mesin kemampuan mengingat urutan', terms: ['RNN', 'hidden state', 'sequence', 'LSTM'] },
+  { id: 'bab10', title: 'Seni Mendengarkan', time: '12 mnt', goal: 'Ajari mesin memilih informasi yang relevan', terms: ['attention', 'query', 'key', 'value', 'Transformer'] },
+  { id: 'bab11', title: 'Laboratorium', time: '20 mnt', goal: 'Latih AI sungguhan dengan tanganmu sendiri', terms: ['dataset', 'epoch', 'akurasi', 'decision boundary'] }
 ];
 
-// Bank kuis: bahasa cerita, tanpa jargon tanpa terjemahan.
 var QUIZZES = {
-  neuron: [
-    { q:"Di pasar buah, ada petunjuk 'bunyi tok-tok' dan 'garis kulit'. Apa gunanya 'seberapa penting' (bobot)?", opts:["Menentukan petunjuk mana yang lebih didengar","Menghitung jumlah buah","Menyalakan lampu pasar"], answer:0, fb:"Makin penting = makin keras didengar mesin." },
-    { q:"'Standar kelulusan' diperketat. Apa yang terjadi?", opts:["Mesin jadi pelit bilang YA, garisnya bergeser","Mesin rusak","Buahnya hilang"], answer:0, fb:"Standar = ambang. Ketat = susah lolos." },
-    { q:"Aturan 'harus dua-duanya ada' itu contoh ...", opts:["Semangka matang = bunyi OKE dan garis OKE","Cukup salah satu","Tidak perlu petunjuk"], answer:0, fb:"Dua-duanya wajib ada — kalau satu hilang, keputusannya BELUM." }
+  bab01: [
+    {
+      q: 'Sari menaikkan "seberapa penting" petunjuk 1 menjadi sangat besar, sementara petunjuk 2 dinolkan. Apa yang terjadi pada garis pemisah?',
+      opts: [
+        'Garis menjadi hampir tegak lurus (hanya bergantung pada petunjuk 1)',
+        'Garis menghilang karena tidak ada petunjuk yang aktif',
+        'Garis menjadi horizontal sempurna',
+        'Garis berputar 45 derajat'
+      ],
+      answer: 0,
+      fb: 'Ketika satu petunjuk dominan dan yang lain dinolkan, garis pemisah menjadi tegak — keputusan hanya bergantung pada satu petunjuk itu.'
+    },
+    {
+      q: 'Sebuah perceptron bisa membedakan buah "matang" vs "mentah" berdasarkan 2 petunjuk. Masalah apa yang TIDAK bisa ditanganinya?',
+      opts: [
+        'Data yang butuh garis lengkung untuk dipisahkan (seperti lingkaran)',
+        'Data yang hanya punya 1 petunjuk',
+        'Data dengan 1000 contoh',
+        'Data yang berisik'
+      ],
+      answer: 0,
+      fb: 'Perceptron hanya bisa menarik garis lurus. Data yang butuh batas lengkung (seperti lingkaran di tengah) tidak bisa dipisahkan perceptron tunggal.'
+    },
+    {
+      q: 'Bias dinaikkan (misal dari -1 ke +2). Apa efeknya pada garis pemisah?',
+      opts: [
+        'Garis bergeser sehingga lebih banyak area yang dikatakan "YA"',
+        'Garis berputar menjadi lebih miring',
+        'Garis menghilang',
+        'Tidak ada perubahan'
+      ],
+      answer: 0,
+      fb: 'Bias yang lebih tinggi = standar lebih longgar = lebih mudah bilang YA. Garis bergeser, bukan berputar.'
+    }
   ],
-  aktivasi: [
-    { q:"Kenapa mesin butuh 'kepribadian' seperti Si Cuek/Si Lembut?", opts:["Biar bisa paham hal melengkung, bukan cuma garis lurus","Biar warnanya bagus","Biar koding pendek"], answer:0, fb:"Tanpa ini, 100 lapis pun cuma garis lurus." },
-    { q:"Si Cuek (ReLU) itu orang yang ...", opts:["Mendiamkan yang jelek, meneruskan yang bagus","Selalu bilang ya","Selalu tidur"], answer:0, fb:"Negatif → diam (0), positif → terus." }
+  bab02: [
+    {
+      q: 'Kenapa sigmoid "mulai ditinggalkan" di jaringan dalam?',
+      opts: [
+        'Sigmoid tidak bisa menghasilkan angka',
+        'Di ujung kurva, gradiennya nyaris nol sehingga mesin berhenti belajar (vanishing gradient)',
+        'Sigmoid terlalu cepat',
+        'Sigmoid hanya bekerja untuk gambar'
+      ],
+      answer: 1,
+      fb: 'Saat input sangat besar atau sangat negatif, kurva sigmoid datar → gradien ≈ 0 → bobot tidak terupdate → mesin berhenti belajar.'
+    },
+    {
+      q: 'Apa yang terjadi jika semua neuron menggunakan fungsi linear (bukan aktivasi non-linear)?',
+      opts: [
+        'Jaringan menjadi lebih cepat',
+        'Jaringan bisa mengenali gambar lebih baik',
+        'Tidak ada efek',
+        'Jaringan sedalam apapun hanya bisa menghasilkan garis lurus — tidak lebih pintar dari 1 neuron'
+      ],
+      answer: 3,
+      fb: 'Tumpukan fungsi linear tetap linear (seperti 50 fotokopi dari fotokopi). Non-linearitas dari aktivasi itulah yang memberi kekuatan.'
+    }
   ],
-  mlp: [
-    { q:"Tim berlapis bekerja seperti ...", opts:["Estafet: tiap tim mengoper ringkasan ke tim berikut","Semua kerja sendiri-sendiri","Ketua kerja, sisanya nonton"], answer:0, fb:"Depan lihat ciri, tengah simpulkan, ketua putuskan." },
-    { q:"Garis tebal antar lingkaran artinya ...", opts:["Pengaruhnya kuat (sangat didengar)","Kabelnya rusak","Lingkarannya rusak"], answer:0, fb:"Biru = mendukung, merah = menolak." }
+  bab03: [
+    {
+      q: 'Jaringan 2→3→2→1 berarti...',
+      opts: [
+        '2 output, 3 input, dan 2 lapis tersembunyi',
+        'Total 8 neuron yang semuanya sama',
+        '2 input, 3 neuron di lapis tersembunyi pertama, 2 di lapis kedua, 1 output',
+        'Jaringan dengan 4 lapis input'
+      ],
+      answer: 2,
+      fb: 'Notasi 2→3→2→1 menunjukkan jumlah neuron per lapis dari kiri (input) ke kanan (output).'
+    },
+    {
+      q: 'Sari menambah 50 lapis TAPI lupa memasang aktivasi. Apa yang terjadi?',
+      opts: [
+        'Jaringan menjadi 50× lebih pintar',
+        'Jaringan tidak lebih pintar dari 1 lapis — tumpukan linear tetap linear',
+        'Jaringan error karena terlalu dalam',
+        'Jaringan hanya bisa memproses angka negatif'
+      ],
+      answer: 1,
+      fb: 'Tanpa aktivasi non-linear, 50 lapis perkalian matriks = 1 perkalian matriks besar. Buang komputasi, tidak tambah kemampuan.'
+    }
   ],
-  loss: [
-    { q:"Skor meleset (loss) = 0 artinya ...", opts:["Tepat! Tebakan sama dengan jawaban","Mesin rusak","Soal hilang"], answer:0, fb:"Tugas mesin: bikin skor ini sekecil mungkin." },
-    { q:"Main tebak pilihan: kapan hukumannya paling berat?", opts:["Saat salah tapi pede banget","Saat salah dikit","Saat benar"], answer:0, fb:"Makanya mesin belajar tidak asal pede." }
+  bab04: [
+    {
+      q: 'Model A selalu meleset 0.1. Model B biasanya tepat tapi kadang meleset 2.0. MSE memilih siapa?',
+      opts: [
+        'Model B — karena rata-rata lebih baik',
+        'Keduanya sama',
+        'Tidak bisa ditentukan',
+        'Model A — karena MSE menghukum kesalahan besar (kuadrat!) sangat berat'
+      ],
+      answer: 3,
+      fb: 'MSE = rata-rata kuadrat selisih. 2.0² = 4.0 (sangat besar), sedangkan 0.1² = 0.01 (sangat kecil). MSE sangat tidak mentolerir kesalahan besar.'
+    },
+    {
+      q: 'Kenapa cross-entropy lebih cocok dari MSE untuk klasifikasi (YA/TIDAK)?',
+      opts: [
+        'Cross-entropy lebih mudah dihitung',
+        'Cross-entropy menghukum kepercayaan yang salah total jauh lebih berat, dan gradiennya tidak vanish saat salah',
+        'MSE tidak bisa dipakai untuk angka',
+        'Tidak ada perbedaan'
+      ],
+      answer: 1,
+      fb: 'Saat jawaban benar = 1 tapi prediksi = 0.01, cross-entropy = -log(0.01) ≈ 4.6 (hukuman besar!). MSE hanya (1-0.01)² ≈ 0.98. Cross-entropy lebih "galak" di kesalahan besar.'
+    }
   ],
-  gradient: [
-    { q:"Main ski dalam kabut: kamu ...", opts:["Rasakan miringnya tanah, melangkah ke arah turun","Tutup mata dan lompat jauh","Diam saja menunggu"], answer:0, fb:"Itulah belajar: intip kemiringan, langkah turun." },
-    { q:"Langkah super besar (nekat) akibatnya ...", opts:["Bola mental-mental, bisa kabur dari lembah","Pasti langsung sampai","Tidak ada efek"], answer:0, fb:"Coba di gambar: geser langkah ke besar lalu Jalankan!" },
-    { q:"Langkah super kecil akibatnya ...", opts:["Aman tapi lamaaa banget sampainya","Langsung sampai","Bola terbang"], answer:0, fb:"Hati-hati itu bagus, tapi jangan terlalu takut." }
+  bab05: [
+    {
+      q: 'Learning rate terlalu besar menyebabkan...',
+      opts: [
+        'Bola berhenti terlalu awal',
+        'Tidak ada efek',
+        'Bola "mental" melewati lembah dan bisa kabur jauh (divergen)',
+        'Belajar lebih cepat dan selalu sampai ke minimum'
+      ],
+      answer: 2,
+      fb: 'Langkah terlalu besar → overshoot → malah naik ke sisi lain → makin besar → kabur. Ini disebut divergensi.'
+    },
+    {
+      q: 'Learning rate terlalu kecil menyebabkan...',
+      opts: [
+        'Belajar sangat lambat, butuh waktu sangat lama untuk sampai ke minimum',
+        'Bola kabur menjauh',
+        'Bola langsung ke minimum global',
+        'Gradien menjadi nol'
+      ],
+      answer: 0,
+      fb: 'Langkah terlalu kecil = aman tapi lambat. Seperti semut berjalan ke lembah — sampai, tapi butuh waktu sangat lama.'
+    },
+    {
+      q: 'Apa itu "local minimum" dan kenapa itu masalah?',
+      opts: [
+        'Minimum yang selalu lebih baik dari global minimum',
+        'Titik tertinggi di permukaan',
+        'Ketika gradien terlalu besar',
+        'Lembah kecil di samping lembah utama — bola bisa terjebak di sana dan tidak mencapai titik terendah'
+      ],
+      answer: 3,
+      fb: 'Local minimum = lembah kecil yang bukan terdalam. Bola bisa terjebak di sana karena di sekelilingnya semua naik. Di dunia nyata, ini berarti model tidak mencapai performa terbaik.'
+    }
   ],
-  backprop: [
-    { q:"Tim kalah. Evaluasi yang adil itu ...", opts:["Kesalahan dibagi ke belakang sesuai andil masing-masing","Salahkan kiper saja","Bubarkan tim"], answer:0, fb:"Yang pegang bola lama tanggung jawab besar." },
-    { q:"Setelah tahu bagian salah masing-masing, lalu ...", opts:["Tiap anggota dikoreksi sedikit ke arah benar","Dibiarkan saja","Diacak total"], answer:0, fb:"Koreksi kecil tiap putaran = belajar." }
+  bab06: [
+    {
+      q: 'Setelah dikoreksi, contoh X membaik TAPI contoh Y memburuk. Apakah ini normal?',
+      opts: [
+        'Tidak normal — pasti ada bug',
+        'Normal — koreksi dari satu contoh bisa merugikan contoh lain. Yang dioptimasi adalah rata-rata banyak contoh',
+        'Arti model sudah sempurna',
+        'Arti learning rate terlalu kecil'
+      ],
+      answer: 1,
+      fb: 'Ini normal dan expected. Itulah kenapa kita latih dengan banyak contoh sekaligus (batch) — koreksi rata-rata menguntungkan mayoritas.'
+    },
+    {
+      q: 'Chain rule dalam backpropagation berfungsi untuk...',
+      opts: [
+        'Menjumlahkan semua bobot',
+        'Menghitung learning rate',
+        'Menentukan jumlah lapis',
+        'Menghitung seberapa besar kontribusi tiap neuron terhadap kesalahan total'
+      ],
+      answer: 3,
+      fb: 'Chain rule = aturan rantai. Dari output ke input, kita hitung "seberapa salah hasil kalau cara-ku digeser dikit?" — itulah kontribusi masing-masing.'
+    }
   ],
-  overfit: [
-    { q:"Si Penghafal vs Si Paham: siapa menang di ujian asli?", opts:["Si Paham (stabil di soal baru)","Si Penghafal (hafal 100 soal)","Seri"], answer:0, fb:"Latihan 100 tapi ujian jeblok = menghafal." },
-    { q:"Cara agar mesin tidak jadi penghafal?", opts:["Soal lebih banyak / cara lebih sederhana","Cara makin rumit","Soal makin berantakan"], answer:0, fb:"Sederhana tapi paham > rumit tapi hafal." }
+  bab07: [
+    {
+      q: 'Si Cerdas hafal 30 struk dan gagal di pelanggan baru. Sari mengusulkan tambah 200 lapis. Setuju?',
+      opts: [
+        'Setuju — lebih dalam = lebih pintar',
+        'Tidak peduli jumlah lapis',
+        'Tidak — makin rumit makin jago menghafal. Yang dibutuhkan justru model lebih sederhana atau data lebih banyak',
+        'Tambah 200 lapis lalu hapus data latih'
+      ],
+      answer: 2,
+      fb: 'Overfitting diobati dengan: (1) data lebih banyak, (2) model lebih sederhana, (3) early stopping. Menambah lapis = menambah kapasitas menghafal = memperburuk overfitting.'
+    },
+    {
+      q: 'Apa tanda bahwa model mengalami overfitting?',
+      opts: [
+        'Akurasi data latih dan data uji sama-sama rendah',
+        'Akurasi data latih dan data uji sama-sama tinggi',
+        'Loss tidak pernah turun',
+        'Akurasi data latih tinggi tapi akurasi data uji jauh lebih rendah'
+      ],
+      answer: 3,
+      fb: 'Overfitting = hafal data latih tapi gagal di data baru. Ciri khas: train accuracy >> test accuracy. Underfitting = keduanya rendah.'
+    }
   ],
-  cnn: [
-    { q:"Komputer 'melihat' foto dengan cara ...", opts:["Menggeser bingkai kecil ke tiap sudut, mencatat ada pola apa","Menelan fotonya langsung","Menebak acak"], answer:0, fb:"Geser → catat → rangkum. Ulangi berlapis." },
-    { q:"'Meremas' gambar (pooling) gunanya ...", opts:["Gambar mengecil tapi intinya tetap awet","Gambar jadi besar","Gambar diacak"], answer:0, fb:"Ambil yang terbesar tiap kotak kecil." }
+  bab08: [
+    {
+      q: 'Foto struk miring 45°. Apakah filter pencari garis tegak masih menemukannya?',
+      opts: [
+        'Ya, filter otomatis menyesuaikan sudut',
+        'Filter tidak terpengaruh oleh rotasi',
+        'Foto tidak bisa miring',
+        'Tidak optimal — filter hanya cocok pada orientasi yang dilatih. Solusi: augmentasi (latih dengan foto diputar/digeser)'
+      ],
+      answer: 3,
+      fb: 'Filter belajar pola pada orientasi tertentu. Foto miring = pola bergeser. Solusi nyata: augmentasi data (putar, geser, zoom foto saat latihan) agar model robust.'
+    },
+    {
+      q: 'Apa fungsi max-pooling dalam CNN?',
+      opts: [
+        'Merangkum wilayah: ambil nilai terbesar tiap blok, sehingga gambar mengecil tapi intinya tetap',
+        'Menambah detail pada gambar',
+        'Mengubah warna gambar',
+        'Memperbesar gambar'
+      ],
+      answer: 0,
+      fb: 'Max-pooling = "siapa yang paling kuat di wilayah ini?". Ambil yang terbesar, buang yang lain. Gambar mengecil, tapi fitur penting tetap terwakili.'
+    }
   ],
-  rnn: [
-    { q:"Catatan kecil untuk sinetron gunanya ...", opts:["Mengingat ringkasan episode lalu saat nonton episode baru","Mencatat harga tiket","Tidak ada guna"], answer:0, fb:"Tiap kejadian = ingatan lama + kejadian baru." },
-    { q:"Daya ingat = 0 artinya ...", opts:["Amnesia total, tiap kejadian langsung lupa","Ingatan super kuat","Catatan terbakar"], answer:0, fb:"Geser ke 0 dan mainkan: garisnya datar!" }
+  bab09: [
+    {
+      q: 'Sari ingin meramal stok dari 365 hari data menggunakan RNN sederhana. Apa risiko utamanya?',
+      opts: [
+        'RNN tidak bisa memproses angka',
+        'Informasi lama memudar (vanishing gradient) dan satu kejadian ekstrem bisa menimpa segalanya',
+        '365 hari terlalu sedikit data',
+        'Tidak ada risiko'
+      ],
+      answer: 1,
+      fb: 'RNN sederhana punya catatan kecil yang mudah "lupa" (info lama memudar) dan mudah "kaget" (satu kejadian baru menimpa catatan). Untuk ketergantungan jauh, butuh LSTM atau attention.'
+    },
+    {
+      q: 'Apa perbedaan utama LSTM dari RNN biasa?',
+      opts: [
+        'LSTM lebih cepat dihitung',
+        'LSTM tidak punya hidden state',
+        'LSTM hanya bekerja untuk gambar',
+        'LSTM punya gerbang selektif: memilih apa yang dilupakan, disimpan, dan dikeluarkan — sehingga bisa mengingat lebih lama'
+      ],
+      answer: 3,
+      fb: 'LSTM = RNN + 3 gerbang (forget, input, output). Gerbang ini memilih secara selektif: "lupakan yang tidak penting, simpan yang penting, keluarkan yang relevan." Ini membuatnya bisa mengingat ketergantungan jauh.'
+    }
   ],
-  attention: [
-    { q:"'Kucing mengejar tikus karena IA lapar.' Kata 'ia' paling mendengarkan ...", opts:["Kucing","Tikus","Karena"], answer:0, fb:"Klik 'ia' di gambar dan lihat yang paling pekat!" },
-    { q:"Perhatian tiap baris totalnya ...", opts:["Selalu 100% (dibagi-bagi)","Bisa 500%","Nol"], answer:0, fb:"Perhatian itu terbatas, harus dibagi." }
+  bab10: [
+    {
+      q: 'Dalam "Kucing mengejar tikus karena ia lapar", kata "ia" seharusnya paling memperhatikan kata...',
+      opts: [
+        '"Tikus" — karena tikus yang dikejar',
+        '"Kucing" — karena kucing yang lapar, bukan tikus',
+        '"Karena" — karena itu kata penghubung',
+        '"Mengejar" — karena itu kata kerja'
+      ],
+      answer: 1,
+      fb: 'Attention mechanism belajar bahwa "ia" merujuk ke "Kucing" (subjek) karena konteks "lapar" lebih cocok untuk pelaku. Inilah kekuatan attention: resolve referensi secara kontekstual.'
+    },
+    {
+      q: 'Apa yang dilakukan softmax dalam attention?',
+      opts: [
+        'Mengubah skor mentah menjadi persen yang totalnya 100% — perhatian dibagi-bagi, tidak bisa ke semua penuh',
+        'Menghapus kata yang tidak penting',
+        'Mengalikan semua bobot',
+        'Menjumlahkan semua vektor'
+      ],
+      answer: 0,
+      fb: 'Softmax: eksponensiasi lalu normalisasi sehingga total = 1 (100%). Hasilnya = distribusi perhatian. Kata yang paling relevan mendapat porsi terbesar.'
+    }
   ],
-  playground: [
-    { q:"Soal lingkaran gagal terus dengan tim 0. Artinya ...", opts:["Garis lurus tak bisa memisahkan lingkaran, butuh tim tengah","Soalnya rusak","Tombol Latih rusak"], answer:0, fb:"Buktikan: naikkan tim jadi 4 lalu latih → berhasil!" },
-    { q:"Bos spiral akhirnya selesai kalau ...", opts:["Tim cukup banyak (8+4) + sabar melatih","Tim dikosongkan","Belajar 1 detik"], answer:0, fb:"Soal sulit butuh tim besar + latihan lama." }
+  bab11: [
+    {
+      q: 'Dataset spiral: 100% di data latih tapi 70% di data uji. Diagnosisnya?',
+      opts: [
+        'Underfitting — model terlalu sederhana',
+        'Overfitting — model menghafal data latih tapi gagal generalisasi. Obat: sederhanakan model, tambah data, atau early stopping',
+        'Model sudah sempurna',
+        'Learning rate terlalu kecil'
+      ],
+      answer: 1,
+      fb: 'Train 100% + test 70% = overfitting klasik. Model menghafal pola spesifik data latih termasuk noise-nya, sehingga gagal di data baru yang belum dilihat.'
+    },
+    {
+      q: 'Kenapa dataset lingkaran TIDAK BISA dipisah dengan hidden layer 0 (tanpa lapis tersembunyi)?',
+      opts: [
+        'Karena lingkaran bukan data yang valid',
+        'Karena learning rate tidak cocok',
+        'Karena aktivasi yang salah',
+        'Karena batas keputusan tanpa hidden layer hanya garis lurus, sedangkan lingkaran butuh batas lengkung'
+      ],
+      answer: 3,
+      fb: 'Tanpa hidden layer (+ aktivasi non-linear), jaringan hanya bisa menarik garis lurus. Lingkaran butuh batas lengkung → butuh minimal 1 hidden layer.'
+    }
   ]
 };
