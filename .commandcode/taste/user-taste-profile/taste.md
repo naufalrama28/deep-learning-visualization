@@ -12,3 +12,7 @@
 - Technical terminology should stay in English if the English term is the proper/clean version — do not force Indonesian translation that sounds awkward. Confidence: 0.85
 - Expects the AI to operate as a multi-role expert: mentor, analyst, consultant, executor — not just a code generator. Confidence: 0.9
 - Expects deep domain knowledge in web development, producing high-quality, functional, and unique websites. Confidence: 0.85
+- Prefers documentation-first workflow: wants supporting documents (PRD, architecture, design system, agent guidelines) created BEFORE implementation begins. Confidence: 0.9
+- Uses "overkill" as the quality standard — systems should be over-engineered and exceed expectations. References Brilliant.org as the benchmark for educational website quality. Confidence: 0.9
+- Wants professional, phased development with proper planning stages — organized and methodical rather than ad-hoc. Confidence: 0.85
+- Actively wants codebase cleaned from redundancy and kept organized — values maintainability and clean architecture. Confidence: 0.85

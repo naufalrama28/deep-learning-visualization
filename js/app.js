@@ -1,14 +1,14 @@
 /**
- * app.js — Router, state management, XP/level system, quiz engine, theme
- * Neural Lab v3
+ * app.js — Router, XP system, quiz engine, theme management
+ * Neural Lab v1.0
  */
 (function() {
   'use strict';
 
-  /* ---- CONFIG ---- */
+  // Configuration
   var TITLES = {
-    beranda: ['Neural Lab', 'Belajar deep learning dari nol — interaktif, visual, bertahap'],
-    bab01: ['Bab 1 — Satu Otak Kecil', 'Neuron: menimbang petunjuk → keputusan'],
+    beranda: ['Neural Lab', 'Bangun kesadaran buatan dari nol'],
+    bab01: ['Bab 1 — Satu Sel Otak', 'Neuron: menimbang petunjuk → keputusan'],
     bab02: ['Bab 2 — Memberi Perasaan', 'Fungsi aktivasi: dari kaku ke bertingkat'],
     bab03: ['Bab 3 — Kekuatan Tim', 'MLP: estafet peringkas berlapis'],
     bab04: ['Bab 4 — Cermin Kebenaran', 'Loss: mengukur seberapa meleset'],
@@ -51,26 +51,15 @@
     bab10: 'Mendengar', bab11: 'Melatih'
   };
 
-  /* ---- STATE ---- */
-  var progress = {};
-  var xpState = { total: 0, quizzes: {} };
+  // State
+  var progress = StateManager.loadProgress();
+  var xpState = StateManager.loadXP();
   var vizDone = {};
   var currentRoute = 'beranda';
 
-  /* ---- HELPERS ---- */
+  // Helpers
   function $(sel) { return document.querySelector(sel); }
   function $$(sel) { return document.querySelectorAll(sel); }
-
-  function loadProgress() {
-    try { progress = JSON.parse(localStorage.getItem('neuralab-progress')) || {}; } catch(e) { progress = {}; }
-  }
-  function saveProgress() { localStorage.setItem('neuralab-progress', JSON.stringify(progress)); }
-
-  function loadXP() {
-    try { xpState = JSON.parse(localStorage.getItem('neuralab-xp')) || { total: 0, quizzes: {} }; } catch(e) { xpState = { total: 0, quizzes: {} }; }
-  }
-  function saveXP() { localStorage.setItem('neuralab-xp', JSON.stringify(xpState)); }
-  function addXP(amount) { xpState.total += amount; saveXP(); renderXP(); }
 
   function levelFor(xp) {
     for (var i = LEVELS.length - 1; i >= 0; i--) {
@@ -87,37 +76,35 @@
     return Math.round((xp - curr) / (next - curr) * 100);
   }
 
-  /* ---- MASCOT SVG ---- */
+  // Mascot SVG
   function mascotSVG(lv) {
     var parts = '';
-    // Base: circle face
     parts += '<circle cx="18" cy="20" r="14" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1.5"/>';
-    // Eyes
     parts += '<circle cx="13" cy="17" r="2" fill="var(--accent)"/>';
     parts += '<circle cx="23" cy="17" r="2" fill="var(--accent)"/>';
 
-    if (lv >= 1) { // Antenna
+    if (lv >= 1) {
       parts += '<line x1="18" y1="6" x2="18" y2="2" stroke="var(--accent)" stroke-width="1.5"/>';
       parts += '<circle cx="18" cy="2" r="2" fill="var(--viz-5)"/>';
     }
-    if (lv >= 2) { // Smile
+    if (lv >= 2) {
       parts += '<path d="M12 23 Q18 28 24 23" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>';
     }
-    if (lv >= 3) { // Star on chest
+    if (lv >= 3) {
       parts += '<text x="18" y="38" text-anchor="middle" font-size="8" fill="var(--viz-4)">★</text>';
     }
-    if (lv >= 4) { // Graduation cap
+    if (lv >= 4) {
       parts += '<polygon points="8,8 18,3 28,8 18,12" fill="var(--text)" opacity="0.7"/>';
       parts += '<line x1="28" y1="8" x2="28" y2="14" stroke="var(--text)" stroke-width="1" opacity="0.5"/>';
     }
-    if (lv >= 5) { // Aura
+    if (lv >= 5) {
       parts += '<circle cx="18" cy="20" r="17" fill="none" stroke="var(--viz-4)" stroke-width="1" opacity="0.4" stroke-dasharray="3,2"/>';
     }
 
     return '<svg viewBox="0 0 36 42" xmlns="http://www.w3.org/2000/svg">' + parts + '</svg>';
   }
 
-  /* ---- ROUTER ---- */
+  // Router
   function getRoute() {
     var h = location.hash.replace('#', '') || 'beranda';
     return TITLES[h] ? h : 'beranda';
@@ -129,38 +116,35 @@
     var sec = $('#sec-' + route);
     if (sec) sec.classList.remove('hidden');
 
-    // Update topbar
     var t = TITLES[route] || ['Neural Lab', ''];
     var titleEl = $('.topbar-title');
     var subEl = $('.topbar-sub');
     if (titleEl) titleEl.textContent = t[0];
     if (subEl) subEl.textContent = t[1];
 
-    // Update nav active state
     $$('#nav a').forEach(function(a) {
       a.classList.toggle('active', a.getAttribute('data-route') === route);
     });
 
-    // Lazy init viz
     if (VIZ_INIT[route] && !vizDone[route]) {
       vizDone[route] = true;
       try {
         var fn = window[VIZ_INIT[route]];
         if (typeof fn === 'function') fn();
-      } catch(e) { console.error('Viz init error:', route, e); }
+      } catch(e) {
+        console.error('Viz init error:', route, e);
+      }
     }
 
-    // Scroll to top
     window.scrollTo(0, 0);
 
-    // Close mobile sidebar
     var sidebar = $('#sidebar');
     if (sidebar) sidebar.classList.remove('open');
     var overlay = $('.overlay');
     if (overlay) overlay.classList.remove('show');
   }
 
-  /* ---- RENDER FUNCTIONS ---- */
+  // Render functions
   function renderProgress() {
     var total = MODULES.length;
     var done = 0;
@@ -172,7 +156,6 @@
     var label = $('#progress-pct');
     if (label) label.textContent = pct + '%';
 
-    // Nav checkmarks
     $$('#nav a[data-route]').forEach(function(a) {
       var r = a.getAttribute('data-route');
       if (progress[r]) a.classList.add('done');
@@ -196,7 +179,6 @@
     var mascot = $('#mascot-avatar');
     if (mascot) mascot.innerHTML = mascotSVG(lv);
 
-    // Abilities
     var abEl = $('#abilities');
     if (abEl) {
       var html = '';
@@ -207,6 +189,12 @@
       });
       abEl.innerHTML = html;
     }
+  }
+
+  function addXP(amount) {
+    xpState.total += amount;
+    StateManager.saveXP(xpState);
+    renderXP();
   }
 
   function renderQuizzes() {
@@ -232,7 +220,6 @@
       });
       container.innerHTML = html;
 
-      // Event delegation
       container.addEventListener('click', function(e) {
         var opt = e.target.closest('.quiz-opt');
         if (!opt || opt.classList.contains('disabled')) return;
@@ -244,7 +231,6 @@
         var q = questions[qi];
         var fb = block.querySelector('.quiz-fb');
 
-        // Disable all options in this question
         block.querySelectorAll('.quiz-opt').forEach(function(o) { o.classList.add('disabled'); });
 
         if (oi === q.answer) {
@@ -252,14 +238,12 @@
           fb.className = 'quiz-fb ok';
           fb.textContent = '✓ Benar! ' + q.fb;
           fb.classList.remove('hidden');
-          // Award XP only first time
           if (!xpState.quizzes[qid]) {
             xpState.quizzes[qid] = true;
             addXP(25);
           }
         } else {
           opt.classList.add('wrong');
-          // Highlight correct answer
           block.querySelectorAll('.quiz-opt').forEach(function(o) {
             if (parseInt(o.getAttribute('data-oi')) === q.answer) o.classList.add('correct');
           });
@@ -286,28 +270,23 @@
     container.innerHTML = html;
   }
 
-  /* ---- THEME ---- */
+  // Theme
   function applyTheme(t) {
     document.documentElement.setAttribute('data-theme', t);
-    localStorage.setItem('neuralab-theme', t);
+    StateManager.saveTheme(t);
     var btn = $('#theme-btn');
     if (btn) btn.textContent = t === 'dark' ? '☀️ Mode Terang' : '🌙 Mode Gelap';
     document.dispatchEvent(new CustomEvent('themechange'));
   }
 
-  /* ---- INIT ---- */
+  // Init
   document.addEventListener('DOMContentLoaded', function() {
-    loadProgress();
-    loadXP();
-
-    // Initial render
     renderProgress();
     renderXP();
     renderQuizzes();
     renderHome();
 
-    // Theme
-    var savedTheme = localStorage.getItem('neuralab-theme') || 'light';
+    var savedTheme = StateManager.loadTheme();
     applyTheme(savedTheme);
 
     var themeBtn = $('#theme-btn');
@@ -318,19 +297,16 @@
       });
     }
 
-    // Reset
     var resetBtn = $('#reset-progress');
     if (resetBtn) {
       resetBtn.addEventListener('click', function() {
         if (confirm('Hapus semua progress, XP, dan jawaban kuis?')) {
+          StateManager.resetAll();
           progress = {};
           xpState = { total: 0, quizzes: {} };
           vizDone = {};
-          saveProgress();
-          saveXP();
           renderProgress();
           renderXP();
-          // Re-render quizzes
           $$('.quiz').forEach(function(el) { el.dataset.rendered = ''; el.innerHTML = ''; });
           renderQuizzes();
           location.hash = '#beranda';
@@ -338,13 +314,12 @@
       });
     }
 
-    // Done buttons
     $$('.done-btn').forEach(function(btn) {
       btn.addEventListener('click', function() {
         var mod = btn.getAttribute('data-mod');
         if (!progress[mod]) {
           progress[mod] = true;
-          saveProgress();
+          StateManager.saveProgress(progress);
           addXP(100);
           renderProgress();
           btn.textContent = '✓ Selesai!';
@@ -352,7 +327,6 @@
           btn.style.opacity = '0.6';
         }
       });
-      // Restore state
       var mod = btn.getAttribute('data-mod');
       if (progress[mod]) {
         btn.textContent = '✓ Selesai!';
@@ -361,7 +335,6 @@
       }
     });
 
-    // Mobile menu
     var menuBtn = $('#menu-btn');
     var sidebar = $('#sidebar');
     var overlay = $('.overlay');
@@ -378,16 +351,14 @@
       });
     }
 
-    // Global speed
     var speedInput = $('#global-speed');
     if (speedInput) {
       speedInput.addEventListener('input', function() {
         window.GLOBAL_SPEED = parseFloat(speedInput.value) || 1;
       });
-      window.GLOBAL_SPEED = 1;
+      window.GLOBAL_SPEED = StateManager.loadSpeed();
     }
 
-    // Hash routing
     window.addEventListener('hashchange', function() { show(getRoute()); });
     show(getRoute());
   });

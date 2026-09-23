@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Neural Lab — Belajar Deep Learning dari Nol</title>
-<meta name="description" content="Website edukasi deep learning interaktif dalam Bahasa Indonesia. 12 bab bertahap — dari neuron sampai melatih AI sendiri.">
+<title>Neural Lab — Bangun Kesadaran Buatan dari Nol</title>
+<meta name="description" content="Bangun Lumen, AI kesadaran buatan, dari nol melalui 11 bab interaktif. Main dulu, rumus belakangan.">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <button id="menu-btn" aria-label="Buka menu">☰</button>
 <div class="overlay"></div>
 <div class="layout">
-  <!-- ============ SIDEBAR ============ -->
+  <!-- SIDEBAR -->
   <aside id="sidebar">
     <div class="brand">
       <div class="brand-icon">🧠</div>
       <div>
         <div class="brand-name">Neural Lab</div>
-        <div class="brand-sub">Deep Learning Interaktif</div>
+        <div class="brand-sub">Bangun Lumen dari nol</div>
       </div>
     </div>
 
@@ -38,7 +38,7 @@
     <nav id="nav">
       <a href="#beranda" data-route="beranda">🏠 Beranda</a>
       <div class="nav-group">Pondasi — cara mesin berpikir</div>
-      <a href="#bab01" data-route="bab01">1. Satu Otak Kecil</a>
+      <a href="#bab01" data-route="bab01">1. Satu Sel Otak</a>
       <a href="#bab02" data-route="bab02">2. Memberi Perasaan</a>
       <a href="#bab03" data-route="bab03">3. Kekuatan Tim</a>
       <div class="nav-group">Cara mesin belajar</div>
@@ -61,15 +61,15 @@
     </div>
   </aside>
 
-  <!-- ============ MAIN ============ -->
+  <!-- MAIN -->
   <main id="main">
     <header class="topbar">
       <div>
         <div class="topbar-title">Neural Lab</div>
-        <div class="topbar-sub">Belajar deep learning dari nol</div>
+        <div class="topbar-sub">Bangun kesadaran buatan dari nol</div>
       </div>
       <div class="topbar-actions">
-        <label style="display:flex;align-items:center;gap:8px;font-size:0.78rem;color:var(--text-muted);margin:0">
+        <label style="display:flex;align-items:center;gap:8px;font-size:var(--text-xs);color:var(--text-muted);margin:0">
           Kecepatan
           <input type="range" id="global-speed" min="0.5" max="2" step="0.5" value="1" style="width:80px;margin:0">
         </label>
@@ -78,12 +78,12 @@
 
     <div class="content">
 
-    <!-- ============ BERANDA ============ -->
+    <!-- BERANDA -->
     <section id="sec-beranda" class="page">
       <div class="hero">
         <div>
-          <h2>Dari nol sampai <span class="hl">melatih AI sendiri</span></h2>
-          <p>Sari punya warung kelontong dan mimpi besar: punya robot kecil yang bisa memilih buah matang, meramal stok, membaca foto struk, bahkan menjawab chat pelanggan. Kamu mulai dari <b>NOL besar</b>. Dalam 11 bab ini, kamu merakit AI bagian demi bagian — main dulu, rumus belakangan.</p>
+          <h2>Dari titik kosong sampai <span class="hl">kesadaran buatan</span></h2>
+          <p>Selamat datang, Arsitek. Kamu mendapat misi misterius: membangun kesadaran buatan bernama <b>Lumen</b>. Ia mulai dari nol — tidak punya otak, tidak punya perasaan, tidak punya ingatan. Tapi melalui 11 bab ini, kamu akan belajar bersama Lumen, memberinya bagian demi bagian sampai ia "hidup".</p>
           <div class="badge-row">
             <span class="badge">✓ Mulai dari nol total</span>
             <span class="badge">✓ Tanpa rumus dulu</span>
@@ -99,17 +99,17 @@
           <h3>🗺️ Mau yang mana?</h3>
           <p class="tiny"><b>Jalur cepat (4 bab = 80% intuisi):</b></p>
           <ol class="map">
-            <li><a href="#bab01">Otak mini: cara menimbang petunjuk</a></li>
-            <li><a href="#bab04">Cermin: mengukur kesalahan</a></li>
-            <li><a href="#bab05">Bukit: cara belajar dari kesalahan</a></li>
-            <li><a href="#bab11">Lab: latih AI sungguhan 🎮</a></li>
+            <li><a href="#bab01">Satu sel otak pertama</a></li>
+            <li><a href="#bab04">Cermin kebenaran</a></li>
+            <li><a href="#bab05">Menuruni bukit</a></li>
+            <li><a href="#bab11">Laboratorium akhir</a></li>
           </ol>
           <p class="tiny" style="margin-top:var(--sp-3)"><b>Lengkap?</b> Ikuti Bab 1→11 (semua saling menyambung).</p>
         </div>
       </div>
 
       <div class="card">
-        <h3>🔁 Siklus belajar mesin — cuma lingkaran ini, diulang ribuan kali</h3>
+        <h3>🔁 Siklus belajar Lumen — cuma lingkaran ini, diulang ribuan kali</h3>
         <p>Inti deep learning = satu lingkaran yang diulang. Hafalkan ini dulu:</p>
         <div class="siklus">
           <div class="siklus-step">🎯<b>1. Menebak</b><span>tim memberi jawaban</span></div>
@@ -151,13 +151,13 @@
       </div>
     </section>
 
-    <!-- ============ BAB 1: NEURON ============ -->
+    <!-- BAB 1 -->
     <section id="sec-bab01" class="page hidden">
-      <div class="card kilas">🔙 <b>Titik awal:</b> Si Cerdas belum bisa apa-apa — kepalanya kosong. Misi pertamamu: pasang <b>satu sel otak</b> yang bisa menimbang petunjuk.</div>
+      <div class="card kilas">🔙 <b>Prolog:</b> Lumen masih titik kosong. Untuk mulai "hidup", ia butuh sesuatu yang paling dasar: sel otak pertama.</div>
 
-      <div class="card story">🍉 <b>Cerita:</b> Kamu jualan semangka. Pembeli tanya "matang nggak?". Kamu timbang 2 petunjuk: <b>bunyi tok-tok</b> dan <b>garis kulit</b>. Kalau bunyi lebih penting bagimu, kamu "mendengarkannya" lebih keras. Kalau total keyakinan melewati standar, kamu bilang <b>YA, matang!</b> — Itulah neuron: menimbang petunjuk, lalu memutuskan.</div>
+      <div class="card story">🧬 <b>Cerita:</b> Bayangkan kamu melihat sel saraf di bawah mikroskop. Sel ini sederhana — ia menerima sinyal, menimbang, lalu memutuskan: "tembak" atau "diam". Itulah neuron — unit paling dasar dari intelligence. Dan inilah yang akan kita pasang pertama kali ke Lumen.</div>
 
-      <div class="card guide">🖐️ <b>Coba 3 langkah ini:</b>
+      <div class="card guide">🖐️ <b>Coba 3 langkah:</b>
         <ol>
           <li>Geser <b>"Seberapa penting"</b> → lihat garis pemisah <b>berputar</b>.</li>
           <li>Geser <b>"Standar"</b> → lihat garisnya <b>bergeser</b> (makin kanan = makin pelit bilang YA).</li>
@@ -165,20 +165,20 @@
         </ol>
       </div>
 
-      <div class="card challenge">🎯 <b>Tantangan:</b> buat garis pemisahnya <b>tegak lurus</b>! (Petunjuk: nol-kan salah satu "seberapa penting". Geser dikit standarnya biar kelihatan.)</div>
+      <div class="card challenge">🎯 <b>Tantangan:</b> buat garis pemisahnya <b>tegak lurus</b>! (Petunjuk: nol-kan salah satu "seberapa penting".)</div>
 
       <div class="cols">
         <div class="card controls">
           <h3>🎛️ Kontrol</h3>
-          <label for="b01-x1">Petunjuk 1: "bunyi tok-tok?" (0–1) <span class="val" id="b01-x1-v">0.7</span></label>
+          <label for="b01-x1">Petunjuk 1 <span class="val" id="b01-x1-v">0.7</span></label>
           <input type="range" id="b01-x1" min="0" max="1" step="0.01" value="0.7">
-          <label for="b01-x2">Petunjuk 2: "garis kulit?" (0–1) <span class="val" id="b01-x2-v">0.6</span></label>
+          <label for="b01-x2">Petunjuk 2 <span class="val" id="b01-x2-v">0.6</span></label>
           <input type="range" id="b01-x2" min="0" max="1" step="0.01" value="0.6">
           <label for="b01-w1">Pentingnya petunjuk 1 <span class="val" id="b01-w1-v">1.0</span></label>
           <input type="range" id="b01-w1" min="-3" max="3" step="0.1" value="1">
           <label for="b01-w2">Pentingnya petunjuk 2 <span class="val" id="b01-w2-v">1.0</span></label>
           <input type="range" id="b01-w2" min="-3" max="3" step="0.1" value="1">
-          <label for="b01-b">Standar kelulusan (bias) <span class="val" id="b01-b-v">-1.2</span></label>
+          <label for="b01-b">Standar (bias) <span class="val" id="b01-b-v">-1.2</span></label>
           <input type="range" id="b01-b" min="-3" max="3" step="0.1" value="-1.2">
           <div class="row">
             <button class="btn btn-sm btn-secondary" id="b01-and">Contoh: AND</button>
@@ -191,7 +191,7 @@
           <h3>👁️ Daerah keputusan + garis pemisah</h3>
           <canvas id="b01-canvas" width="460" height="340"></canvas>
           <div id="b01-lamp" class="lamp">💡 MATI</div>
-          <p class="tiny mt-2">Titik = posisi buahmu. Biru = "matang", kuning = "mentah". Garis = timbanganmu.</p>
+          <p class="tiny mt-2">Titik = posisi input. Biru = "YA", kuning = "TIDAK". Garis = keputusan Lumen.</p>
         </div>
       </div>
 
@@ -199,8 +199,8 @@
         <p>Total skor = (penting₁ × petunjuk₁) + (penting₂ × petunjuk₂) + standar. Lampu nyala kalau total > 0. Rumus: <code>z = w₁·x₁ + w₂·x₂ + b</code>, <code>y = 1 jika z > 0</code>.</p>
       </details>
 
-      <div class="card analis">🧠 <b>Soal analis:</b> Pintu gudang Sari harus terbuka hanya jika <b>(bawa keranjang) DAN (bukan kucing tetangga)</b>. (a) Bisakah 1 perceptron mengerjakannya? (b) Sensor kucing rusak — selalu 0. Apa yang terjadi?
-        <details><summary>Intip cara berpikirnya</summary><p>(a) Bisa — ini aturan AND linear. (b) Pintu hanya bergantung pada sensor keranjang + bias. Si kucing selalu lolos. Pelajaran: satu sensor mati = satu petunjuk hilang total. Sistem nyata butuh redundansi.</p></details>
+      <div class="card analis">🧠 <b>Soal analis:</b> Pintu gudang harus terbuka hanya jika <b>(bawa keranjang) DAN (bukan kucing)</b>. (a) Bisakah 1 neuron mengerjakannya? (b) Sensor kucing rusak — selalu 0. Apa yang terjadi?
+        <details><summary>Intip cara berpikirnya</summary><p>(a) Bisa — ini aturan AND linear. (b) Pintu hanya bergantung pada sensor keranjang. Si kucing selalu lolos. Pelajaran: satu sensor mati = satu petunjuk hilang.</p></details>
       </div>
 
       <div class="card conclusion">💎 <b>Ingat 1 kalimat:</b> Neuron = timbangan petunjuk. Yang penting didengar keras, totalnya menentukan YA atau TIDAK.</div>
@@ -212,7 +212,6 @@
           <span class="tag">seberapa penting = <b>weight</b></span>
           <span class="tag">standar = <b>bias</b></span>
           <span class="tag">garis pemisah = <b>decision boundary</b></span>
-          <span class="tag">aturan AND/OR = <b>logic gate</b></span>
         </div>
       </div>
 
@@ -223,17 +222,17 @@
       </div>
     </section>
 
-    <!-- ============ BAB 2: AKTIVASI ============ -->
+    <!-- BAB 2 -->
     <section id="sec-bab02" class="page hidden">
-      <div class="card kilas">🔙 <b>Kilasan Bab 1:</b> Si Cerdas kini bisa menimbang dan bilang YA/TIDAK. Tapi ia kaku — keyakinannya selalu 0% atau 100%. Sari butuh jawaban bertingkat: "hampir matang, cek besok."</div>
+      <div class="card kilas">🔙 <b>Kilasan Bab 1:</b> Lumen punya 1 neuron, tapi keputusannya kaku. Di dunia nyata, keputusan tidak selalu hitam-putih. "Mungkin hujan", "hampir malam" — semua butuh nuansa.</div>
 
-      <div class="card story">💡 <b>Cerita:</b> Bayangkan 4 orang ditanya "yakin?": Si Tegas: "YA atau TIDAK, titik!" Si Lembut: "hmm... 70% yakin." Si Seimbang: "−50% sampai +50%." Si Cuek: "negatif? cuek. positif? Gas!" Mesin juga punya "kepribadian" seperti itu — namanya fungsi aktivasi.</div>
+      <div class="card story">💡 <b>Cerita:</b> Bayangkan 4 orang ditanya "yakin?": Si Tegas: "YA atau TIDAK, titik!" Si Lembut: "hmm... 70% yakin." Si Seimbang: "−100% sampai +100%." Si Cuek: "negatif? cuek. positif? Gas!" Mesin juga punya "kepribadian" seperti itu — namanya fungsi aktivasi.</div>
 
       <div class="card guide">🖐️ <b>Coba 3 langkah:</b>
         <ol>
-          <li>Pilih <b>Si Cuek (ReLU)</b> → geser input kiri ke kanan, lihat garisnya patah: diam lalu naik.</li>
+          <li>Pilih <b>Si Cuek (ReLU)</b> → geser input, lihat garis patah.</li>
           <li>Ganti ke <b>Si Lembut (Sigmoid)</b> → bentuk S halus.</li>
-          <li>Perhatikan titik biru: itulah "seberapa yakin" untuk inputmu.</li>
+          <li>Perhatikan titik biru = "seberapa yakin" untuk inputmu.</li>
         </ol>
       </div>
 
@@ -244,10 +243,10 @@
           <h3>🎛️ Kontrol</h3>
           <label for="b02-fn">Pilih kepribadian</label>
           <select id="b02-fn">
-            <option value="sigmoid">Si Lembut (Sigmoid: 0–1 halus)</option>
-            <option value="tanh">Si Seimbang (Tanh: −1 s/d +1)</option>
-            <option value="relu" selected>Si Cuek (ReLU: populer!)</option>
-            <option value="step">Si Tegas (Step: ya/tidak saja)</option>
+            <option value="sigmoid">Si Lembut (Sigmoid)</option>
+            <option value="tanh">Si Seimbang (Tanh)</option>
+            <option value="relu" selected>Si Cuek (ReLU)</option>
+            <option value="step">Si Tegas (Step)</option>
           </select>
           <label for="b02-x">Sinyal masuk <span class="val" id="b02-x-v">0.5</span></label>
           <input type="range" id="b02-x" min="-5" max="5" step="0.1" value="0.5">
@@ -257,11 +256,11 @@
       </div>
 
       <details class="math"><summary>📐 Hitungannya (boleh diskip)</summary>
-        <p>Sigmoid: <code>1/(1+e⁻ˣ)</code>. Tanh: <code>(eˣ−e⁻ˣ)/(eˣ+e⁻ˣ)</code>. ReLU: <code>max(0,x)</code>. Step: <code>1 jika x>0, else 0</code>. Kemiringan = gradien = kemampuan belajar di titik itu.</p>
+        <p>Sigmoid: <code>1/(1+e⁻ˣ)</code>. Tanh: <code>(eˣ−e⁻ˣ)/(eˣ+e⁻ˣ)</code>. ReLU: <code>max(0,x)</code>. Step: <code>1 jika x>0, else 0</code>.</p>
       </details>
 
-      <div class="card analis">🧠 <b>Soal analis:</b> Sari butuh alarm <b>"mangga hampir matang, cek besok"</b> (peringatan dini). Pilih: Si Tegas atau Si Lembut? Beri 2 alasan. Kapan Si Tegas justru lebih tepat?
-        <details><summary>Intip cara berpikirnya</summary><p>Si Lembut: memberi derajat keyakinan (70%) sehingga "hampir" terwakili, dan ambang bisa digeser. Si Tegas tepat untuk keputusan final yang butuh aksi tegas — mis. tolak kiriman busuk.</p></details>
+      <div class="card analis">🧠 <b>Soal analis:</b> Sari butuh alarm <b>"mangga hampir matang, cek besok"</b>. Pilih: Si Tegas atau Si Lembut? Beri 2 alasan.
+        <details><summary>Intip cara berpikirnya</summary><p>Si Lembut: memberi derajat keyakinan (70%) sehingga "hampir" terwakili. Si Tegas tepat untuk keputusan final yang butuh aksi tegas.</p></details>
       </div>
 
       <div class="card conclusion">💎 <b>Ingat 1 kalimat:</b> Tanpa aktivasi non-linear, mesin sedalam apapun cuma bisa garis lurus.</div>
@@ -273,8 +272,6 @@
           <span class="tag">Si Lembut = <b>sigmoid</b></span>
           <span class="tag">Si Seimbang = <b>tanh</b></span>
           <span class="tag">Si Cuek = <b>ReLU</b></span>
-          <span class="tag">kemiringan = <b>gradien</b></span>
-          <span class="tag">macet di ujung = <b>saturasi</b></span>
         </div>
       </div>
 
@@ -286,16 +283,16 @@
       </div>
     </section>
 
-    <!-- ============ BAB 3: MLP ============ -->
+    <!-- BAB 3 -->
     <section id="sec-bab03" class="page hidden">
-      <div class="card kilas">🔙 <b>Kilasan Bab 2:</b> Si Cerdas kini punya "kepribadian" dan bisa menyatakan keyakinan halus. Tapi ia masih sendirian dengan 2 petunjuk. Warung butuh yang paham <b>banyak ciri sekaligus</b>.</div>
+      <div class="card kilas">🔙 <b>Kilasan Bab 2:</b> Lumen punya "kepribadian" dan bisa menyatakan keyakinan halus. Tapi ia masih sendirian dengan 2 input. Dunia nyata lebih rumit — butuh banyak ciri sekaligus.</div>
 
-      <div class="card story">🏃 <b>Cerita:</b> Tebak hewan berlapis: tim depan melihat "ada garis? ada bulu?", tim tengah menyimpulkan "kayak kucing?", ketua memutuskan "KUCING!". Tiap tim mengoper <b>ringkasan</b> ke tim berikut — itulah jaringan berlapis.</div>
+      <div class="card story">🏃 <b>Cerita:</b> Tebak hewan berlapis: tim depan melihat "ada garis? ada bulu?", tim tengah menyimpulkan "kayak kucing?", ketua memutuskan "KUCING!". Tiap tim mengoper ringkasan ke tim berikut — itulah jaringan berlapis.</div>
 
       <div class="card guide">🖐️ <b>Coba 3 langkah:</b>
         <ol>
           <li>Geser <b>Input 1 & 2</b> → lihat semua angka mengalir ke kanan.</li>
-          <li>Klik <b>🎲 Acak</b> → keputusan berubah total (itulah kenapa mesin harus "belajar").</li>
+          <li>Klik <b>🎲 Acak</b> → keputusan berubah total.</li>
           <li>Perhatikan garis tebal = pengaruh kuat (biru = mendukung, merah = menolak).</li>
         </ol>
       </div>
@@ -309,34 +306,33 @@
           <input type="range" id="b03-i1" min="0" max="1" step="0.05" value="0.8">
           <label for="b03-i2">Ciri 2 <span class="val" id="b03-i2-v">0.3</span></label>
           <input type="range" id="b03-i2" min="0" max="1" step="0.05" value="0.3">
-          <label for="b03-act">Gaya aktivasi tim tengah</label>
+          <label for="b03-act">Gaya aktivasi</label>
           <select id="b03-act"><option value="relu" selected>ReLU</option><option value="sigmoid">Sigmoid</option><option value="tanh">Tanh</option></select>
           <div class="row"><button class="btn btn-sm btn-secondary" id="b03-random">🎲 Acak bobot</button><button class="btn btn-sm btn-ghost" id="b03-reset">↺ Reset</button></div>
           <div class="calc" id="b03-calc"></div>
         </div>
         <div class="card"><h3>👁️ Forward pass: data mengalir kiri → kanan</h3>
           <svg id="b03-svg" viewBox="0 0 460 340" width="100%" height="340"></svg>
-          <p class="tiny mt-2">Garis tebal = pengaruh kuat. Biru = mendukung, merah = menolak. C1–C2 = ciri, A–E = anggota tim, ★ = keputusan.</p>
+          <p class="tiny mt-2">Garis tebal = pengaruh kuat. Biru = mendukung, merah = menolak.</p>
         </div>
       </div>
 
       <details class="math"><summary>📐 Hitungannya (boleh diskip)</summary>
-        <p>Tiap panah = kalikan lalu jumlahkan, terus lewat aktivasi. Ditumpuk berlapis, tumpukan hal sederhana ini bisa mengenali hal rumit.</p>
+        <p>Tiap panah = kalikan lalu jumlahkan, terus lewat aktivasi. Ditumpuk berlapis.</p>
       </details>
 
-      <div class="card analis">🧠 <b>Soal analis:</b> Sari menambah <b>50 lapis tanpa aktivasi</b>. Apa yang terjadi? Jelaskan ke Sari kenapa uang komputasinya terbuang.
-        <details><summary>Intip cara berpikirnya</summary><p>Tidak bertambah apa-apa: tumpukan fungsi linear tetap linear (50 fotokopi dari fotokopi). 1 lapis + aktivasi mengalahkan 50 lapis tanpa aktivasi.</p></details>
+      <div class="card analis">🧠 <b>Soal analis:</b> Sari menambah <b>50 lapis tanpa aktivasi</b>. Apa yang terjadi?
+        <details><summary>Intip cara berpikirnya</summary><p>Tidak bertambah apa-apa: tumpukan linear tetap linear. 1 lapis + aktivasi mengalahkan 50 lapis tanpa aktivasi.</p></details>
       </div>
 
-      <div class="card conclusion">💎 <b>Ingat 1 kalimat:</b> Jaringan = tim estafet peringkas. Makin lapis, makin abstrak ringkasannya.</div>
+      <div class="card conclusion">💎 <b>Ingat 1 kalimat:</b> Jaringan = tim estafet peringkas. Makin lapis, makin abstrak.</div>
 
       <div class="card terms">🏷️ <b>Nama resminya</b>
         <div class="tags">
           <span class="tag">jaringan berlapis = <b>MLP</b></span>
           <span class="tag">lapisan = <b>layer</b></span>
           <span class="tag">tim tengah = <b>hidden layer</b></span>
-          <span class="tag">mengoper tebakan = <b>forward pass</b></span>
-          <span class="tag">keputusan = <b>output</b></span>
+          <span class="tag">mengoper = <b>forward pass</b></span>
         </div>
       </div>
 
@@ -348,488 +344,16 @@
       </div>
     </section>
 
-    <!-- ============ BAB 4: LOSS ============ -->
-    <section id="sec-bab04" class="page hidden">
-      <div class="card kilas">🔙 <b>Kilasan Bab 3:</b> Tim sudah bekerja dan tebakannya mengalir. Sari bertanya: <b>"tebakanmu ini bagus atau tidak?"</b> Si Cerdas terdiam — ia belum punya cermin.</div>
-
-      <div class="card story">🎯 <b>Cerita:</b> Main lempar dart. Bullseye = jawaban benar. Lemparanmu = tebakan mesin. <b>Jaraknya</b> = skor meleset. Tugas mesin seumur hidupnya: bikin lemparan makin dekat ke tengah.</div>
-
-      <div class="card guide">🖐️ <b>Coba 2 langkah:</b>
-        <ol>
-          <li>Geser <b>tebakan</b> mendekati jawaban benar → skor meleset turun ke lembah.</li>
-          <li>Ganti ke <b>"tebak pilihan"</b> → ulangi. Salah tapi pede dihukum JAUH lebih berat!</li>
-        </ol>
-      </div>
-
-      <div class="card challenge">🎯 <b>Tantangan:</b> mode pilihan, jawaban 1, tebakan 0.01 — catat skornya. Bandingkan dengan mode tebak angka di posisi sama. Beda jauh?</div>
-
-      <div class="cols">
-        <div class="card controls">
-          <h3>🎛️ Kontrol</h3>
-          <label for="b04-fn">Jenis permainan</label>
-          <select id="b04-fn"><option value="mse">Tebak angka (mis. harga)</option><option value="ce">Tebak pilihan (YA/TIDAK)</option></select>
-          <label for="b04-target">Jawaban benar <span class="val" id="b04-target-v">1.0</span></label>
-          <input type="range" id="b04-target" min="0" max="1" step="0.05" value="1">
-          <label for="b04-pred">Tebakan mesin <span class="val" id="b04-pred-v">0.3</span></label>
-          <input type="range" id="b04-pred" min="0.01" max="0.99" step="0.01" value="0.3">
-          <div class="calc" id="b04-calc"></div>
-        </div>
-        <div class="card"><h3>👁️ Lembah loss</h3><canvas id="b04-canvas" width="460" height="340"></canvas><p class="tiny mt-2">Titik merah = tebakanmu. Makin dekat ke hijau = makin dalam lembah = makin bagus.</p></div>
-      </div>
-
-      <details class="math"><summary>📐 Hitungannya (boleh diskip)</summary>
-        <p>MSE: <code>(benar − tebakan)²</code>. Cross-entropy: <code>−[y·log ŷ + (1−y)·log(1−ŷ)]</code> — "betapa kagetnya mesin saat salah".</p>
-      </details>
-
-      <div class="card analis">🧠 <b>Soal analis:</b> Model A selalu meleset 0.1. Model B biasanya tepat tapi kadang meleset 2.0. MSE memilih siapa? Adilkah untuk warung Sari?
-        <details><summary>Intip cara berpikirnya</summary><p>MSE memilih A — pengkuadratan menghukum 2.0 sangat berat (4 vs 0.01). Adil jika satu kesalahan besar = bencana. B berbahaya karena rata-rata bagus tapi sesekali fatal.</p></details>
-      </div>
-
-      <div class="card conclusion">💎 <b>Ingat 1 kalimat:</b> Loss = jarak dari benar. Belajar = mengecilkan jarak ini terus-menerus.</div>
-
-      <div class="card terms">🏷️ <b>Nama resminya</b>
-        <div class="tags">
-          <span class="tag">skor meleset = <b>loss</b></span>
-          <span class="tag">tebak angka = <b>MSE</b></span>
-          <span class="tag">tebak pilihan = <b>cross-entropy</b></span>
-          <span class="tag">jawaban benar = <b>target</b></span>
-          <span class="tag">tebakan = <b>prediksi</b></span>
-        </div>
-      </div>
-
-      <div class="quiz" data-quiz="bab04"></div>
-      <div class="nav-foot">
-        <a class="btn btn-ghost" href="#bab03">← Bab sebelumnya</a>
-        <button class="btn btn-ghost done-btn" data-mod="bab04">✓ Tandai selesai</button>
-        <a class="btn btn-primary" href="#bab05">Lanjut: Menuruni Bukit →</a>
-      </div>
-    </section>
-
-    <!-- ============ BAB 5: GRADIENT DESCENT ============ -->
-    <section id="sec-bab05" class="page hidden">
-      <div class="card kilas">🔙 <b>Kilasan Bab 4:</b> Si Cerdas kini punya cermin — tahu loss-nya. Sari: <b>"Bagus, kamu tahu salah. Cara membetulkannya bagaimana?"</b></div>
-
-      <div class="card story">⛷️ <b>Cerita:</b> Kamu ski dalam kabut tebal. Tidak kelihatan lembah. Yang terasa cuma: <b>tanah miring ke mana?</b> Ya sudah, melangkah ke arah turun. Ulangi. Lama-lama sampai lembah. Itulah cara mesin belajar.</div>
-
-      <div class="card guide">🖐️ <b>Wajib coba 3×:</b>
-        <ol>
-          <li>Klik <b>▶ Jalankan</b> dengan langkah sedang → bola meluncur ke lembah. ✅</li>
-          <li>Ubah ke <b>super kecil</b> → aman tapi... lama banget. 🐢</li>
-          <li>Ubah ke <b>super besar</b> → bola mental-mental! 💥</li>
-        </ol>
-      </div>
-
-      <div class="cols">
-        <div class="card controls">
-          <h3>🎛️ Kontrol</h3>
-          <label for="b05-lr">Panjang langkah (learning rate) <span class="val" id="b05-lr-v">0.2</span></label>
-          <input type="range" id="b05-lr" min="0.01" max="1" step="0.01" value="0.2">
-          <label for="b05-start">Posisi awal <span class="val" id="b05-start-v">3.2</span></label>
-          <input type="range" id="b05-start" min="-4" max="4" step="0.1" value="3.2">
-          <div class="row">
-            <button class="btn btn-sm btn-primary" id="b05-run">▶ Jalankan</button>
-            <button class="btn btn-sm btn-secondary" id="b05-step">👣 1 langkah</button>
-            <button class="btn btn-sm btn-ghost" id="b05-reset">↺ Reset</button>
-          </div>
-          <div class="calc" id="b05-calc"></div>
-        </div>
-        <div class="card"><h3>👁️ Bola mencari lembah</h3><canvas id="b05-canvas" width="460" height="340"></canvas></div>
-      </div>
-
-      <details class="math"><summary>📐 Hitungannya (boleh diskip)</summary>
-        <p>Tiap langkah: <code>posisi_baru = posisi_lama − lr × kemiringan</code>. Miring kanan → langkah kiri. Nama kerennya: gradient descent.</p>
-      </details>
-
-      <div class="card analis">🧠 <b>Soal analis:</b> Sari memasang learning rate raksasa "biar sekali jadi". (a) Prediksi 2 hal yang terjadi. (b) Sari menolak mengecilkan LR. Taktik apa yang masih bisa menyelamatkan?
-        <details><summary>Intip cara berpikirnya</summary><p>(a) Overshoot (mental melewati lembah) atau divergen (kabur). (b) Mulai dari beberapa titik, ambil terbaik. Atau turunkan LR bertahap (schedule). Tidak ada jalan pintas satu langkah raksasa.</p></details>
-      </div>
-
-      <div class="card conclusion">💎 <b>Ingat 1 kalimat:</b> Belajar = intip kemiringan tanah, melangkah turun sedikit demi sedikit.</div>
-
-      <div class="card terms">🏷️ <b>Nama resminya</b>
-        <div class="tags">
-          <span class="tag">cara ski = <b>gradient descent</b></span>
-          <span class="tag">panjang langkah = <b>learning rate</b></span>
-          <span class="tag">kemiringan = <b>gradien</b></span>
-          <span class="tag">lembah = <b>minimum</b></span>
-          <span class="tag">bola kabur = <b>divergen</b></span>
-        </div>
-      </div>
-
-      <div class="quiz" data-quiz="bab05"></div>
-      <div class="nav-foot">
-        <a class="btn btn-ghost" href="#bab04">← Bab sebelumnya</a>
-        <button class="btn btn-ghost done-btn" data-mod="bab05">✓ Tandai selesai</button>
-        <a class="btn btn-primary" href="#bab06">Lanjut: Evaluasi Bersama →</a>
-      </div>
-    </section>
-
-    <!-- ============ BAB 6: BACKPROP ============ -->
-    <section id="sec-bab06" class="page hidden">
-      <div class="card kilas">🔙 <b>Kilasan Bab 5:</b> Si Cerdas bisa menuruni lembah. Tapi tim protes: <b>"yang disalahkan kok selalu ketua?!"</b> Evaluasi harus adil ke seluruh tim.</div>
-
-      <div class="card story">⚽ <b>Cerita:</b> Tim kalah 0–1. Siapa salah? Bukan cuma kiper! Pelatih memutar ulang: siapa passing ngawur? Siapa salah posisi? <b>Kesalahan dibagi ke belakang</b> sesuai andil. Itulah backprop.</div>
-
-      <div class="card guide">🖐️ <b>Coba:</b> Klik <b>Langkah →</b> 4 kali pelan-pelan. Urutannya: 1) menebak → 2) sadar salah → 3) bagi salah → 4) koreksi. Ulangi 2–3 putaran, lihat loss mengecil!</div>
-
-      <div class="card challenge">🎯 <b>Tantangan:</b> naikkan Petunjuk 2 jadi 1.0, jalan 4 langkah. Siapa yang paling "bersalah" sekarang?</div>
-
-      <div class="cols">
-        <div class="card controls">
-          <h3>🎛️ Kontrol</h3>
-          <p class="tiny">Tim mini: 2 petunjuk → 1 kapten → 1 tebakan. Target = 1.</p>
-          <label for="b06-x1">Petunjuk 1 <span class="val" id="b06-x1-v">0.8</span></label><input type="range" id="b06-x1" min="0" max="1" step="0.05" value="0.8">
-          <label for="b06-x2">Petunjuk 2 <span class="val" id="b06-x2-v">0.4</span></label><input type="range" id="b06-x2" min="0" max="1" step="0.05" value="0.4">
-          <label for="b06-lr">Galak koreksi (learning rate) <span class="val" id="b06-lr-v">0.5</span></label><input type="range" id="b06-lr" min="0.05" max="1.5" step="0.05" value="0.5">
-          <div class="row">
-            <button class="btn btn-sm btn-secondary" id="b06-prev">←</button>
-            <button class="btn btn-sm btn-primary" id="b06-next">Langkah →</button>
-            <button class="btn btn-sm btn-ghost" id="b06-reset">↺ Ulangi</button>
-          </div>
-          <div class="calc" id="b06-calc"></div>
-        </div>
-        <div class="card"><h3>👁️ 4 langkah evaluasi mundur</h3>
-          <ol id="b06-steps" class="steps">
-            <li data-s="0"><b>1. Menebak:</b> tim mengandalkan bobot sekarang → keluar tebakan.</li>
-            <li data-s="1"><b>2. Sadar salah:</b> bandingkan tebakan vs target → selisihnya.</li>
-            <li data-s="2"><b>3. Bagi salah:</b> yang pegang bola lama tanggung jawab besar.</li>
-            <li data-s="3"><b>4. Koreksi:</b> tiap anggota diubah sedikit ke arah benar.</li>
-          </ol>
-          <div id="b06-viz" class="bpviz"></div>
-        </div>
-      </div>
-
-      <details class="math"><summary>📐 Hitungannya (boleh diskip)</summary>
-        <p>"Seberapa salah hasil kalau cara-ku digeser dikit?" = (salah hasil) × (pengaruhku ke hasil). Chain rule. Koreksi = cara_lama − lr × bagian_salahku.</p>
-      </details>
-
-      <div class="card analis">🧠 <b>Soal analis:</b> Contoh X membaik TAPI contoh Y memburuk setelah koreksi. Rusak atau normal? Apa yang dilakukan praktisi?
-        <details><summary>Intip cara berpikirnya</summary><p>Normal. Koreksi dari satu contoh bisa merugikan contoh lain. Yang dioptimasi = rata-rata banyak contoh. Praktisi: latih banyak contoh sekaligus, pantau rata-rata loss.</p></details>
-      </div>
-
-      <div class="card conclusion">💎 <b>Ingat 1 kalimat:</b> Backprop = salahkan dengan adil ke belakang, lalu koreksi sedikit-sedikit.</div>
-
-      <div class="card terms">🏷️ <b>Nama resminya</b>
-        <div class="tags">
-          <span class="tag">evaluasi mundur = <b>backpropagation</b></span>
-          <span class="tag">bagi salah = <b>backward pass</b></span>
-          <span class="tag">koreksi = <b>update</b></span>
-          <span class="tag">aturan membagi = <b>chain rule</b></span>
-        </div>
-      </div>
-
-      <div class="quiz" data-quiz="bab06"></div>
-      <div class="nav-foot">
-        <a class="btn btn-ghost" href="#bab05">← Bab sebelumnya</a>
-        <button class="btn btn-ghost done-btn" data-mod="bab06">✓ Tandai selesai</button>
-        <a class="btn btn-primary" href="#bab07">Lanjut: Hafal vs Paham →</a>
-      </div>
-    </section>
-
-    <!-- ============ BAB 7: OVERFITTING ============ -->
-    <section id="sec-bab07" class="page hidden">
-      <div class="card kilas">🔙 <b>Kilasan Bab 6:</b> Evaluasi sudah adil. Sari melatih Si Cerdas 1000 putaran. Nilai latih: <b>sempurna!</b> Tapi pelanggan baru kecewa. Lulus latihan ≠ lulus kehidupan.</div>
-
-      <div class="card story">📚 <b>Cerita:</b> Dua siswa les. Si Penghafal: 100 soal dihafal mati, try-out 100! Ujian asli soalnya beda dikit → jeblok. Si Paham: latihan 85, ujian 87 — stabil. Mesin pun bisa jadi "si penghafal" kalau terlalu rumit.</div>
-
-      <div class="card guide">🖐️ <b>Coba 3 langkah:</b>
-        <ol>
-          <li>Geser kerumitan ke <b>1</b> → garis lurus kaku (kurang belajar).</li>
-          <li>Geser ke <b>3–4</b> → garis halus mengikuti pola. ✅</li>
-          <li>Geser ke <b>9</b> → garis meliuk gila mengejar tiap titik! 🤯</li>
-        </ol>
-      </div>
-
-      <div class="cols">
-        <div class="card controls">
-          <h3>🎛️ Kontrol</h3>
-          <label for="b07-degree">Kerumitan (derajat) <span class="val" id="b07-degree-v">3</span></label>
-          <input type="range" id="b07-degree" min="1" max="9" step="1" value="3">
-          <label for="b07-noise">Noise data <span class="val" id="b07-noise-v">0.3</span></label>
-          <input type="range" id="b07-noise" min="0" max="1" step="0.05" value="0.3">
-          <label for="b07-n">Jumlah data <span class="val" id="b07-n-v">18</span></label>
-          <input type="range" id="b07-n" min="8" max="40" step="1" value="18">
-          <div class="row"><button class="btn btn-sm btn-secondary" id="b07-new">🎲 Data baru</button><button class="btn btn-sm btn-ghost" id="b07-reset">↺ Reset</button></div>
-          <div class="calc" id="b07-calc"></div>
-        </div>
-        <div class="card"><h3>👁️ Garis = cara belajar, titik = data</h3><canvas id="b07-canvas" width="460" height="340"></canvas><p class="tiny mt-2">Biru = data latih. Abu = data uji (baru). Hijau putus = pola sebenarnya.</p></div>
-      </div>
-
-      <details class="math"><summary>📐 Hitungannya (boleh diskip)</summary>
-        <p>Derajat 1 = penggaris (kaku). Derajat 9 = tali lentur (bisa nempel semua titik, termasuk noise). Obat: data lebih banyak, model lebih sederhana, early stopping.</p>
-      </details>
-
-      <div class="card analis">🧠 <b>Soal analis:</b> Si Cerdas hafal 30 struk, gagal di pelanggan baru. Sari usul: <b>tambah 200 lapis</b>. (a) Setuju? (b) Beri 3 obat beserta alasan.
-        <details><summary>Intip cara berpikirnya</summary><p>(a) Tidak — makin rumit makin jago menghafal. (b) 1) Data lebih banyak & beragam. 2) Model lebih sederhana. 3) Early stopping sambil cek data uji.</p></details>
-      </div>
-
-      <div class="card conclusion">💎 <b>Ingat 1 kalimat:</b> Yang penting bukan nilai latihan, tapi nilai di soal yang belum pernah dilihat.</div>
-
-      <div class="card terms">🏷️ <b>Nama resminya</b>
-        <div class="tags">
-          <span class="tag">menghafal = <b>overfitting</b></span>
-          <span class="tag">kurang belajar = <b>underfitting</b></span>
-          <span class="tag">paham = <b>generalisasi</b></span>
-          <span class="tag">data latih = <b>training data</b></span>
-          <span class="tag">data uji = <b>test data</b></span>
-        </div>
-      </div>
-
-      <div class="quiz" data-quiz="bab07"></div>
-      <div class="nav-foot">
-        <a class="btn btn-ghost" href="#bab06">← Bab sebelumnya</a>
-        <button class="btn btn-ghost done-btn" data-mod="bab07">✓ Tandai selesai</button>
-        <a class="btn btn-primary" href="#bab08">Lanjut: Mata Digital →</a>
-      </div>
-    </section>
-
-    <!-- ============ BAB 8: CNN ============ -->
-    <section id="sec-bab08" class="page hidden">
-      <div class="card kilas">🔙 <b>Kilasan Bab 7:</b> Si Cerdas kini jujur — paham, bukan menghafal. Tapi Sari sadar: selama ini petunjuknya <b>disuapi angka</b>. "Kapan kamu bisa melihat foto sendiri?"</div>
-
-      <div class="card story">🔦 <b>Cerita:</b> Kamu meraba foto dalam gelap pakai bingkai kecil. Geser ke tiap sudut, tiap berhenti tanya: "ada garis? ada tepi?". Lama-lama terkumpul peta: "oh, ada lingkaran di tengah!" — begitulah komputer "melihat".</div>
-
-      <div class="card guide">🖐️ <b>Coba 3 langkah:</b>
-        <ol>
-          <li>Pilih <b>huruf X</b> + filter <b>pendeteksi tepi</b> → peta kanan menyala di garis-garisnya.</li>
-          <li><b>Klik kotak-kotak</b> untuk menggambar sendiri → peta ikut berubah!</li>
-          <li>Ganti filter ke <b>pelembut</b> → peta jadi lembut. Beda filter = beda temuan.</li>
-        </ol>
-      </div>
-
-      <div class="card challenge">🎯 <b>Tantangan:</b> gambar huruf T sendiri, lalu coba semua filter — mana yang paling menyala di tengah?</div>
-
-      <div class="cols">
-        <div class="card controls">
-          <h3>🎛️ Kontrol</h3>
-          <label for="b08-pattern">Gambar 5×5 (bisa diklik!)</label>
-          <select id="b08-pattern"><option value="x">Huruf X</option><option value="o">Kotak O</option><option value="line">Garis tegak</option><option value="random">Acak</option></select>
-          <label for="b08-filter">Filter 3×3</label>
-          <select id="b08-filter"><option value="edge">Pendeteksi tepi</option><option value="blur">Pelembut</option><option value="sharpen">Penajam</option><option value="vert">Pencari garis tegak</option></select>
-          <p class="tiny">Klik kotak gambar untuk toggle. Feature map + pooling ikut berubah.</p>
-          <div class="row"><button class="btn btn-sm btn-ghost" id="b08-reset">↺ Reset</button></div>
-          <div class="calc" id="b08-calc"></div>
-        </div>
-        <div class="card"><h3>👁️ Gambar → Feature map → Pooling</h3>
-          <div class="cnn-grids">
-            <div><b>Gambar</b><div id="b08-in" class="grid5"></div></div>
-            <div><b>Feature map</b><div id="b08-out" class="grid3cnn"></div></div>
-            <div><b>Pooling</b><div id="b08-pool" class="grid2"></div></div>
-          </div>
-        </div>
-      </div>
-
-      <details class="math"><summary>📐 Hitungannya (boleh diskip)</summary>
-        <p>Tiap kotak peta = kecocokan gambar × filter di jendela 3×3 (negatif → 0 via ReLU). Pooling = ambil terbesar tiap blok 2×2. Ditumpuk berlapis: garis → bentuk → benda.</p>
-      </details>
-
-      <div class="card analis">🧠 <b>Soal analis:</b> Foto struk miring 45°. Filter pencari garis tegak masih menemukannya? Bagaimana CNN sungguhan mengatasi ini?
-        <details><summary>Intip cara berpikirnya</summary><p>Banyak yang gagal — filter hanya cocok orientasi yang dilatih. Solusi: augmentasi (latih dengan foto diputar/digeser), filter beragam, pooling membantu sedikit terhadap pergeseran.</p></details>
-      </div>
-
-      <div class="card conclusion">💎 <b>Ingat 1 kalimat:</b> Komputer melihat dengan meraba tiap sudut pakai pola kecil, lalu merangkumnya berlapis.</div>
-
-      <div class="card terms">🏷️ <b>Nama resminya</b>
-        <div class="tags">
-          <span class="tag">meraba = <b>konvolusi</b></span>
-          <span class="tag">bingkai peraba = <b>filter / kernel</b></span>
-          <span class="tag">peta temuan = <b>feature map</b></span>
-          <span class="tag">rangkum wilayah = <b>max-pooling</b></span>
-          <span class="tag">jaringan peraba = <b>CNN</b></span>
-        </div>
-      </div>
-
-      <div class="quiz" data-quiz="bab08"></div>
-      <div class="nav-foot">
-        <a class="btn btn-ghost" href="#bab07">← Bab sebelumnya</a>
-        <button class="btn btn-ghost done-btn" data-mod="bab08">✓ Tandai selesai</button>
-        <a class="btn btn-primary" href="#bab09">Lanjut: Ingatan Berantai →</a>
-      </div>
-    </section>
-
-    <!-- ============ BAB 9: RNN ============ -->
-    <section id="sec-bab09" class="page hidden">
-      <div class="card kilas">🔙 <b>Kilasan Bab 8:</b> Si Cerdas bisa melihat foto. Tapi warung hidup dalam <b>waktu</b>: kemarin sepi, hari ini ramai, besok stok apa? Foto tak menjawabnya.</div>
-
-      <div class="card story">📝 <b>Cerita:</b> Kamu nonton sinetron sambil bawa catatan kecil. Tiap episode, update catatan: gabung ingatan lama + kejadian baru. Kalau catatan gampang hilang tintanya (pelupa), kamu bingung. Mesin urutan (lagu, chat, saham) bekerja persis begitu.</div>
-
-      <div class="card guide">🖐️ <b>Coba:</b> Klik <b>▶ Mainkan urutan</b>. Lihat catatan (garis biru) berubah tiap angka masuk. Geser <b>daya ingat ke 0</b> → amnesia total!</div>
-
-      <div class="card challenge">🎯 <b>Tantangan:</b> isi 9, 9, 9, 0 lalu mainkan. Catatan anjlok di akhir? Kejadian terakhir selalu paling berkuasa!</div>
-
-      <div class="cols">
-        <div class="card controls">
-          <h3>🎛️ Kontrol</h3>
-          <label for="b09-seq">Urutan (angka, pisah koma)</label>
-          <input type="text" id="b09-seq" value="2, 4, 6, 8">
-          <label for="b09-w">Daya ingat <span class="val" id="b09-w-v">0.8</span></label>
-          <input type="range" id="b09-w" min="0" max="1.2" step="0.05" value="0.8">
-          <div class="row">
-            <button class="btn btn-sm btn-primary" id="b09-play">▶ Mainkan</button>
-            <button class="btn btn-sm btn-secondary" id="b09-step">👣 1 langkah</button>
-            <button class="btn btn-sm btn-ghost" id="b09-reset">↺ Reset</button>
-          </div>
-          <div class="calc" id="b09-calc"></div>
-        </div>
-        <div class="card"><h3>👁️ Catatan berubah tiap kejadian</h3><div id="b09-track" class="track"></div><canvas id="b09-canvas" width="460" height="180"></canvas></div>
-      </div>
-
-      <details class="math"><summary>📐 Hitungannya (boleh diskip)</summary>
-        <p><code>h_t = tanh(W × h_{t-1} + U × x_t)</code>. Dijaga −1 s/d 1 biar tidak meledak. LSTM = versi dengan gerbang selektif (lupa/simpan/keluarkan).</p>
-      </details>
-
-      <div class="card analis">🧠 <b>Soal analis:</b> Ramal stok dari 365 hari data, hanya catatan kecil. (a) 2 risiko? (b) Kapan cukup, kapan tidak?
-        <details><summary>Intip cara berpikirnya</summary><p>(a) Info lama memudar + satu kejadian ekstrem menimpa segalanya. (b) Cukup untuk pola pendek (mingguan); tidak cukup untuk musiman → butuh LSTM/attention.</p></details>
-      </div>
-
-      <div class="card conclusion">💎 <b>Ingat 1 kalimat:</b> Mesin urutan = pembawa catatan kecil yang diupdate tiap kejadian baru.</div>
-
-      <div class="card terms">🏷️ <b>Nama resminya</b>
-        <div class="tags">
-          <span class="tag">catatan = <b>hidden state</b></span>
-          <span class="tag">urutan = <b>sequence</b></span>
-          <span class="tag">gerbang selektif = <b>LSTM</b></span>
-          <span class="tag">jaringan ingatan = <b>RNN</b></span>
-        </div>
-      </div>
-
-      <div class="quiz" data-quiz="bab09"></div>
-      <div class="nav-foot">
-        <a class="btn btn-ghost" href="#bab08">← Bab sebelumnya</a>
-        <button class="btn btn-ghost done-btn" data-mod="bab09">✓ Tandai selesai</button>
-        <a class="btn btn-primary" href="#bab10">Lanjut: Seni Mendengarkan →</a>
-      </div>
-    </section>
-
-    <!-- ============ BAB 10: ATTENTION ============ -->
-    <section id="sec-bab10" class="page hidden">
-      <div class="card kilas">🔙 <b>Kilasan Bab 9:</b> Si Cerdas ingat urutan lewat catatan. Tapi catatan itu sempit — untuk <b>chat panjang pelanggan</b>, ia bingung. Butuh cara mendengarkan yang cerdas.</div>
-
-      <div class="card story">🗣️ <b>Cerita:</b> "Kucing mengejar tikus karena <b>ia</b> lapar." Siapa "ia"? Otakmu langsung menoleh ke "kucing". Mesin bahasa melakukan hal sama: tiap kata bertanya <b>"aku harus mendengarkan siapa?"</b> — itulah attention, dasar ChatGPT.</div>
-
-      <div class="card guide">🖐️ <b>Coba:</b> Klik kata <b>"ia"</b> → lihat kolomnya: kata mana paling pekat? Coba klik kata lain!</div>
-
-      <div class="card challenge">🎯 <b>Tantangan:</b> di "bank sungai", klik "bank" — ia lebih mendengar "menabung" atau "sungai"? Itulah cara mesin tahu "bank" yang mana.</div>
-
-      <div class="cols">
-        <div class="card controls">
-          <h3>🎛️ Kontrol</h3>
-          <label for="b10-sent">Pilih kalimat</label>
-          <select id="b10-sent">
-            <option value="0">Kucing mengejar tikus karena ia lapar</option>
-            <option value="1">Saya menabung di bank sungai</option>
-            <option value="2">Dia memberi buku itu kepadanya</option>
-          </select>
-          <p class="tiny">Klik kata = "siapa yang bertanya". Warna pekat = paling didengarkan.</p>
-          <div id="b10-words" class="words"></div>
-          <div class="calc" id="b10-calc"></div>
-        </div>
-        <div class="card"><h3>👁️ Peta "siapa mendengarkan siapa"</h3><div id="b10-matrix"></div><p class="tiny mt-2">Tiap baris total 100% — perhatian dibagi-bagi.</p></div>
-      </div>
-
-      <details class="math"><summary>📐 Hitungannya (boleh diskip)</summary>
-        <p>Kemiripan tiap pasangan → softmax → persen (total 100%). Rumus: <code>softmax(QKᵀ/√d)</code>. Transformer = banyak "rapat" seperti ini sekaligus, paralel.</p>
-      </details>
-
-      <div class="card analis">🧠 <b>Soal analis:</b> Chatbot ditanya <b>"berapa harga tempe kemarin dan hari ini?"</b> (a) Kata mana wajib diperhatikan untuk "kemarin"? (b) Akibat salah dengar? (c) Cara menguji?
-        <details><summary>Intip cara berpikirnya</summary><p>(a) "Kemarin" harus menarik harga lama. (b) Menjawab harga salah → pelanggan komplain. (c) Uji dengan daftar pertanyaan jebakan + kunci jawaban, hitung akurasi.</p></details>
-      </div>
-
-      <div class="card conclusion">💎 <b>Ingat 1 kalimat:</b> Attention = tiap kata memilih siapa yang didengarkan agar paham konteks.</div>
-
-      <div class="card terms">🏷️ <b>Nama resminya</b>
-        <div class="tags">
-          <span class="tag">perhatian = <b>attention</b></span>
-          <span class="tag">penanya = <b>query (Q)</b></span>
-          <span class="tag">yang dinilai = <b>key (K)</b></span>
-          <span class="tag">isi yang dikirim = <b>value (V)</b></span>
-          <span class="tag">pembagi 100% = <b>softmax</b></span>
-          <span class="tag">mesin rapat = <b>Transformer</b></span>
-        </div>
-      </div>
-
-      <div class="quiz" data-quiz="bab10"></div>
-      <div class="nav-foot">
-        <a class="btn btn-ghost" href="#bab09">← Bab sebelumnya</a>
-        <button class="btn btn-ghost done-btn" data-mod="bab10">✓ Tandai selesai</button>
-        <a class="btn btn-primary" href="#bab11">Lanjut: Laboratorium →</a>
-      </div>
-    </section>
-
-    <!-- ============ BAB 11: PLAYGROUND ============ -->
-    <section id="sec-bab11" class="page hidden">
-      <div class="card kilas">🔙 <b>Kilasan Bab 10:</b> Semua keping sudah di tangan — menimbang, keyakinan, tim, cermin, langkah, evaluasi, kejujuran, mata, ingatan, perhatian. <b>Misi terakhir:</b> rakit semuanya, latih AI sungguhan!</div>
-
-      <div class="card story">🎮 <b>Misi:</b> Kamu akan melatih AI <b>sungguhan</b> di browser. Buktikan: data lingkaran <b>TIDAK BISA</b> dipisah garis lurus — butuh tim tengah + aktivasi. Tekan Latih dan lihat batas warnanya melengkung sendiri!</div>
-
-      <div class="card guide">🖐️ <b>3 misi berurutan:</b>
-        <ol>
-          <li><b>Mudah:</b> dataset silang ✖, hidden 4, tekan <b>▶ Latih</b> → tunggu ~15 detik.</li>
-          <li><b>Menengah:</b> dataset lingkaran ⭕, hidden 0 → GAGAL. Naikkan ke 4 → BERHASIL.</li>
-          <li><b>Sulit 🌀:</b> dataset spiral, hidden 8+4. Mentok ~65%? Klik <b>Acak ulang</b> dan coba lagi.</li>
-        </ol>
-      </div>
-
-      <div class="cols wide">
-        <div class="card controls">
-          <h3>🎛️ Atur tim & latihan</h3>
-          <div class="pg-grid">
-            <div><label for="b11-data">Dataset</label><select id="b11-data"><option value="circle">⭕ Lingkaran</option><option value="xor">✖ Silang</option><option value="spiral">🌀 Spiral</option><option value="gauss">🔵 Dua kelompok</option></select></div>
-            <div><label for="b11-h1">Hidden 1 <span class="val" id="b11-h1-v">4</span></label><input type="range" id="b11-h1" min="0" max="8" step="1" value="4"></div>
-            <div><label for="b11-h2">Hidden 2 <span class="val" id="b11-h2-v">0</span></label><input type="range" id="b11-h2" min="0" max="8" step="1" value="0"></div>
-            <div><label for="b11-act">Aktivasi</label><select id="b11-act"><option value="tanh" selected>Tanh</option><option value="relu">ReLU</option><option value="sigmoid">Sigmoid</option></select></div>
-            <div><label for="b11-lr">Learning rate <span class="val" id="b11-lr-v">0.5</span></label><input type="range" id="b11-lr" min="0.01" max="1" step="0.01" value="0.5"></div>
-            <div><label for="b11-noise">Noise <span class="val" id="b11-noise-v">0.1</span></label><input type="range" id="b11-noise" min="0" max="0.5" step="0.05" value="0.1"></div>
-          </div>
-          <div class="row">
-            <button class="btn btn-sm btn-primary" id="b11-train">▶ Latih</button>
-            <button class="btn btn-sm btn-secondary" id="b11-stop">⏸ Stop</button>
-            <button class="btn btn-sm btn-secondary" id="b11-step">👣 +50</button>
-            <button class="btn btn-sm btn-ghost" id="b11-reset">↺ Acak otak</button>
-            <button class="btn btn-sm btn-ghost" id="b11-newdata">🎲 Data baru</button>
-          </div>
-          <div class="calc" id="b11-calc">Epoch 0 • Loss - • Akurasi -</div>
-        </div>
-        <div class="card"><h3>👁️ Decision boundary + grafik loss</h3>
-          <canvas id="b11-canvas" width="460" height="460"></canvas>
-          <canvas id="b11-loss" width="460" height="120" style="margin-top:var(--sp-3)"></canvas>
-        </div>
-      </div>
-
-      <div class="card analis">🧠 <b>Ujian kelulusan:</b> Spiral 100% latih tapi 70% uji. (a) Diagnosis? (b) Rencana 3 langkah. (c) Kapan berhenti?
-        <details><summary>Intip cara berpikirnya</summary><p>(a) Overfitting. (b) Tambah data, sederhanakan hidden layer, latih bertahap. (c) Berhenti saat akurasi uji berhenti naik (early stopping).</p></details>
-      </div>
-
-      <div class="card conclusion">💎 <b>Ingat 1 kalimat:</b> Soal melengkung butuh tim tengah + aktivasi — garis lurus tidak akan pernah cukup.</div>
-
-      <div class="card terms">🏷️ <b>Nama resminya</b>
-        <div class="tags">
-          <span class="tag">bentuk soal = <b>dataset</b></span>
-          <span class="tag">tim tengah = <b>hidden neuron</b></span>
-          <span class="tag">batas warna = <b>decision boundary</b></span>
-          <span class="tag">putaran = <b>epoch</b></span>
-          <span class="tag">ketepatan = <b>akurasi</b></span>
-        </div>
-      </div>
-
-      <div class="quiz" data-quiz="bab11"></div>
-      <div class="nav-foot">
-        <a class="btn btn-ghost" href="#bab10">← Bab sebelumnya</a>
-        <button class="btn btn-ghost done-btn" data-mod="bab11">✓ Tandai selesai</button>
-        <a class="btn btn-primary" href="#beranda">← Kembali ke beranda</a>
-      </div>
-    </section>
-
-    <footer class="footer">
-      Neural Lab — Dibuat untuk semua orang Indonesia · Tanpa rumus dulu, tanpa coding · <a href="#beranda">Kembali ke atas</a>
-    </footer>
+    <!-- BAB 4-11 akan ditambahkan di file terpisah karena terlalu besar -->
 
     </div><!-- .content -->
   </main>
 </div>
 
-<script src="js/lib/canvas-utils.js"></script>
-<script src="js/lessons.js"></script>
+<script src="js/lib/canvas.js"></script>
+<script src="js/lib/math.js"></script>
+<script src="js/lib/state.js"></script>
+<script src="js/content.js"></script>
 <script src="js/app.js"></script>
 <script src="js/viz-bab01.js"></script>
 <script src="js/viz-bab02.js"></script>
